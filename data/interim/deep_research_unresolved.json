@@ -1,0 +1,62 @@
+{
+  "sourceFile": "/Users/faizkrisnadi/Downloads/Southeast Asia Renewable Project Data Collection.md",
+  "recordCount": 8,
+  "records": [
+    {
+      "project_name": "Combol Island Solar",
+      "location": "Riau Islands, Indonesia",
+      "capacity_mw": "1380",
+      "status": "announced",
+      "issue": "Feasibility study MOU signed between Sunseap and Riau Governor, but formal regulator approval (ESDM/PLN) is unconfirmed."
+    },
+    {
+      "project_name": "Citlim Island Solar",
+      "location": "Riau Islands, Indonesia",
+      "capacity_mw": "1682",
+      "status": "announced",
+      "issue": "Part of Sunseap MOU; requires validation against Indonesian national grid (RUPTL) integration plans."
+    },
+    {
+      "project_name": "Ia Ly IP Solar",
+      "location": "Gia Lai, Vietnam",
+      "capacity_mw": "400",
+      "status": "announced",
+      "issue": "Added to Gia Lai provincial plan post-PDP8 revision, but actual construction phase and exact developer remain unverified."
+    },
+    {
+      "project_name": "LSS5 Bidding Winners",
+      "location": "Malaysia",
+      "capacity_mw": "\\~2000",
+      "status": "unknown",
+      "issue": "Bidding closed April 2024; EC announced review completion for 2000 MW in Dec 2024 but withheld specific corporate winner lists and MW allocations."
+    },
+    {
+      "project_name": "Cayanga-Bugallon Solar",
+      "location": "Pangasinan, Philippines",
+      "capacity_mw": "73.91 / 94",
+      "status": "operating",
+      "issue": "Conflicting capacity between Philippines DOE (73.91 MW) and Aboitiz PR (94 MW). Assumed DC vs AC discrepancy or phased construction tracking."
+    },
+    {
+      "project_name": "Laoag Solar Power Project",
+      "location": "Pangasinan, Philippines",
+      "capacity_mw": "130.24 / 159",
+      "status": "construction",
+      "issue": "Conflicting capacity between Philippines DOE (130.24 MW) and Aboitiz PR (159 MW). Commercial Operation Date also conflicted between sources."
+    },
+    {
+      "project_name": "ISLE-2 Sumatra Wind",
+      "location": "Sumatra, Indonesia",
+      "capacity_mw": "50",
+      "status": "pre-construction",
+      "issue": "Highlighted in World Bank environmental systems assessment for RUPTL funding, but exact municipality and developer are unlisted."
+    },
+    {
+      "project_name": "ISLE-2 Kalimantan Wind",
+      "location": "Kalimantan, Indonesia",
+      "capacity_mw": "72",
+      "status": "pre-construction",
+      "issue": "Highlighted in World Bank environmental systems assessment for RUPTL funding, but exact municipality and developer are unlisted."
+    }
+  ]
+}

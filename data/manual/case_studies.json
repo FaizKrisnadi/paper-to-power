@@ -1,0 +1,26 @@
+[
+  {
+    "id": "case-idn-riau",
+    "countryCode": "IDN",
+    "title": "Indonesia as the main source-side anchor",
+    "label": "observed_smaller_than_claimed",
+    "summary": "A cluster that appears real on the ground, but the observed footprint suggests slower realized build-out than the public headline implies.",
+    "whyItMatters": "Useful for showing that the project is not anti-renewables; it is pro-verification."
+  },
+  {
+    "id": "case-ph-luzon",
+    "countryCode": "PHL",
+    "title": "The Philippines as the metadata proving ground",
+    "label": "observed_on_schedule",
+    "summary": "A cleaner case where public metadata and observed timing align well enough to serve as a validation benchmark.",
+    "whyItMatters": "Supports the credibility of the broader matching workflow."
+  },
+  {
+    "id": "case-my-sarawak",
+    "countryCode": "MYS",
+    "title": "Sarawak as corridor logic, not just country coverage",
+    "label": "built_and_corridor_ready",
+    "summary": "A case where build-out and regional corridor framing can be shown in the same evidence thread.",
+    "whyItMatters": "Helps distinguish this from a flat country-by-country map exercise."
+  }
+]

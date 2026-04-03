@@ -1,0 +1,26 @@
+{
+  "layers": [
+    {
+      "name": "roads",
+      "recordCount": 5001
+    },
+    {
+      "name": "settlements",
+      "recordCount": 818
+    },
+    {
+      "name": "substations",
+      "recordCount": 176
+    },
+    {
+      "name": "transmission",
+      "recordCount": 358
+    },
+    {
+      "name": "landuse",
+      "recordCount": 1023
+    }
+  ],
+  "missingProjects": [],
+  "failures": []
+}

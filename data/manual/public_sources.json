@@ -1,0 +1,66 @@
+[
+  {
+    "id": "grw-preprint",
+    "name": "Global Renewables Watch preprint",
+    "scope": ["IDN", "PHL", "VNM", "MYS", "SGP"],
+    "category": "observed-assets",
+    "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/03/Global-Renewables-Watch_Caleb-Robinson_2025.pdf",
+    "notes": "Observed global solar and wind dataset with quarterly timing, capacity proxy, and preceding land use."
+  },
+  {
+    "id": "gem-solar",
+    "name": "Global Solar Power Tracker",
+    "scope": ["IDN", "PHL", "VNM", "MYS", "SGP"],
+    "category": "project-registry",
+    "url": "https://globalenergymonitor.org/projects/global-solar-power-tracker/download-data/",
+    "notes": "Primary public backbone for utility-scale solar project metadata."
+  },
+  {
+    "id": "gem-wind",
+    "name": "Global Wind Power Tracker",
+    "scope": ["IDN", "PHL", "VNM", "MYS", "SGP"],
+    "category": "project-registry",
+    "url": "https://globalenergymonitor.org/projects/global-wind-power-tracker/",
+    "notes": "Primary public backbone for utility-scale wind project metadata."
+  },
+  {
+    "id": "ph-doe",
+    "name": "Philippines DOE project and plant lists",
+    "scope": ["PHL"],
+    "category": "country-validator",
+    "url": "https://doe.gov.ph/electric-power",
+    "notes": "Strong public metadata source for project validation and commissioning context."
+  },
+  {
+    "id": "idn-ruptl",
+    "name": "Indonesia RUPTL planning documents",
+    "scope": ["IDN"],
+    "category": "country-validator",
+    "url": "https://web.pln.co.id/cms/media/siaran-pers/2025/05/ruptl-pln-2025-2034-siap-buka-keran-investasi-swasta/",
+    "notes": "Planning and project detail source for Indonesian pipeline context."
+  },
+  {
+    "id": "vnm-pdp8",
+    "name": "Vietnam PDP8 implementation materials",
+    "scope": ["VNM"],
+    "category": "country-validator",
+    "url": "https://www.allenandgledhill.com/vn/perspectives/articles/27819/issues-implementation-plan-for-national-power-development-plan-viii",
+    "notes": "Useful for province, timing, and investor-level project context."
+  },
+  {
+    "id": "mys-lss",
+    "name": "Malaysia LSS and energy commission sources",
+    "scope": ["MYS"],
+    "category": "country-validator",
+    "url": "https://www.seda.gov.my/reportal/large-scale-solar/",
+    "notes": "Program-centric source for project awards and utility-scale solar progress."
+  },
+  {
+    "id": "sgp-ema",
+    "name": "Singapore EMA regional energy connectivity",
+    "scope": ["SGP"],
+    "category": "anchor-context",
+    "url": "https://www.ema.gov.sg/news-events/news/media-releases/2024/the-united-states-singapore-feasibility-study-on-regional-energy-connectivity",
+    "notes": "Anchor reference for corridor relevance and import-side framing."
+  }
+]

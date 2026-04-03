@@ -1,0 +1,67 @@
+[
+  {
+    "code": "IDN",
+    "name": "Indonesia",
+    "role": "source",
+    "shortLabel": "ID",
+    "description": "Primary source-side geography with strong regional relevance to cross-border electricity trade.",
+    "claimedCapacityGw": 11.8,
+    "observedCapacityGw": 7.4,
+    "gapShare": 0.37,
+    "medianLagMonths": 14,
+    "readinessScore": 68,
+    "keySignal": "Best large-scale source-side anchor for Singapore-facing corridor analysis."
+  },
+  {
+    "code": "PHL",
+    "name": "Philippines",
+    "role": "source",
+    "shortLabel": "PH",
+    "description": "Best public project metadata environment for validating claimed versus observed progress.",
+    "claimedCapacityGw": 9.3,
+    "observedCapacityGw": 5.6,
+    "gapShare": 0.4,
+    "medianLagMonths": 11,
+    "readinessScore": 61,
+    "keySignal": "Strongest metadata backbone for a defensible MVP."
+  },
+  {
+    "code": "VNM",
+    "name": "Vietnam",
+    "role": "source",
+    "shortLabel": "VN",
+    "description": "High renewable activity with useful pipeline reality-check value, but more fragmented public documentation.",
+    "claimedCapacityGw": 13.7,
+    "observedCapacityGw": 8.9,
+    "gapShare": 0.35,
+    "medianLagMonths": 9,
+    "readinessScore": 64,
+    "keySignal": "Strong utility-scale comparison case with visible build-out clusters."
+  },
+  {
+    "code": "MYS",
+    "name": "Malaysia",
+    "role": "source",
+    "shortLabel": "MY",
+    "description": "Source-side geography plus corridor context, especially when Sarawak is treated distinctly.",
+    "claimedCapacityGw": 6.1,
+    "observedCapacityGw": 4.2,
+    "gapShare": 0.31,
+    "medianLagMonths": 8,
+    "readinessScore": 66,
+    "keySignal": "Important bridge between domestic build-out and regional corridor framing."
+  },
+  {
+    "code": "SGP",
+    "name": "Singapore",
+    "role": "anchor",
+    "shortLabel": "SG",
+    "description": "Regional demand and import anchor rather than a main utility-scale source-side geography.",
+    "claimedCapacityGw": 0.9,
+    "observedCapacityGw": 0.3,
+    "gapShare": 0.12,
+    "medianLagMonths": 3,
+    "readinessScore": 84,
+    "keySignal": "Best modeled as the regional sink node that makes corridor relevance legible."
+  }
+]

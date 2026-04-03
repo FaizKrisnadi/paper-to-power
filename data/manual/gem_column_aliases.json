@@ -1,0 +1,88 @@
+{
+  "projectName": [
+    "project_name",
+    "project name",
+    "asset_name",
+    "asset name",
+    "plant_name",
+    "plant name",
+    "site_name",
+    "site name"
+  ],
+  "phaseName": [
+    "phase_name",
+    "phase name",
+    "unit_name",
+    "unit name"
+  ],
+  "countryName": [
+    "country",
+    "country_name",
+    "country name",
+    "country/area",
+    "country_area"
+  ],
+  "status": [
+    "status",
+    "phase_status",
+    "phase status",
+    "project_status",
+    "project status"
+  ],
+  "capacityMw": [
+    "capacity_mw",
+    "capacity (mw)",
+    "capacity",
+    "nameplate_capacity_mw",
+    "nameplate capacity (mw)"
+  ],
+  "latitude": [
+    "latitude",
+    "lat",
+    "y"
+  ],
+  "longitude": [
+    "longitude",
+    "lon",
+    "lng",
+    "long",
+    "x"
+  ],
+  "locationText": [
+    "location",
+    "location_text",
+    "location text",
+    "province",
+    "state/province"
+  ],
+  "developer": [
+    "developer",
+    "developers",
+    "project_developer",
+    "project developer"
+  ],
+  "owner": [
+    "owner",
+    "owners",
+    "operator",
+    "operators"
+  ],
+  "gemId": [
+    "gem_id",
+    "gem id",
+    "project_id",
+    "project id",
+    "wiki_id",
+    "wiki id"
+  ],
+  "claimedCod": [
+    "start_year",
+    "start year",
+    "commissioning_year",
+    "commissioning year",
+    "operating_year",
+    "operating year",
+    "planned_operating_date",
+    "planned operating date"
+  ]
+}

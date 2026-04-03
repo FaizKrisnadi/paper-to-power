@@ -1,0 +1,6 @@
+[
+  { "from": "IDN", "to": "SGP", "kind": "corridor" },
+  { "from": "MYS", "to": "SGP", "kind": "corridor" },
+  { "from": "VNM", "to": "SGP", "kind": "comparison" },
+  { "from": "PHL", "to": "SGP", "kind": "comparison" }
+]

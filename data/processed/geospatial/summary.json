@@ -1,0 +1,34 @@
+{
+  "layers": [
+    {
+      "name": "project_registry_points",
+      "recordCount": 16,
+      "geojson": "data/processed/geospatial/project_registry_points.geojson",
+      "parquet": "data/processed/geospatial/project_registry_points.parquet"
+    },
+    {
+      "name": "observed_assets",
+      "recordCount": 2311,
+      "geojson": "data/processed/geospatial/observed_assets.geojson",
+      "parquet": "data/processed/geospatial/observed_assets.parquet"
+    },
+    {
+      "name": "matched_projects",
+      "recordCount": 14,
+      "geojson": "data/processed/geospatial/matched_projects.geojson",
+      "parquet": "data/processed/geospatial/matched_projects.parquet"
+    },
+    {
+      "name": "matched_assets",
+      "recordCount": 14,
+      "geojson": "data/processed/geospatial/matched_assets.geojson",
+      "parquet": "data/processed/geospatial/matched_assets.parquet"
+    },
+    {
+      "name": "match_links",
+      "recordCount": 14,
+      "geojson": "data/processed/geospatial/match_links.geojson",
+      "parquet": "data/processed/geospatial/match_links.parquet"
+    }
+  ]
+}

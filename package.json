@@ -1,0 +1,46 @@
+{
+  "name": "paper-to-power",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:data": "python3 -m pipeline.build_frontend_exports",
+    "fetch:grw": "python3 -m pipeline.fetch_grw_release",
+    "fetch:context": "python3 -m pipeline.fetch_osm_context",
+    "ingest:gem": "python3 -m pipeline.ingest_gem",
+    "ingest:grw": "python3 -m pipeline.ingest_grw",
+    "match:firstpass": "python3 -m pipeline.match_projects",
+    "export:geospatial": "python3 -m pipeline.export_geospatial_layers",
+    "export:site-audit": "python3 -m pipeline.export_site_audit",
+    "warehouse:build": "python3 -m pipeline.build_duckdb_warehouse",
+    "score:context": "python3 -m pipeline.build_site_context",
+    "import:deepresearch": "python3 -m pipeline.import_deep_research_markdown",
+    "curate:deepresearch": "python3 -m pipeline.curate_deep_research_seed",
+    "prepare:seed-enrichment": "python3 -m pipeline.prepare_seed_enrichment",
+    "apply:seed-enrichment": "python3 -m pipeline.apply_seed_enrichment",
+    "promote:reviewed-seed": "python3 -m pipeline.promote_reviewed_seed",
+    "sync:data": "python3 -m pipeline.sync_data",
+    "build": "npm run build:data && tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.12.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vite": "^8.0.1"
+  }
+}

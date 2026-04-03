@@ -1,0 +1,105 @@
+{
+  "sourceFile": "/Users/faizkrisnadi/Downloads/Southeast Asia Renewable Project Data Collection.md",
+  "recordCount": 9,
+  "records": [
+    {
+      "source_url": "https://theinvestor.vn/vietnam-adds-142-inspected-solar-power-projects...",
+      "source_title": "Vietnam adds 142 inspected solar power projects to PDP...",
+      "source_type": "News Report",
+      "country_scope": "VNM",
+      "technology_scope": "solar",
+      "publication_date": "2025-03-10",
+      "why_useful": "Identifies highly specific utility-scale solar projects formalized via MOIT Decision 618.",
+      "extraction_status": "Extracted",
+      "notes": "Solves the discrepancy of the 142 \"illegal\" projects now formalized in PDP8."
+    },
+    {
+      "source_url": "https://vepg.vn/wp-content/uploads/2024/05/262_QD-TTg_607766_EN.pdf",
+      "source_title": "Vietnam National Power Development Plan VIII (PDP8)",
+      "source_type": "Government Document",
+      "country_scope": "VNM",
+      "technology_scope": "solar, wind",
+      "publication_date": "2024-04-01",
+      "why_useful": "Primary source for VNM capacity allocations and Appendix III wind project lists.",
+      "extraction_status": "Extracted",
+      "notes": "Contains specific MW targets for onshore wind projects across multiple provinces."
+    },
+    {
+      "source_url": "https://aboitizpower.com/news/solar/aboitizpower...",
+      "source_title": "AboitizPower\u2019s solar milestones lead its renewable energy drive",
+      "source_type": "Developer PR",
+      "country_scope": "PHL",
+      "technology_scope": "solar",
+      "publication_date": "2025-10-10",
+      "why_useful": "Official confirmation of MW capacities and status for PHL's dominant developer.",
+      "extraction_status": "Extracted",
+      "notes": "Clarifies MW capacities (e.g., Olongapo 221MW, Calatrava 173MW) that conflict with older DOE registries."
+    },
+    {
+      "source_url": "https://www.st.gov.my/contents/2021/LSS/Announcement...",
+      "source_title": "Announcement of Shortlisted Bidders for LSS@MEnTARI",
+      "source_type": "Government Document",
+      "country_scope": "MYS",
+      "technology_scope": "solar",
+      "publication_date": "2021-03-12",
+      "why_useful": "Official regulator list of winning bids for Malaysia LSS4.",
+      "extraction_status": "Extracted",
+      "notes": "Provides exact capacities and corporate beneficiaries for P1 and P2 packages."
+    },
+    {
+      "source_url": "https://totalenergies.com/news/press-releases/indonesia-singapore...",
+      "source_title": "TotalEnergies and RGE reach new milestone",
+      "source_type": "Developer PR",
+      "country_scope": "IDN, SGP",
+      "technology_scope": "solar",
+      "publication_date": "2025-05-30",
+      "why_useful": "Details cross-border 1 GW hybrid solar export pipeline.",
+      "extraction_status": "Extracted",
+      "notes": "Highlights SGP EMA licensing for IDN-based gigawatt-scale utility generation."
+    },
+    {
+      "source_url": "https://www.ca-cib.com/en/news/credit-agricole-cib-completes...",
+      "source_title": "Credit Agricole CIB completes first renewable financing...",
+      "source_type": "Financial PR",
+      "country_scope": "PHL",
+      "technology_scope": "solar",
+      "publication_date": "",
+      "why_useful": "Details Vena Energy's 300 MWp Opus Solar project.",
+      "extraction_status": "Extracted",
+      "notes": "Highlights Green Energy Auction Program (GEAP) financing structures."
+    },
+    {
+      "source_url": "https://www.hdb.gov.sg/hdb-pulse/news/2024/hdb-awards-largest-solar-leasing-tender",
+      "source_title": "HDB Awards Largest Solar Leasing Tender",
+      "source_type": "Government Document",
+      "country_scope": "SGP",
+      "technology_scope": "solar",
+      "publication_date": "2024",
+      "why_useful": "Details SolarNova Phase 8 capacity and corporate allocation (EDPR/Sunseap).",
+      "extraction_status": "Extracted",
+      "notes": "Identifies distributed utility-scale aggregation up to 200 MWp."
+    },
+    {
+      "source_url": "https://jdih.esdm.go.id/common/dokumen-external/RUPTL...",
+      "source_title": "RUPTL PLN 2021 - 2030",
+      "source_type": "Government Document",
+      "country_scope": "IDN",
+      "technology_scope": "solar, wind",
+      "publication_date": "2021-09-28",
+      "why_useful": "Official baseline for Indonesia grid procurement.",
+      "extraction_status": "Partially Extracted",
+      "notes": "Source lacks the granular Appendix VI project list but confirms 51.6% RE target."
+    },
+    {
+      "source_url": "https://www.scribd.com/document/868095846/Awarded-Solar-Power-Projects",
+      "source_title": "Awarded Solar Power Projects",
+      "source_type": "Government Document",
+      "country_scope": "PHL",
+      "technology_scope": "solar",
+      "publication_date": "",
+      "why_useful": "DOE registry detailing exact MW and operational status of PHL solar pipelines.",
+      "extraction_status": "Extracted",
+      "notes": "Exposes discrepancies in capacity reporting between regulators and corporate operators."
+    }
+  ]
+}

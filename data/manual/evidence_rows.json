@@ -1,0 +1,57 @@
+[
+  {
+    "id": "IDN-001",
+    "projectName": "Riau Corridor Solar Cluster",
+    "countryCode": "IDN",
+    "technology": "solar",
+    "claimedCapacityMw": 420,
+    "observedCapacityMw": 265,
+    "label": "observed_smaller_than_claimed",
+    "firstSeenQuarter": "2023 Q2",
+    "readinessScore": 73
+  },
+  {
+    "id": "PHL-014",
+    "projectName": "Central Luzon Wind Phase II",
+    "countryCode": "PHL",
+    "technology": "wind",
+    "claimedCapacityMw": 180,
+    "observedCapacityMw": 180,
+    "label": "observed_on_schedule",
+    "firstSeenQuarter": "2024 Q1",
+    "readinessScore": 65
+  },
+  {
+    "id": "VNM-007",
+    "projectName": "South Central Solar Expansion",
+    "countryCode": "VNM",
+    "technology": "solar",
+    "claimedCapacityMw": 260,
+    "observedCapacityMw": 0,
+    "label": "claimed_not_observed",
+    "firstSeenQuarter": "not seen",
+    "readinessScore": 0
+  },
+  {
+    "id": "MYS-005",
+    "projectName": "Sarawak Grid-Linked Solar Park",
+    "countryCode": "MYS",
+    "technology": "solar",
+    "claimedCapacityMw": 340,
+    "observedCapacityMw": 298,
+    "label": "built_and_corridor_ready",
+    "firstSeenQuarter": "2023 Q4",
+    "readinessScore": 81
+  },
+  {
+    "id": "SGP-003",
+    "projectName": "Singapore Import Corridor Anchor",
+    "countryCode": "SGP",
+    "technology": "mixed",
+    "claimedCapacityMw": 900,
+    "observedCapacityMw": 300,
+    "label": "built_but_low_deliverability",
+    "firstSeenQuarter": "2024 Q2",
+    "readinessScore": 84
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "eyebrow": "Observed Build-Out",
+    "title": "Check whether projects are visible on the ground.",
+    "description": "Use satellite-observed renewable assets as the reality layer, not just a background map."
+  },
+  {
+    "eyebrow": "Paper-to-Power Gap",
+    "title": "Measure where public project claims diverge from observed infrastructure.",
+    "description": "Treat delays, downsizing, and absent build-out as first-class analytic outputs."
+  },
+  {
+    "eyebrow": "Deliverability",
+    "title": "Screen whether built assets look positioned to matter regionally.",
+    "description": "Score infrastructure context and corridor relevance without pretending to run grid dispatch."
+  }
+]

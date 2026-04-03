@@ -1,0 +1,219 @@
+{
+  "summary": {
+    "projectCount": 16,
+    "assetCount": 2311,
+    "matchCount": 14
+  },
+  "matches": [
+    {
+      "matchId": "IDN-W-001::GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::786",
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::786",
+      "matchConfidence": 0.925,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 1.0,
+        "capacityScore": 0.5
+      },
+      "paperToPowerLabel": "observed_on_schedule",
+      "distanceKm": 0.24,
+      "scheduleVarianceMonths": -6,
+      "capacityVarianceMw": null
+    },
+    {
+      "matchId": "MYS-S-002::GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::952",
+      "projectId": "MYS-S-002",
+      "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::952",
+      "matchConfidence": 0.91,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 1.0,
+        "capacityScore": 0.4
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 0.059,
+      "scheduleVarianceMonths": -3,
+      "capacityVarianceMw": -24.57
+    },
+    {
+      "matchId": "SGP-S-001::GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::435",
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::435",
+      "matchConfidence": 0.8725,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 1.0,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 1.563,
+      "scheduleVarianceMonths": -6,
+      "capacityVarianceMw": -57.15
+    },
+    {
+      "matchId": "MYS-S-001::GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::591",
+      "projectId": "MYS-S-001",
+      "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::591",
+      "matchConfidence": 0.785,
+      "matchingSignals": {
+        "distanceScore": 0.85,
+        "timeScore": 0.5,
+        "capacityScore": 1.0
+      },
+      "paperToPowerLabel": "observed_on_schedule",
+      "distanceKm": 10.597,
+      "scheduleVarianceMonths": null,
+      "capacityVarianceMw": -5.84
+    },
+    {
+      "matchId": "PHL-S-003::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::603",
+      "projectId": "PHL-S-003",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::603",
+      "matchConfidence": 0.7475,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.5,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 4.198,
+      "scheduleVarianceMonths": null,
+      "capacityVarianceMw": -249.95
+    },
+    {
+      "matchId": "VNM-S-002::GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::653",
+      "projectId": "VNM-S-002",
+      "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::653",
+      "matchConfidence": 0.6975,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.15,
+        "capacityScore": 0.4
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 2.068,
+      "scheduleVarianceMonths": -75,
+      "capacityVarianceMw": -125.71
+    },
+    {
+      "matchId": "VNM-S-001::GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::270",
+      "projectId": "VNM-S-001",
+      "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::270",
+      "matchConfidence": 0.66,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.15,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 0.408,
+      "scheduleVarianceMonths": -66,
+      "capacityVarianceMw": -203.28
+    },
+    {
+      "matchId": "VNM-S-003::GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::231",
+      "projectId": "VNM-S-003",
+      "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::231",
+      "matchConfidence": 0.66,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.15,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 2.16,
+      "scheduleVarianceMonths": -45,
+      "capacityVarianceMw": -598.06
+    },
+    {
+      "matchId": "PHL-S-006::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::361",
+      "projectId": "PHL-S-006",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::361",
+      "matchConfidence": 0.66,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.15,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 2.298,
+      "scheduleVarianceMonths": -84,
+      "capacityVarianceMw": -39.388
+    },
+    {
+      "matchId": "VNM-S-004::GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::300",
+      "projectId": "VNM-S-004",
+      "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::300",
+      "matchConfidence": 0.66,
+      "matchingSignals": {
+        "distanceScore": 1.0,
+        "timeScore": 0.15,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 4.086,
+      "scheduleVarianceMonths": -48,
+      "capacityVarianceMw": -213.32
+    },
+    {
+      "matchId": "PHL-S-004::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::17",
+      "projectId": "PHL-S-004",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::17",
+      "matchConfidence": 0.6575,
+      "matchingSignals": {
+        "distanceScore": 0.85,
+        "timeScore": 0.5,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 11.583,
+      "scheduleVarianceMonths": null,
+      "capacityVarianceMw": -158.26
+    },
+    {
+      "matchId": "PHL-S-002::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::523",
+      "projectId": "PHL-S-002",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::523",
+      "matchConfidence": 0.645,
+      "matchingSignals": {
+        "distanceScore": 0.85,
+        "timeScore": 0.45,
+        "capacityScore": 0.15
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 7.949,
+      "scheduleVarianceMonths": -24,
+      "capacityVarianceMw": -76.497
+    },
+    {
+      "matchId": "PHL-S-001::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::919",
+      "projectId": "PHL-S-001",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::919",
+      "matchConfidence": 0.6075,
+      "matchingSignals": {
+        "distanceScore": 0.85,
+        "timeScore": 0.15,
+        "capacityScore": 0.4
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 9.475,
+      "scheduleVarianceMonths": -96,
+      "capacityVarianceMw": -90.012
+    },
+    {
+      "matchId": "PHL-S-005::GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::785",
+      "projectId": "PHL-S-005",
+      "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::785",
+      "matchConfidence": 0.6075,
+      "matchingSignals": {
+        "distanceScore": 0.85,
+        "timeScore": 0.15,
+        "capacityScore": 0.4
+      },
+      "paperToPowerLabel": "observed_smaller_than_claimed",
+      "distanceKm": 10.245,
+      "scheduleVarianceMonths": -84,
+      "capacityVarianceMw": -84.423
+    }
+  ]
+}
