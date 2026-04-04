@@ -1251,10 +1251,10 @@ button {
   }
 
   .hero-landing__video {
-    object-position: 58% 50%;
-    opacity: 0.76;
+    object-position: 68% 48%;
+    opacity: 0.78;
     filter: blur(2px) saturate(0.84) contrast(0.95) brightness(1);
-    transform: scale(1.16);
+    transform: scale(1.1);
   }
 
   .hero-landing__grid {
@@ -1439,6 +1439,13 @@ button {
 }
 
 @media (max-width: 560px) {
+  .hero-landing__video {
+    object-position: 76% 46%;
+    opacity: 0.8;
+    filter: blur(1.9px) saturate(0.84) contrast(0.95) brightness(1);
+    transform: scale(1.04);
+  }
+
   .hero-landing__glow--teal {
     top: -12%;
     right: -42%;
