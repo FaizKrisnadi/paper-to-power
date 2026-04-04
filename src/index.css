@@ -1246,15 +1246,15 @@ button {
 
 @media (max-width: 760px) {
   .hero-landing__inner {
-    width: min(100%, 92vw);
-    padding: 110px 0 120px;
+    width: min(100%, 90vw);
+    padding: 96px 0 104px;
   }
 
   .hero-landing__video {
-    object-position: 68% 48%;
-    opacity: 0.78;
-    filter: blur(2px) saturate(0.84) contrast(0.95) brightness(1);
-    transform: scale(1.1);
+    object-position: 74% 47%;
+    opacity: 0.8;
+    filter: blur(1.9px) saturate(0.86) contrast(0.95) brightness(1);
+    transform: scale(1.05);
   }
 
   .hero-landing__grid {
@@ -1263,25 +1263,37 @@ button {
   }
 
   .hero-landing__lede {
-    margin-bottom: 36px;
+    margin-bottom: 26px;
     line-height: 1.65;
   }
 
   .hero-landing__metrics {
-    margin-bottom: 40px;
+    width: min(100%, 340px);
+    margin-bottom: 28px;
   }
 
   .metric-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .metric-strip__cell {
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
+    padding: 16px 10px;
+    border-right: 1px solid var(--border);
+    border-bottom: 0;
   }
 
   .metric-strip__cell:last-child {
-    border-bottom: 0;
+    border-right: 0;
+  }
+
+  .metric-strip__value {
+    font-size: 1.55rem;
+  }
+
+  .metric-strip__label {
+    margin-top: 6px;
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
   }
 
   .explorer-section {
@@ -1440,10 +1452,17 @@ button {
 
 @media (max-width: 560px) {
   .hero-landing__video {
-    object-position: 76% 46%;
-    opacity: 0.8;
-    filter: blur(1.9px) saturate(0.84) contrast(0.95) brightness(1);
-    transform: scale(1.04);
+    object-position: 84% 45%;
+    opacity: 0.82;
+    filter: blur(1.6px) saturate(0.88) contrast(0.96) brightness(1);
+    transform: scale(0.99);
+  }
+
+  .hero-landing__tint {
+    background:
+      radial-gradient(circle at center, rgba(249, 247, 241, 0.84) 0%, rgba(247, 245, 239, 0.58) 30%, rgba(246, 244, 238, 0.16) 58%, rgba(246, 244, 238, 0.46) 100%),
+      linear-gradient(180deg, rgba(246, 244, 238, 0.38) 0%, rgba(246, 244, 238, 0.08) 34%, rgba(246, 244, 238, 0.42) 100%),
+      linear-gradient(90deg, rgba(250, 249, 244, 0.58) 0%, rgba(246, 244, 238, 0.06) 18%, rgba(246, 244, 238, 0.06) 82%, rgba(250, 249, 244, 0.58) 100%);
   }
 
   .hero-landing__glow--teal {
@@ -1466,6 +1485,23 @@ button {
 
   .hero-landing__lede {
     max-width: 31rem;
+  }
+
+  .hero-landing__metrics {
+    width: min(100%, 320px);
+  }
+
+  .metric-strip__cell {
+    padding: 14px 8px;
+  }
+
+  .metric-strip__value {
+    font-size: 1.35rem;
+  }
+
+  .metric-strip__label {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
   }
 
   .story-stage__overlay,
