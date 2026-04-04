@@ -781,9 +781,11 @@ export function StorySection() {
         doubleClickZoom: false,
         touchZoomRotate: false,
         interactive: false,
+        attributionControl: false,
       });
 
       mapRef.current = map;
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
       map.on('load', () => {
         if (!map) {

@@ -354,11 +354,13 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
         pitch: 34,
         bearing: -14,
         maxPitch: 78,
+        attributionControl: false,
       });
 
       mapInstance = createdMap;
       mapRef.current = createdMap;
       createdMap.addControl(new maplibregl.NavigationControl(), 'top-right');
+      createdMap.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
       createdMap.on('load', () => {
         if (cancelled) return;

@@ -11,6 +11,8 @@ interface CountryStats {
   claimedMW: number;
   observedMW: number;
   observedPointCount: number;
+  displayBarPct: number;
+  displayBarMode: 'mw' | 'points' | 'none';
   gapPct: number;
   role: 'Source' | 'Anchor' | 'Both';
   keySignal: string;
@@ -36,6 +38,8 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
         claimedMW: 0,
         observedMW: 0,
         observedPointCount: 0,
+        displayBarPct: 0,
+        displayBarMode: 'none',
         gapPct: 0,
         role: COUNTRY_INFO[code].role,
         keySignal: COUNTRY_INFO[code].keySignal
@@ -53,9 +57,25 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
     });
 
     // Calculate gap
+    const maxObservedPointCount = Math.max(
+      1,
+      ...Object.values(stats).map((s) => s.observedPointCount),
+    );
+
     Object.values(stats).forEach(s => {
       if (s.claimedMW > 0) {
         s.gapPct = Math.round(((s.claimedMW - s.observedMW) / s.claimedMW) * 100);
+      }
+
+      if (s.observedMW > 0) {
+        s.displayBarMode = 'mw';
+        s.displayBarPct = Math.min(100, (s.observedMW / (s.claimedMW || 1)) * 100);
+      } else if (s.observedPointCount > 0) {
+        s.displayBarMode = 'points';
+        s.displayBarPct = Math.min(
+          100,
+          Math.max(24, (s.observedPointCount / maxObservedPointCount) * 56),
+        );
       }
     });
 
@@ -144,14 +164,16 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
                     top: 0, 
                     left: 0, 
                     height: '100%', 
-                    width: `${Math.min(100, (stat.observedMW / (stat.claimedMW || 1)) * 100)}%`, 
-                    background: 'var(--accent)',
+                    width: `${stat.displayBarPct}%`, 
+                    background: stat.displayBarMode === 'points'
+                      ? 'repeating-linear-gradient(135deg, rgba(14, 118, 101, 0.95) 0 8px, rgba(14, 118, 101, 0.55) 8px 16px)'
+                      : 'var(--accent)',
                     borderRadius: '4px'
                   }} />
                 </div>
                 {stat.observedMW === 0 && stat.observedPointCount > 0 && (
                   <div style={{ marginTop: '8px', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
-                    Observed evidence is present as wind points; MW is not resolved in the current export.
+                    Bar reflects observed point evidence, since MW is not resolved in the current export.
                   </div>
                 )}
               </div>
