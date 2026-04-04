@@ -46,6 +46,65 @@ def load_collection(filename: str, factory: type[T]) -> list[T]:
     return [parser(item) for item in raw_items]
 
 
+def round_coordinate(value: Any, precision: int = 6) -> Any:
+    if isinstance(value, int | float):
+        return round(float(value), precision)
+    return value
+
+
+def simplify_ring(
+    ring: list[list[float]],
+    *,
+    max_points: int = 72,
+    precision: int = 6,
+) -> list[list[float]]:
+    if len(ring) <= 4:
+        return [[round_coordinate(coord, precision) for coord in point] for point in ring]
+
+    step = max(1, len(ring) // max_points)
+    sampled = ring[::step]
+    if sampled[-1] != ring[-1]:
+        sampled.append(ring[-1])
+
+    simplified = [[round_coordinate(coord, precision) for coord in point] for point in sampled]
+    if simplified[0] != simplified[-1]:
+        simplified.append(simplified[0])
+    return simplified
+
+
+def simplify_geojson_geometry(geometry: Any) -> Any:
+    if not isinstance(geometry, dict):
+        return None
+
+    geometry_type = geometry.get("type")
+    coordinates = geometry.get("coordinates")
+    if geometry_type == "Point" and isinstance(coordinates, list) and len(coordinates) == 2:
+        return {
+            "type": "Point",
+            "coordinates": [round_coordinate(coordinates[0]), round_coordinate(coordinates[1])],
+        }
+    if geometry_type == "LineString" and isinstance(coordinates, list):
+        return {
+            "type": "LineString",
+            "coordinates": simplify_ring(coordinates, max_points=40),
+        }
+    if geometry_type == "Polygon" and isinstance(coordinates, list):
+        return {
+            "type": "Polygon",
+            "coordinates": [simplify_ring(ring) for ring in coordinates if isinstance(ring, list)],
+        }
+    if geometry_type == "MultiPolygon" and isinstance(coordinates, list):
+        return {
+            "type": "MultiPolygon",
+            "coordinates": [
+                [simplify_ring(ring) for ring in polygon if isinstance(ring, list)]
+                for polygon in coordinates
+                if isinstance(polygon, list)
+            ],
+        }
+    return None
+
+
 def build_dataset() -> FrontendDataset:
     return FrontendDataset(
         featureCards=load_collection("feature_cards.json", FeatureCard),
@@ -337,6 +396,26 @@ def build_registry_map_projects() -> list[dict[str, Any]]:
                 "directConnectedTransmissionCount": (
                     int(site_context.get("directConnectedTransmissionCount"))
                     if isinstance(site_context, dict) and isinstance(site_context.get("directConnectedTransmissionCount"), int | float)
+                    else None
+                ),
+                "matchedAssetSiteId": (
+                    str(match.get("siteId"))
+                    if isinstance(match, dict) and match.get("siteId") is not None
+                    else None
+                ),
+                "matchedAssetGeometry": (
+                    simplify_geojson_geometry(asset.get("geometry"))
+                    if isinstance(asset, dict)
+                    else None
+                ),
+                "matchedAssetCentroidLatitude": (
+                    float(asset.get("centroidLatitude"))
+                    if isinstance(asset, dict) and isinstance(asset.get("centroidLatitude"), int | float)
+                    else None
+                ),
+                "matchedAssetCentroidLongitude": (
+                    float(asset.get("centroidLongitude"))
+                    if isinstance(asset, dict) and isinstance(asset.get("centroidLongitude"), int | float)
                     else None
                 ),
             }

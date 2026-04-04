@@ -28,6 +28,32 @@ export type PublicSourceCategory =
   | 'country-validator'
   | 'anchor-context'
 
+export type GeoJSONPointGeometry = {
+  type: 'Point'
+  coordinates: [number, number]
+}
+
+export type GeoJSONLineStringGeometry = {
+  type: 'LineString'
+  coordinates: [number, number][]
+}
+
+export type GeoJSONPolygonGeometry = {
+  type: 'Polygon'
+  coordinates: [number, number][][]
+}
+
+export type GeoJSONMultiPolygonGeometry = {
+  type: 'MultiPolygon'
+  coordinates: [number, number][][][]
+}
+
+export type GeoJSONGeometry =
+  | GeoJSONPointGeometry
+  | GeoJSONLineStringGeometry
+  | GeoJSONPolygonGeometry
+  | GeoJSONMultiPolygonGeometry
+
 export interface CountrySummary {
   code: CountryCode
   name: string
@@ -115,4 +141,8 @@ export interface RegistryMapProject {
   nearestSiteSideGridDistanceKm: number | null
   directConnectedSubstationCount: number | null
   directConnectedTransmissionCount: number | null
+  matchedAssetSiteId: string | null
+  matchedAssetGeometry: GeoJSONGeometry | null
+  matchedAssetCentroidLatitude: number | null
+  matchedAssetCentroidLongitude: number | null
 }
