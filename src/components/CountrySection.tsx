@@ -10,6 +10,7 @@ interface CountryStats {
   country: CountryCode;
   claimedMW: number;
   observedMW: number;
+  observedPointCount: number;
   gapPct: number;
   role: 'Source' | 'Anchor' | 'Both';
   keySignal: string;
@@ -34,6 +35,7 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
         country: code as CountryCode,
         claimedMW: 0,
         observedMW: 0,
+        observedPointCount: 0,
         gapPct: 0,
         role: COUNTRY_INFO[code].role,
         keySignal: COUNTRY_INFO[code].keySignal
@@ -46,6 +48,7 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
       if (stats[code]) {
         stats[code].claimedMW += p.claimedCapacityMw || 0;
         stats[code].observedMW += p.observedCapacityMw || 0;
+        stats[code].observedPointCount += p.observedAssetCount || 0;
       }
     });
 
@@ -120,9 +123,19 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
               <div style={{ marginBottom: '24px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.875rem' }}>
                   <span style={{ color: 'var(--text-secondary)' }}>Observed / Claimed</span>
-                  <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
-                    {stat.observedMW.toFixed(0)} <span style={{ color: 'var(--text-tertiary)' }}>/ {stat.claimedMW.toFixed(0)} MW</span>
-                  </span>
+                  {stat.observedMW > 0 ? (
+                    <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                      {stat.observedMW.toFixed(0)} <span style={{ color: 'var(--text-tertiary)' }}>/ {stat.claimedMW.toFixed(0)} MW</span>
+                    </span>
+                  ) : stat.observedPointCount > 0 ? (
+                    <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                      {stat.observedPointCount} <span style={{ color: 'var(--text-tertiary)' }}>pts / {stat.claimedMW.toFixed(0)} MW</span>
+                    </span>
+                  ) : (
+                    <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                      0 <span style={{ color: 'var(--text-tertiary)' }}>/ {stat.claimedMW.toFixed(0)} MW</span>
+                    </span>
+                  )}
                 </div>
                 
                 <div style={{ height: '8px', background: 'var(--bg-surface-muted)', borderRadius: '4px', overflow: 'hidden', position: 'relative' }}>
@@ -136,11 +149,16 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
                     borderRadius: '4px'
                   }} />
                 </div>
+                {stat.observedMW === 0 && stat.observedPointCount > 0 && (
+                  <div style={{ marginTop: '8px', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
+                    Observed evidence is present as wind points; MW is not resolved in the current export.
+                  </div>
+                )}
               </div>
 
               <div style={{ marginTop: 'auto' }}>
                 <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--status-smaller)', marginBottom: '8px' }}>
-                  {stat.gapPct}% Capacity Gap
+                  {stat.observedMW > 0 ? `${stat.gapPct}% Capacity Gap` : stat.observedPointCount > 0 ? 'Observed, MW unresolved' : `${stat.gapPct}% Capacity Gap`}
                 </div>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0 }}>
                   {stat.keySignal}
