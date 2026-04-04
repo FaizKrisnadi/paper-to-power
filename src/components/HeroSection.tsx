@@ -59,10 +59,10 @@ export function HeroSection() {
         {/* CTA */}
         <button
           onClick={handleExploreClick}
-          className="btn btn-primary"
+          className="btn btn-primary hero-landing__cta"
           style={{ fontSize: '1rem', gap: '8px' }}
         >
-          Explore the evidence
+          View findings
           <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>↓</span>
         </button>
       </div>
