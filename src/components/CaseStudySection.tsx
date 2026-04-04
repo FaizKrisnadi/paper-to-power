@@ -101,7 +101,7 @@ export function CaseStudySection() {
   }
 
   return (
-    <section style={{ padding: '80px 24px 96px', background: 'var(--bg-primary)' }}>
+    <section className="deep-dive-section" style={{ padding: '80px 24px 96px', background: 'var(--bg-primary)' }}>
       <div className="section-container" style={{ padding: 0, maxWidth: '1120px' }}>
         <SectionHeader
           title="Deep Dives"
@@ -109,36 +109,25 @@ export function CaseStudySection() {
           eyebrow="Project Reads"
         />
 
-        <div style={{ display: 'grid', gap: '22px', marginTop: '40px' }}>
+        <div className="deep-dive-list" style={{ display: 'grid', gap: '22px', marginTop: '40px' }}>
           {projects.map((project, index) => {
             const badgeStyle = getBadgeStyle(project.paperToPowerLabel);
 
             return (
               <article
                 key={project.projectId}
-                className="surface-panel"
+                className="surface-panel deep-dive-card"
                 style={{
                   padding: '28px',
                   background: 'linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,248,242,0.86))',
                 }}
               >
                 <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(0, 1.2fr) minmax(260px, 0.8fr)',
-                    gap: '24px',
-                    alignItems: 'start',
-                  }}
+                  className="deep-dive-card__layout"
                 >
-                  <div>
+                  <div className="deep-dive-card__body">
                     <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
-                        flexWrap: 'wrap',
-                        marginBottom: '14px',
-                      }}
+                      className="deep-dive-card__meta"
                     >
                       <span
                         style={{
@@ -168,6 +157,7 @@ export function CaseStudySection() {
                     </div>
 
                     <h3
+                      className="deep-dive-card__title"
                       style={{
                         fontSize: '1.65rem',
                         lineHeight: 1.02,
@@ -179,6 +169,7 @@ export function CaseStudySection() {
                     </h3>
 
                     <p
+                      className="deep-dive-card__copy"
                       style={{
                         color: 'var(--text-secondary)',
                         lineHeight: 1.65,
@@ -192,12 +183,7 @@ export function CaseStudySection() {
                     </p>
 
                     <div
-                      style={{
-                        display: 'grid',
-                        gap: '12px',
-                        paddingTop: '16px',
-                        borderTop: '1px solid var(--border)',
-                      }}
+                      className="deep-dive-card__details"
                     >
                       <div>
                         <strong style={{ display: 'block', marginBottom: '4px', fontSize: '0.92rem' }}>
@@ -229,21 +215,10 @@ export function CaseStudySection() {
                   </div>
 
                   <div
-                    style={{
-                      display: 'grid',
-                      gap: '12px',
-                      padding: '18px',
-                      border: '1px solid var(--border)',
-                      borderRadius: 'var(--radius-lg)',
-                      background: 'rgba(255,255,255,0.68)',
-                    }}
+                    className="deep-dive-card__aside"
                   >
                     <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                        gap: '10px',
-                      }}
+                      className="deep-dive-card__kpis"
                     >
                       <div>
                         <span

@@ -31,32 +31,14 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
   const hasActiveFilters = filters.country !== 'all' || filters.tech !== 'all' || filters.status !== 'all';
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr auto',
-      alignItems: 'end',
-      padding: '18px 24px',
-      background: 'linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,248,245,0.88))',
-      borderBottom: '1px solid var(--border)',
-      gap: '16px 24px'
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+    <div className="filter-bar">
+      <div className="filter-bar__controls">
         
         {/* Country Filter */}
         <select 
+          className="filter-bar__select"
           value={filters.country} 
           onChange={(e) => handleFilterChange('country', e.target.value)}
-          style={{
-            padding: '10px 16px',
-            borderRadius: '20px',
-            border: '1px solid var(--border)',
-            background: 'rgba(255,255,255,0.92)',
-            fontSize: '0.875rem',
-            color: 'var(--text-primary)',
-            outline: 'none',
-            cursor: 'pointer',
-            fontWeight: 600
-          }}
         >
           <option value="all">All Countries</option>
           <option value="IDN">Indonesia</option>
@@ -68,19 +50,9 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
 
         {/* Technology Filter */}
         <select 
+          className="filter-bar__select"
           value={filters.tech} 
           onChange={(e) => handleFilterChange('tech', e.target.value)}
-          style={{
-            padding: '10px 16px',
-            borderRadius: '20px',
-            border: '1px solid var(--border)',
-            background: 'rgba(255,255,255,0.92)',
-            fontSize: '0.875rem',
-            color: 'var(--text-primary)',
-            outline: 'none',
-            cursor: 'pointer',
-            fontWeight: 600
-          }}
         >
           <option value="all">All Technologies</option>
           <option value="solar">Solar</option>
@@ -89,19 +61,9 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
 
         {/* Status Filter */}
         <select 
+          className="filter-bar__select"
           value={filters.status} 
           onChange={(e) => handleFilterChange('status', e.target.value)}
-          style={{
-            padding: '10px 16px',
-            borderRadius: '20px',
-            border: '1px solid var(--border)',
-            background: 'rgba(255,255,255,0.92)',
-            fontSize: '0.875rem',
-            color: 'var(--text-primary)',
-            outline: 'none',
-            cursor: 'pointer',
-            fontWeight: 600
-          }}
         >
           <option value="all">All Statuses</option>
           <option value="observed_on_schedule">On Schedule</option>
@@ -115,26 +77,15 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
 
         {hasActiveFilters && (
           <button 
+            className="filter-bar__clear"
             onClick={handleClearAll}
-            style={{
-              fontSize: '0.875rem',
-              color: 'var(--accent)',
-              padding: '8px 10px',
-              fontWeight: 700
-            }}
           >
             Clear filters
           </button>
         )}
       </div>
 
-      <div style={{
-        fontSize: '0.875rem',
-        color: 'var(--text-secondary)',
-        fontWeight: 700,
-        justifySelf: 'end',
-        whiteSpace: 'nowrap'
-      }}>
+      <div className="filter-bar__count">
         Showing {resultCount} projects
       </div>
     </div>

@@ -144,6 +144,24 @@ function getProjectFocusBounds(project: RegistryMapProject) {
   ] as [[number, number], [number, number]];
 }
 
+function getProjectFocusPadding() {
+  if (typeof window !== 'undefined' && window.innerWidth <= 760) {
+    return {
+      top: 28,
+      right: 28,
+      bottom: 28,
+      left: 28,
+    };
+  }
+
+  return {
+    top: 54,
+    right: 436,
+    bottom: 54,
+    left: 54,
+  };
+}
+
 function buildLabelAnchor(center: [number, number], technology: RegistryMapProject['technology']) {
   return technology === 'wind'
     ? [center[0] + 0.34, center[1] - 0.16] as [number, number]
@@ -677,12 +695,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
       }
 
       map.fitBounds(getProjectFocusBounds(selected), {
-        padding: {
-          top: 54,
-          right: 436,
-          bottom: 54,
-          left: 54,
-        },
+        padding: getProjectFocusPadding(),
         maxZoom: selected.technology === 'wind' ? 10.8 : 11.4,
         pitch: selected.technology === 'wind' ? 52 : 48,
         bearing: selected.technology === 'wind' ? 16 : -12,

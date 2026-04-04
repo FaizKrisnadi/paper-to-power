@@ -28,32 +28,12 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
   const gridLabel = project.gridEvidenceClass ? humanGridLabels[project.gridEvidenceClass] || "Unknown coverage" : "Unknown coverage";
 
   return (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      background: 'var(--bg-surface)',
-      borderLeft: '1px solid var(--border)',
-      display: 'flex',
-      flexDirection: 'column',
-      boxShadow: '-4px 0 16px rgba(0,0,0,0.05)',
-      overflowY: 'auto'
-    }}>
+    <div className="project-drawer">
       {/* Header */}
-      <div style={{
-        padding: '24px',
-        borderBottom: '1px solid var(--border)',
-        position: 'relative'
-      }}>
+      <div className="project-drawer__header">
         <button 
+          className="project-drawer__close"
           onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '24px',
-            right: '24px',
-            color: 'var(--text-tertiary)',
-            fontSize: '1.25rem',
-            lineHeight: 1
-          }}
         >
           ✕
         </button>
@@ -79,8 +59,8 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
       </div>
 
       {/* Primary Metrics Grid */}
-      <div style={{ padding: '24px', flex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+      <div className="project-drawer__body">
+        <div className="project-drawer__stats">
           <StatCard 
             label="Claimed Target" 
             value={project.claimedCapacityMw ? formatMW(project.claimedCapacityMw) : 'N/A'} 
@@ -93,7 +73,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
           />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '16px', marginBottom: '24px' }}>
+        <div className="project-drawer__panels">
           <div className="card" style={{ padding: '16px' }}>
             <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>Timeline</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -142,7 +122,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
         </Accordion>
       </div>
 
-      <div style={{ padding: '24px', borderTop: '1px solid var(--border)', background: 'var(--bg-surface-muted)' }}>
+      <div className="project-drawer__footer">
          <a 
           href={project.sourcePrimaryUrl || '#'} 
           target="_blank" 

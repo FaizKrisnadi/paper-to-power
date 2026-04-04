@@ -10,12 +10,7 @@ interface DataTableProps {
 
 export function DataTable({ projects, onRowClick, selectedId }: DataTableProps) {
   return (
-    <div style={{
-      width: '100%',
-      overflowY: 'auto',
-      overflowX: 'auto',
-      maxHeight: 'inherit',
-    }}>
+      <div className="data-table">
       <table style={{
         width: '100%',
         borderCollapse: 'collapse',
@@ -166,6 +161,6 @@ export function DataTable({ projects, onRowClick, selectedId }: DataTableProps) 
           )}
         </tbody>
       </table>
-    </div>
+      </div>
   );
 }

@@ -46,7 +46,7 @@ export function ExplorerSection({ allProjects }: ExplorerSectionProps) {
   }, [activeSelectedProjectId, filteredProjects]);
 
   return (
-    <div id="explorer-section" style={{ padding: '80px 24px 60px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div id="explorer-section" className="explorer-section" style={{ padding: '80px 24px 60px', maxWidth: '1400px', margin: '0 auto' }}>
       
       <SectionHeader 
         title="Project Explorer" 
@@ -63,18 +63,8 @@ export function ExplorerSection({ allProjects }: ExplorerSectionProps) {
         />
       </div>
 
-      {/* Map + Drawer */}
-      <div style={{
-        position: 'relative',
-        marginTop: '16px',
-        borderRadius: 'var(--radius-lg)',
-        overflow: 'hidden',
-        border: '1px solid var(--border)',
-        boxShadow: 'var(--shadow-sm)',
-        height: '520px',
-      }}>
-        {/* Map Area */}
-        <div style={{ width: '100%', height: '100%' }}>
+      <div className="explorer-stage">
+        <div className="explorer-map-shell">
           <ExplorerMap 
             projects={filteredProjects}
             selectedProjectId={activeSelectedProjectId}
@@ -82,19 +72,8 @@ export function ExplorerSection({ allProjects }: ExplorerSectionProps) {
           />
         </div>
 
-        {/* Drawer Overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: selectedProject ? '400px' : '0px',
-          maxWidth: '100%',
-          transition: 'width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
-          overflow: 'hidden',
-          zIndex: 20,
-        }}>
-          <div style={{ width: '400px', height: '100%', maxWidth: '100vw' }}>
+        <div className={`explorer-drawer-shell ${selectedProject ? 'is-open' : ''}`}>
+          <div className="explorer-drawer-inner">
             <ProjectDrawer 
               project={selectedProject} 
               onClose={() => setSelectedProjectId(null)} 
@@ -103,16 +82,7 @@ export function ExplorerSection({ allProjects }: ExplorerSectionProps) {
         </div>
       </div>
 
-      {/* Data Table — separate card with gap */}
-      <div style={{
-        marginTop: '32px',
-        borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--border)',
-        boxShadow: 'var(--shadow-sm)',
-        overflow: 'hidden',
-        background: 'var(--bg-surface)',
-        maxHeight: '420px',
-      }}>
+      <div className="explorer-table-shell">
         <DataTable 
           projects={filteredProjects}
           selectedId={activeSelectedProjectId}
