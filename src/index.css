@@ -72,6 +72,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -112,6 +113,7 @@ button {
 .app-container {
   min-height: 100vh;
   position: relative;
+  overflow-x: clip;
 }
 
 /* Base UI Components */
@@ -1213,12 +1215,21 @@ button {
 }
 
 @media (max-width: 560px) {
+  .story-stage__overlay,
+  .story-stage__overlay-inner,
+  .story-stage__chapters {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   .story-progress {
     top: 10px;
-    max-width: none;
-    width: 100%;
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
     padding-top: 10px;
     pointer-events: none;
+    overflow-x: clip;
   }
 
   .story-progress__topline {
@@ -1230,8 +1241,11 @@ button {
   .story-progress__list {
     display: flex;
     gap: 8px;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     padding-bottom: 2px;
+    padding-right: 12px;
     scrollbar-width: none;
   }
 
@@ -1245,13 +1259,13 @@ button {
     align-items: center;
     gap: 8px;
     flex: 0 0 auto;
-    min-width: max-content;
     padding: 9px 12px;
     border: 1px solid rgba(93, 106, 111, 0.12);
     border-radius: 999px;
     background: rgba(248, 244, 236, 0.72);
     backdrop-filter: blur(10px);
     color: rgba(32, 40, 45, 0.82);
+    white-space: nowrap;
   }
 
   .story-progress__item.is-active {

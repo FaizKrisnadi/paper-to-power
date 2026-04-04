@@ -165,9 +165,7 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
                     left: 0, 
                     height: '100%', 
                     width: `${stat.displayBarPct}%`, 
-                    background: stat.displayBarMode === 'points'
-                      ? 'repeating-linear-gradient(135deg, rgba(14, 118, 101, 0.95) 0 8px, rgba(14, 118, 101, 0.55) 8px 16px)'
-                      : 'var(--accent)',
+                    background: 'var(--accent)',
                     borderRadius: '4px'
                   }} />
                 </div>
