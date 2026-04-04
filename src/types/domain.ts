@@ -1,4 +1,4 @@
-export type CountryCode = 'IDN' | 'PHL' | 'SGP' | 'VNM' | 'MYS'
+export type CountryCode = 'BRN' | 'KHM' | 'IDN' | 'LAO' | 'MYS' | 'MMR' | 'PHL' | 'SGP' | 'THA' | 'VNM'
 
 export type CountryRole = 'source' | 'anchor'
 
@@ -66,6 +66,9 @@ export interface CountrySummary {
   medianLagMonths: number
   readinessScore: number
   keySignal: string
+  observedAssetInventoryCount: number
+  matchedProjectCount: number
+  hasObservedCoverage: boolean
 }
 
 export interface FeatureCard {
@@ -115,7 +118,7 @@ export interface RegistryMapProject {
   projectName: string
   countryCode: CountryCode
   countryName: string
-  technology: 'solar' | 'wind'
+  technology: Technology
   claimedCapacityMw: number | null
   claimedStatus: string | null
   claimedCod: string | null

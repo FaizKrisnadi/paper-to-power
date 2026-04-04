@@ -16,6 +16,7 @@
     "warehouse:build": "python3 -m pipeline.build_duckdb_warehouse",
     "score:context": "python3 -m pipeline.build_site_context",
     "import:deepresearch": "python3 -m pipeline.import_deep_research_markdown",
+    "import:registry-csv": "python3 -m pipeline.import_registry_csv",
     "curate:deepresearch": "python3 -m pipeline.curate_deep_research_seed",
     "prepare:seed-enrichment": "python3 -m pipeline.prepare_seed_enrichment",
     "apply:seed-enrichment": "python3 -m pipeline.apply_seed_enrichment",

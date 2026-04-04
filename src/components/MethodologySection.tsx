@@ -8,14 +8,14 @@ export function MethodologySection() {
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <SectionHeader 
           title="How It Works" 
-          subtitle="How public project announcements are checked against observed sites and grid access."
+          subtitle="How public renewable project announcements are checked against observed sites and grid access."
           align="center"
           eyebrow="Methodology"
         />
 
         <div style={{ marginTop: '24px' }}>
           <Accordion title="1. Multimodal Evidence Gathering" defaultOpen={true}>
-            The process starts with public announcements, developer releases, and national project lists. This sets the baseline for each project: how much capacity is being promised, where it is meant to be, and when it is expected to come online.
+            The process starts with public announcements, developer releases, and national project lists. This sets the baseline for each project: how much capacity is being promised, where it is meant to be, and when it is expected to come online. The registry can include solar, wind, and hybrid utility-scale projects when the public record is strong enough to locate and review them.
           </Accordion>
 
           <Accordion title="2. Geospatial Matching">

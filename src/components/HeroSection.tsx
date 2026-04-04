@@ -1,4 +1,14 @@
 import React from 'react';
+import { registryMapProjects } from '../data/generated';
+
+const totalProjects = registryMapProjects.length;
+const distinctCountryCount = new Set(registryMapProjects.map((project) => project.countryCode)).size;
+const notObservedShare =
+  totalProjects > 0
+    ? registryMapProjects.filter((project) => project.paperToPowerLabel === 'claimed_not_observed').length /
+      totalProjects
+    : 0;
+const notObservedPct = Math.round(notObservedShare * 100);
 
 export function HeroSection() {
   const handleExploreClick = () => {
@@ -79,14 +89,14 @@ export function HeroSection() {
           maxWidth: '700px',
           marginInline: 'auto',
         }}>
-          Satellite imagery reveals that <strong style={{ color: 'var(--text-primary)' }}>over a third</strong> of Southeast Asia's announced utility-scale solar and wind projects have yet to materialize on the ground.
+          Satellite imagery shows that <strong style={{ color: 'var(--text-primary)' }}>{notObservedPct}%</strong> of the currently featured Southeast Asian utility-scale renewable projects have yet to materialize on the ground.
         </p>
 
         <div className="metric-strip" style={{ marginBottom: '52px', maxWidth: '560px', marginInline: 'auto' }}>
           {[
-            { value: '16', label: 'Sites Audited', color: 'var(--text-primary)' },
-            { value: '5', label: 'Countries', color: 'var(--text-primary)' },
-            { value: '37%', label: 'Capacity Gap', color: 'var(--status-smaller)' },
+            { value: totalProjects.toLocaleString(), label: 'Featured Projects', color: 'var(--text-primary)' },
+            { value: distinctCountryCount.toLocaleString(), label: 'Countries', color: 'var(--text-primary)' },
+            { value: `${notObservedPct}%`, label: 'Not Yet Observed', color: 'var(--status-smaller)' },
           ].map((stat) => (
             <div key={stat.label} className="metric-strip__cell">
               <div className="metric-strip__value" style={{ color: stat.color }}>{stat.value}</div>

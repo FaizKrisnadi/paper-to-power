@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import statistics
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any, TypeVar
@@ -8,6 +9,7 @@ from typing import Any, TypeVar
 from .geo import haversine_km
 from .models import (
     CaseStudy,
+    COUNTRY_CODES,
     CountrySummary,
     EvidenceRow,
     FeatureCard,
@@ -28,12 +30,92 @@ MATCHES_JSON = PROCESSED_DIR / "project_asset_matches.json"
 LABELS_JSON = PROCESSED_DIR / "paper_to_power_labels.json"
 SITE_CONTEXT_JSON = PROCESSED_DIR / "geospatial" / "site_context_features.json"
 
+COUNTRY_METADATA: dict[str, dict[str, str]] = {
+    "BRN": {
+        "name": "Brunei",
+        "shortLabel": "BN",
+        "role": "source",
+        "description": "Utility-scale deployment is still nascent and shaped by first-project execution.",
+        "keySignal": "The utility-scale market is nascent and still defined by first-project execution.",
+    },
+    "KHM": {
+        "name": "Cambodia",
+        "shortLabel": "KH",
+        "role": "source",
+        "description": "Pipeline depth remains thin, but structured procurement has already produced bankable solar evidence.",
+        "keySignal": "Pipeline depth is thinner, but structured procurement has already proven viable.",
+    },
+    "IDN": {
+        "name": "Indonesia",
+        "shortLabel": "ID",
+        "role": "source",
+        "description": "Large geography with uneven build-out and persistent grid-side bottlenecks across utility-scale projects.",
+        "keySignal": "Significant delays in grid connectivity for constructed projects.",
+    },
+    "LAO": {
+        "name": "Laos",
+        "shortLabel": "LA",
+        "role": "source",
+        "description": "Export-oriented wind development is becoming a core part of the country’s utility-scale strategy.",
+        "keySignal": "Cross-border export ambitions are becoming central to utility-scale wind development.",
+    },
+    "MMR": {
+        "name": "Myanmar",
+        "shortLabel": "MM",
+        "role": "source",
+        "description": "Project execution is constrained by instability, financing risk, and weak grid reliability.",
+        "keySignal": "Operational context is constrained by instability and weak grid reliability.",
+    },
+    "MYS": {
+        "name": "Malaysia",
+        "shortLabel": "MY",
+        "role": "source",
+        "description": "Solar expansion is active, but land availability and corridor relevance vary sharply by location.",
+        "keySignal": "Strong solar buildout but facing land constraint challenges.",
+    },
+    "PHL": {
+        "name": "Philippines",
+        "shortLabel": "PH",
+        "role": "source",
+        "description": "Project metadata is comparatively rich, but many sites still stall between announcement and visible delivery.",
+        "keySignal": "Projects often clear land but stall before panel installation.",
+    },
+    "SGP": {
+        "name": "Singapore",
+        "shortLabel": "SG",
+        "role": "anchor",
+        "description": "Best understood as a demand and import anchor rather than a major domestic utility-scale geography.",
+        "keySignal": "High demand driving regional export ambitions, zero domestic utility scale.",
+    },
+    "THA": {
+        "name": "Thailand",
+        "shortLabel": "TH",
+        "role": "source",
+        "description": "Floating solar expansion and grid modernization increasingly shape the utility-scale pipeline.",
+        "keySignal": "Floating solar and grid modernization shape the current expansion path.",
+    },
+    "VNM": {
+        "name": "Vietnam",
+        "shortLabel": "VN",
+        "role": "source",
+        "description": "Large utility-scale ambition is visible, but transmission readiness remains a recurring constraint.",
+        "keySignal": "Massive wind capacity announced, waiting on transmission upgrades.",
+    },
+}
+
 T = TypeVar("T")
 
 
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def normalize_text(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = " ".join(str(value).split()).strip()
+    return text or None
 
 
 def load_collection(filename: str, factory: type[T]) -> list[T]:
@@ -116,6 +198,233 @@ def build_dataset() -> FrontendDataset:
     )
 
 
+def build_public_sources(fallback: list[PublicSource]) -> list[dict[str, Any]]:
+    sources = [asdict(item) for item in fallback]
+    if not PROJECT_REGISTRY_JSON.exists() or not OBSERVED_ASSETS_JSON.exists():
+        return sources
+
+    registry_payload = load_json(PROJECT_REGISTRY_JSON)
+    assets_payload = load_json(OBSERVED_ASSETS_JSON)
+    if not isinstance(registry_payload, dict) or not isinstance(assets_payload, dict):
+        return sources
+
+    projects = registry_payload.get("records", [])
+    assets = assets_payload.get("records", [])
+    if not isinstance(projects, list) or not isinstance(assets, list):
+        return sources
+
+    registry_countries = sorted(
+        {
+            str(project.get("countryCode"))
+            for project in projects
+            if isinstance(project, dict) and str(project.get("countryCode") or "") in COUNTRY_CODES
+        }
+    )
+    observed_countries = sorted(
+        {
+            str(asset.get("countryCode"))
+            for asset in assets
+            if isinstance(asset, dict) and str(asset.get("countryCode") or "") in COUNTRY_CODES
+        }
+    )
+
+    for source in sources:
+        if source.get("id") == "grw-preprint":
+            source["scope"] = observed_countries
+            source["notes"] = (
+                "Observed renewable asset layer with quarterly timing, capacity proxy, and preceding land use. "
+                f"Current backend coverage: {', '.join(observed_countries)}."
+            )
+        elif source.get("id") in {"gem-solar", "gem-wind"}:
+            source["scope"] = registry_countries
+            source["notes"] = (
+                f"{source['notes']} "
+                "The expanded ASEAN registry also includes manually reviewed project-level evidence where tracker coverage is weak."
+            )
+
+    covered_countries = {
+        scope
+        for source in sources
+        for scope in source.get("scope", [])
+        if isinstance(scope, str)
+    }
+    representative_by_country: dict[str, dict[str, Any]] = {}
+    for project in projects:
+        if not isinstance(project, dict):
+            continue
+        country_code = str(project.get("countryCode") or "")
+        source_url = normalize_text(project.get("sourcePrimaryUrl"))
+        if country_code not in COUNTRY_CODES or not source_url or country_code in covered_countries:
+            continue
+        claimed_capacity = project.get("claimedCapacityMw")
+        existing = representative_by_country.get(country_code)
+        existing_capacity = existing.get("claimedCapacityMw") if isinstance(existing, dict) else None
+        if existing is None or (
+            isinstance(claimed_capacity, int | float)
+            and (not isinstance(existing_capacity, int | float) or float(claimed_capacity) > float(existing_capacity))
+        ):
+            representative_by_country[country_code] = project
+
+    for country_code, project in sorted(representative_by_country.items()):
+        country_name = COUNTRY_METADATA.get(country_code, {}).get("name", country_code)
+        project_name = normalize_text(project.get("projectName")) or "Representative project source"
+        sources.append(
+            {
+                "id": f"{country_code.lower()}-registry-evidence",
+                "name": f"{country_name} representative project evidence",
+                "scope": [country_code],
+                "category": "country-validator",
+                "url": normalize_text(project.get("sourcePrimaryUrl")),
+                "notes": f"Project-level public source currently anchoring the expanded registry for {country_name}. Example: {project_name}.",
+            }
+        )
+
+    return sources
+
+
+def build_country_summaries(fallback: list[CountrySummary]) -> list[dict[str, Any]]:
+    required_paths = [PROJECT_REGISTRY_JSON, OBSERVED_ASSETS_JSON, MATCHES_JSON, LABELS_JSON]
+    if not all(path.exists() for path in required_paths):
+        return [asdict(item) for item in fallback]
+
+    registry_payload = load_json(PROJECT_REGISTRY_JSON)
+    assets_payload = load_json(OBSERVED_ASSETS_JSON)
+    matches_payload = load_json(MATCHES_JSON)
+    labels_payload = load_json(LABELS_JSON)
+
+    if not all(isinstance(payload, dict) for payload in (registry_payload, assets_payload, matches_payload, labels_payload)):
+        return [asdict(item) for item in fallback]
+
+    projects = registry_payload.get("records", [])
+    assets = assets_payload.get("records", [])
+    matches = matches_payload.get("matches", [])
+    project_labels = labels_payload.get("projectLabels", [])
+    if not all(isinstance(collection, list) for collection in (projects, assets, matches, project_labels)):
+        return [asdict(item) for item in fallback]
+
+    fallback_by_code = {item.code: item for item in fallback}
+    asset_by_id = {
+        str(asset.get("siteId")): asset
+        for asset in assets
+        if isinstance(asset, dict) and asset.get("siteId") is not None
+    }
+    asset_inventory_by_country: dict[str, int] = {}
+    for asset in assets:
+        if not isinstance(asset, dict):
+            continue
+        country_code = str(asset.get("countryCode") or "")
+        if country_code in COUNTRY_CODES:
+            asset_inventory_by_country[country_code] = asset_inventory_by_country.get(country_code, 0) + 1
+    match_by_project = {
+        str(match.get("projectId")): match
+        for match in matches
+        if isinstance(match, dict) and match.get("projectId") is not None
+    }
+    label_by_project = {
+        str(label.get("projectId")): str(label.get("paperToPowerLabel"))
+        for label in project_labels
+        if isinstance(label, dict) and label.get("projectId") is not None
+    }
+
+    country_stats: dict[str, dict[str, Any]] = {}
+    for project in projects:
+        if not isinstance(project, dict):
+            continue
+
+        country_code = str(project.get("countryCode") or "")
+        technology = str(project.get("technology") or "")
+        project_id = str(project.get("projectId") or "")
+        if not project_id or country_code not in COUNTRY_CODES:
+            continue
+        if technology not in {"solar", "wind", "mixed"}:
+            continue
+
+        stats = country_stats.setdefault(
+            country_code,
+            {
+                "claimedCapacityMw": 0.0,
+                "observedCapacityMw": 0.0,
+                "totalProjects": 0,
+                "observedProjects": 0,
+                "lagMonths": [],
+            },
+        )
+        stats["totalProjects"] += 1
+
+        claimed_capacity = project.get("claimedCapacityMw")
+        if isinstance(claimed_capacity, int | float):
+            stats["claimedCapacityMw"] += float(claimed_capacity)
+
+        label = label_by_project.get(project_id, "claimed_not_observed")
+        if label != "claimed_not_observed":
+            stats["observedProjects"] += 1
+
+        match = match_by_project.get(project_id)
+        asset = asset_by_id.get(str(match.get("siteId"))) if isinstance(match, dict) else None
+        observed_capacity = asset.get("estimatedCapacityProxyMw") if isinstance(asset, dict) else None
+        if isinstance(observed_capacity, int | float):
+            stats["observedCapacityMw"] += float(observed_capacity)
+
+        if isinstance(match, dict) and isinstance(match.get("scheduleVarianceMonths"), int | float):
+            stats["lagMonths"].append(abs(int(match["scheduleVarianceMonths"])))
+
+    summaries: list[dict[str, Any]] = []
+    for country_code, stats in country_stats.items():
+        claimed_capacity_gw = stats["claimedCapacityMw"] / 1000 if stats["claimedCapacityMw"] > 0 else 0.0
+        observed_capacity_gw = stats["observedCapacityMw"] / 1000 if stats["observedCapacityMw"] > 0 else 0.0
+        gap_share = (
+            max(0.0, min(1.0, 1 - (stats["observedCapacityMw"] / stats["claimedCapacityMw"])))
+            if stats["claimedCapacityMw"] > 0
+            else 1.0
+        )
+        observed_share = (
+            stats["observedProjects"] / stats["totalProjects"]
+            if stats["totalProjects"] > 0
+            else 0.0
+        )
+        readiness_score = int(
+            round(
+                max(
+                    8,
+                    min(
+                        95,
+                        ((1 - gap_share) * 70) + (observed_share * 30),
+                    ),
+                )
+            )
+        )
+        lag_months = stats["lagMonths"]
+        median_lag_months = int(round(statistics.median(lag_months))) if lag_months else 0
+
+        fallback_item = fallback_by_code.get(country_code)
+        metadata = COUNTRY_METADATA.get(country_code, {})
+        summaries.append(
+            {
+                "code": country_code,
+                "name": metadata.get("name") or (fallback_item.name if fallback_item else country_code),
+                "role": metadata.get("role") or (fallback_item.role if fallback_item else "source"),
+                "shortLabel": metadata.get("shortLabel") or (fallback_item.shortLabel if fallback_item else country_code[:2]),
+                "description": metadata.get("description") or (
+                    fallback_item.description if fallback_item else "Country-level summary generated from the active registry."
+                ),
+                "claimedCapacityGw": round(claimed_capacity_gw, 3),
+                "observedCapacityGw": round(observed_capacity_gw, 3),
+                "gapShare": round(gap_share, 4),
+                "medianLagMonths": median_lag_months,
+                "readinessScore": readiness_score,
+                "keySignal": metadata.get("keySignal") or (
+                    fallback_item.keySignal if fallback_item else "Country-level interpretation is not yet written for this market."
+                ),
+                "observedAssetInventoryCount": asset_inventory_by_country.get(country_code, 0),
+                "matchedProjectCount": stats["observedProjects"],
+                "hasObservedCoverage": asset_inventory_by_country.get(country_code, 0) > 0,
+            }
+        )
+
+    summaries.sort(key=lambda item: (-item["claimedCapacityGw"], item["code"]))
+    return summaries or [asdict(item) for item in fallback]
+
+
 def build_evidence_rows(
     fallback_rows: list[EvidenceRow],
     country_summaries: list[CountrySummary],
@@ -167,9 +476,9 @@ def build_evidence_rows(
         project_id = str(project.get("projectId") or "")
         country_code = str(project.get("countryCode") or "")
         technology = str(project.get("technology") or "")
-        if not project_id or country_code not in {"IDN", "PHL", "SGP", "VNM", "MYS"}:
+        if not project_id or country_code not in COUNTRY_CODES:
             continue
-        if technology not in {"solar", "wind"}:
+        if technology not in {"solar", "wind", "mixed"}:
             continue
 
         match = match_by_project.get(project_id)
@@ -277,7 +586,7 @@ def build_registry_map_projects() -> list[dict[str, Any]]:
         technology = record.get("technology")
         if not isinstance(latitude, int | float) or not isinstance(longitude, int | float):
             continue
-        if technology not in {"solar", "wind"}:
+        if technology not in {"solar", "wind", "mixed"}:
             continue
 
         project_id = str(record.get("projectId") or "")
@@ -426,9 +735,10 @@ def build_registry_map_projects() -> list[dict[str, Any]]:
 
 
 def dataset_to_plain(dataset: FrontendDataset) -> dict[str, Any]:
+    country_summaries = build_country_summaries(dataset.countrySummaries)
     return {
         "featureCards": [asdict(item) for item in dataset.featureCards],
-        "countrySummaries": [asdict(item) for item in dataset.countrySummaries],
+        "countrySummaries": country_summaries,
         "regionalLinks": [
             {
                 "from": item.from_country,
@@ -437,9 +747,12 @@ def dataset_to_plain(dataset: FrontendDataset) -> dict[str, Any]:
             }
             for item in dataset.regionalLinks
         ],
-        "evidenceRows": build_evidence_rows(dataset.evidenceRows, dataset.countrySummaries),
+        "evidenceRows": build_evidence_rows(
+            dataset.evidenceRows,
+            [CountrySummary.from_dict(item) for item in country_summaries],
+        ),
         "caseStudies": [asdict(item) for item in dataset.caseStudies],
-        "publicSources": [asdict(item) for item in dataset.publicSources],
+        "publicSources": build_public_sources(dataset.publicSources),
         "registryMapProjects": build_registry_map_projects(),
     }
 

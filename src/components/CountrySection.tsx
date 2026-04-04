@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import type { RegistryMapProject, CountryCode } from '../types/domain';
 import { SectionHeader } from './shared/SectionHeader';
+import { COUNTRY_COMPARISON_INFO, COUNTRY_FLAGS, COUNTRY_LABELS } from '../lib/countries';
+import { countrySummaries } from '../data/generated';
 
 interface CountrySectionProps {
   allProjects: readonly RegistryMapProject[];
@@ -8,9 +10,12 @@ interface CountrySectionProps {
 
 interface CountryStats {
   country: CountryCode;
+  projectCount: number;
   claimedMW: number;
   observedMW: number;
   observedPointCount: number;
+  hasObservedCoverage: boolean;
+  matchedProjectCount: number;
   displayBarPct: number;
   displayBarMode: 'mw' | 'points' | 'none';
   gapPct: number;
@@ -18,42 +23,48 @@ interface CountryStats {
   keySignal: string;
 }
 
-const COUNTRY_INFO: Record<string, { role: 'Source' | 'Anchor' | 'Both'; keySignal: string }> = {
-  'IDN': { role: 'Source', keySignal: 'Significant delays in grid connectivity for constructed projects.' },
-  'SGP': { role: 'Anchor', keySignal: 'High demand driving regional export ambitions, zero domestic utility scale.' },
-  'MYS': { role: 'Both', keySignal: 'Strong solar buildout but facing land constraint challenges.' },
-  'VNM': { role: 'Source', keySignal: 'Massive wind capacity announced, waiting on transmission upgrades.' },
-  'PHL': { role: 'Source', keySignal: 'Projects often clear land but stall before panel installation.' }
-};
-
 export function CountrySection({ allProjects }: CountrySectionProps) {
+  const summaryMeta = useMemo(
+    () =>
+      Object.fromEntries(
+        countrySummaries.map((summary) => [
+          summary.code,
+          {
+            hasObservedCoverage: summary.hasObservedCoverage,
+            matchedProjectCount: summary.matchedProjectCount,
+          },
+        ]),
+      ) as Record<CountryCode, { hasObservedCoverage: boolean; matchedProjectCount: number }>,
+    [],
+  );
 
   const countryStats = useMemo(() => {
     const stats: Record<string, CountryStats> = {};
-    
-    // Initialize
-    Object.keys(COUNTRY_INFO).forEach(code => {
-      stats[code] = {
-        country: code as CountryCode,
-        claimedMW: 0,
-        observedMW: 0,
-        observedPointCount: 0,
-        displayBarPct: 0,
-        displayBarMode: 'none',
-        gapPct: 0,
-        role: COUNTRY_INFO[code].role,
-        keySignal: COUNTRY_INFO[code].keySignal
-      };
-    });
 
     // Aggregate
     allProjects.forEach(p => {
       const code = p.countryCode;
-      if (stats[code]) {
-        stats[code].claimedMW += p.claimedCapacityMw || 0;
-        stats[code].observedMW += p.observedCapacityMw || 0;
-        stats[code].observedPointCount += p.observedAssetCount || 0;
+      if (!stats[code]) {
+        const info = COUNTRY_COMPARISON_INFO[code];
+        stats[code] = {
+          country: code,
+          projectCount: 0,
+          claimedMW: 0,
+          observedMW: 0,
+          observedPointCount: 0,
+          hasObservedCoverage: summaryMeta[code]?.hasObservedCoverage ?? false,
+          matchedProjectCount: summaryMeta[code]?.matchedProjectCount ?? 0,
+          displayBarPct: 0,
+          displayBarMode: 'none',
+          gapPct: 0,
+          role: info?.role || 'Source',
+          keySignal: info?.keySignal || 'Country-level interpretation is not yet written for this market.',
+        };
       }
+      stats[code].projectCount += 1;
+      stats[code].claimedMW += p.claimedCapacityMw || 0;
+      stats[code].observedMW += p.observedCapacityMw || 0;
+      stats[code].observedPointCount += p.observedAssetCount || 0;
     });
 
     // Calculate gap
@@ -80,14 +91,14 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
     });
 
     return Object.values(stats).sort((a, b) => b.claimedMW - a.claimedMW);
-  }, [allProjects]);
+  }, [allProjects, summaryMeta]);
 
   return (
     <div style={{ background: 'var(--bg-surface-muted)', padding: '100px 24px' }}>
       <div className="section-container" style={{ padding: '0', maxWidth: '1280px' }}>
         <SectionHeader 
           title="Country Comparison" 
-          subtitle="How the 5 markets compare in translating announced capacity into physical assets."
+          subtitle="How the featured ASEAN markets compare in translating announced capacity into physical assets."
           eyebrow="Regional Overview"
         />
 
@@ -122,9 +133,23 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
                     fontWeight: 700,
                     fontSize: '0.82rem'
                   }}>
-                    {stat.country}
+                    {COUNTRY_FLAGS[stat.country]}
                   </div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>{stat.country}</h3>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>
+                      {COUNTRY_LABELS[stat.country]}
+                    </h3>
+                    <div style={{
+                      marginTop: '4px',
+                      fontSize: '0.76rem',
+                      color: 'var(--text-tertiary)',
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase'
+                    }}>
+                      {stat.country} • {stat.projectCount} projects
+                    </div>
+                  </div>
                 </div>
                 <span style={{
                   fontSize: '0.72rem',
@@ -143,7 +168,11 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
               <div style={{ marginBottom: '24px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.875rem' }}>
                   <span style={{ color: 'var(--text-secondary)' }}>Observed / Claimed</span>
-                  {stat.observedMW > 0 ? (
+                  {!stat.hasObservedCoverage ? (
+                    <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
+                      Pending <span style={{ color: 'var(--text-tertiary)' }}>/ {stat.claimedMW.toFixed(0)} MW</span>
+                    </span>
+                  ) : stat.observedMW > 0 ? (
                     <span style={{ fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
                       {stat.observedMW.toFixed(0)} <span style={{ color: 'var(--text-tertiary)' }}>/ {stat.claimedMW.toFixed(0)} MW</span>
                     </span>
@@ -169,16 +198,32 @@ export function CountrySection({ allProjects }: CountrySectionProps) {
                     borderRadius: '4px'
                   }} />
                 </div>
-                {stat.observedMW === 0 && stat.observedPointCount > 0 && (
+                {!stat.hasObservedCoverage && (
+                  <div style={{ marginTop: '8px', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
+                    Observed asset coverage is not yet ingested for this market in the current backend.
+                  </div>
+                )}
+                {stat.hasObservedCoverage && stat.observedMW === 0 && stat.observedPointCount > 0 && (
                   <div style={{ marginTop: '8px', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
                     Bar reflects observed point evidence, since MW is not resolved in the current export.
+                  </div>
+                )}
+                {stat.hasObservedCoverage && stat.observedMW === 0 && stat.observedPointCount === 0 && stat.matchedProjectCount === 0 && (
+                  <div style={{ marginTop: '8px', fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
+                    Observed coverage exists, but no project has matched a visible asset yet.
                   </div>
                 )}
               </div>
 
               <div style={{ marginTop: 'auto' }}>
                 <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--status-smaller)', marginBottom: '8px' }}>
-                  {stat.observedMW > 0 ? `${stat.gapPct}% Capacity Gap` : stat.observedPointCount > 0 ? 'Observed, MW unresolved' : `${stat.gapPct}% Capacity Gap`}
+                  {!stat.hasObservedCoverage
+                    ? 'Observed layer pending'
+                    : stat.observedMW > 0
+                      ? `${stat.gapPct}% Capacity Gap`
+                      : stat.observedPointCount > 0
+                        ? 'Observed, MW unresolved'
+                        : `${stat.gapPct}% Capacity Gap`}
                 </div>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0 }}>
                   {stat.keySignal}

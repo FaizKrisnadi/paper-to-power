@@ -1,23 +1,107 @@
 {
   "summary": {
-    "generatedAt": "2026-04-04",
+    "generatedAt": "2026-04-05",
     "projectCounts": {
-      "observed_on_schedule": 2,
-      "observed_smaller_than_claimed": 12,
-      "claimed_not_observed": 2
+      "claimed_not_observed": 24,
+      "observed_on_schedule": 6,
+      "observed_smaller_than_claimed": 22
     },
     "assetCounts": {
-      "observed_unmatched": 2297,
-      "observed_smaller_than_claimed": 12,
-      "observed_on_schedule": 2
+      "observed_unmatched": 2283,
+      "observed_smaller_than_claimed": 22,
+      "observed_on_schedule": 6
     }
   },
   "projectLabels": [
+    {
+      "projectId": "BRN-S-ASEAN-001",
+      "countryCode": "BRN",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "IDN-S-ASEAN-001",
+      "countryCode": "IDN",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_on_schedule"
+    },
+    {
+      "projectId": "IDN-S-ASEAN-002",
+      "countryCode": "IDN",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "IDN-S-ASEAN-003",
+      "countryCode": "IDN",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "IDN-S-ASEAN-004",
+      "countryCode": "IDN",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
     {
       "projectId": "IDN-W-001",
       "countryCode": "IDN",
       "technology": "wind",
       "paperToPowerLabel": "observed_on_schedule"
+    },
+    {
+      "projectId": "IDN-W-ASEAN-001",
+      "countryCode": "IDN",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "IDN-W-ASEAN-002",
+      "countryCode": "IDN",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "IDN-W-ASEAN-003",
+      "countryCode": "IDN",
+      "technology": "wind",
+      "paperToPowerLabel": "observed_on_schedule"
+    },
+    {
+      "projectId": "IDN-W-ASEAN-004",
+      "countryCode": "IDN",
+      "technology": "wind",
+      "paperToPowerLabel": "observed_on_schedule"
+    },
+    {
+      "projectId": "KHM-S-ASEAN-001",
+      "countryCode": "KHM",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "LAO-W-ASEAN-001",
+      "countryCode": "LAO",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "LAO-W-ASEAN-002",
+      "countryCode": "LAO",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "LAO-W-ASEAN-003",
+      "countryCode": "LAO",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "MMR-S-ASEAN-001",
+      "countryCode": "MMR",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
     },
     {
       "projectId": "MYS-S-001",
@@ -30,6 +114,48 @@
       "countryCode": "MYS",
       "technology": "solar",
       "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-001",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-002",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-003",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-004",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-005",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "MYS-S-ASEAN-006",
+      "countryCode": "MYS",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "PHL-M-ASEAN-001",
+      "countryCode": "PHL",
+      "technology": "mixed",
+      "paperToPowerLabel": "claimed_not_observed"
     },
     {
       "projectId": "PHL-S-001",
@@ -68,10 +194,100 @@
       "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
+      "projectId": "PHL-W-ASEAN-001",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-002",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-003",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "observed_on_schedule"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-004",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-005",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-006",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "PHL-W-ASEAN-007",
+      "countryCode": "PHL",
+      "technology": "wind",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
       "projectId": "SGP-S-001",
       "countryCode": "SGP",
       "technology": "solar",
       "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "SGP-S-ASEAN-001",
+      "countryCode": "SGP",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "SGP-S-ASEAN-002",
+      "countryCode": "SGP",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "SGP-S-ASEAN-003",
+      "countryCode": "SGP",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "SGP-S-ASEAN-004",
+      "countryCode": "SGP",
+      "technology": "solar",
+      "paperToPowerLabel": "observed_smaller_than_claimed"
+    },
+    {
+      "projectId": "THA-S-ASEAN-001",
+      "countryCode": "THA",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "THA-S-ASEAN-002",
+      "countryCode": "THA",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "THA-S-ASEAN-003",
+      "countryCode": "THA",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
+    },
+    {
+      "projectId": "THA-S-ASEAN-004",
+      "countryCode": "THA",
+      "technology": "solar",
+      "paperToPowerLabel": "claimed_not_observed"
     },
     {
       "projectId": "VNM-S-001",
@@ -133,7 +349,7 @@
       "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::3",
       "countryCode": "SGP",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::IDN::solar_sea_2024q2_v1.geojson::4",
@@ -145,7 +361,7 @@
       "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::5",
       "countryCode": "SGP",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::6",
@@ -163,13 +379,13 @@
       "siteId": "GRW::SOLAR::IDN::solar_sea_2024q2_v1.geojson::8",
       "countryCode": "IDN",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_on_schedule"
     },
     {
       "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::9",
       "countryCode": "SGP",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::10",
@@ -349,7 +565,7 @@
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::39",
       "countryCode": "MYS",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::40",
@@ -505,7 +721,7 @@
       "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::65",
       "countryCode": "SGP",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::66",
@@ -2557,7 +2773,7 @@
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::407",
       "countryCode": "MYS",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::408",
@@ -2875,7 +3091,7 @@
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::460",
       "countryCode": "MYS",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::461",
@@ -3013,7 +3229,7 @@
       "siteId": "GRW::SOLAR::IDN::solar_sea_2024q2_v1.geojson::483",
       "countryCode": "IDN",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::VNM::solar_sea_2024q2_v1.geojson::484",
@@ -5755,7 +5971,7 @@
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::940",
       "countryCode": "MYS",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::PHL::solar_sea_2024q2_v1.geojson::941",
@@ -6043,7 +6259,7 @@
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::988",
       "countryCode": "MYS",
       "technology": "solar",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_smaller_than_claimed"
     },
     {
       "siteId": "GRW::SOLAR::MYS::solar_sea_2024q2_v1.geojson::989",
@@ -11437,7 +11653,7 @@
       "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::793",
       "countryCode": "IDN",
       "technology": "wind",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_on_schedule"
     },
     {
       "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::794",
@@ -11485,7 +11701,7 @@
       "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::801",
       "countryCode": "IDN",
       "technology": "wind",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_on_schedule"
     },
     {
       "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::802",
@@ -11791,7 +12007,7 @@
       "siteId": "GRW::WIND::PHL::wind_sea_2024q2_v1.geojson::852",
       "countryCode": "PHL",
       "technology": "wind",
-      "paperToPowerLabel": "observed_unmatched"
+      "paperToPowerLabel": "observed_on_schedule"
     },
     {
       "siteId": "GRW::WIND::PHL::wind_sea_2024q2_v1.geojson::853",

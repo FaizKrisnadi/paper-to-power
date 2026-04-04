@@ -2,13 +2,14 @@ import React from 'react';
 import { registryMapProjects } from '../data/generated';
 import type { GridEvidenceClass, PaperToPowerLabel, RegistryMapProject } from '../types/domain';
 import { SectionHeader } from './shared/SectionHeader';
+import { COUNTRY_LABELS, TECHNOLOGY_LABELS } from '../lib/countries';
 
 const DEEP_DIVE_IDS = [
   'IDN-W-001',
-  'PHL-S-001',
-  'MYS-S-002',
-  'VNM-W-001',
-  'SGP-S-001',
+  'PHL-M-ASEAN-001',
+  'LAO-W-ASEAN-001',
+  'THA-S-ASEAN-002',
+  'KHM-S-ASEAN-001',
 ];
 
 function formatCapacity(value: number | null) {
@@ -33,7 +34,7 @@ function formatGridClass(gridClass: GridEvidenceClass | null) {
 
 function buildObservedLine(project: RegistryMapProject) {
   if (project.paperToPowerLabel === 'claimed_not_observed') {
-    return 'No matched observed asset is visible in the current evidence.';
+    return 'No matched observed asset is visible in the current evidence stack.';
   }
 
   if (project.observedCapacityMw !== null) {
@@ -51,18 +52,18 @@ function buildObservedLine(project: RegistryMapProject) {
 
 function buildInterpretation(project: RegistryMapProject) {
   if (project.paperToPowerLabel === 'observed_on_schedule') {
-    return 'This is the clearest alignment case: the public claim, observed footprint, and grid context line up closely enough to support the stated story.';
+    return 'This is the clearest alignment case in the set: the public claim, observed footprint, and grid context line up tightly.';
   }
 
   if (project.paperToPowerLabel === 'claimed_not_observed') {
-    return 'This is the clearest paper-only case in this project: there is still a public project identity, but no matched observed asset and no credible delivery context.';
+    return 'This is a paper-only case so far: the project has a public identity, but no matched observed asset and no credible delivery context yet.';
   }
 
   if (project.gridEvidenceClass === 'power_infrastructure_nearby_but_ambiguous') {
-    return 'This is not a simple “built versus not built” story. The project is visible, but the final delivery picture is still weaker than the nearby corridor map might suggest.';
+    return 'This is not a simple built-versus-not-built case. The project is visible, but the delivery picture is still weaker than the nearby corridor map might suggest.';
   }
 
-  return 'This is a classic under-delivery case: the project is visible on the ground, but the observed footprint remains materially below the public target.';
+  return 'This is an under-delivery case: the project is visible on the ground, but the observed footprint remains materially below the public target.';
 }
 
 function getBadgeStyle(label: PaperToPowerLabel) {
@@ -105,7 +106,7 @@ export function CaseStudySection() {
       <div className="section-container" style={{ padding: 0, maxWidth: '1120px' }}>
         <SectionHeader
           title="Deep Dives"
-          subtitle="Five projects where public claims, observed build, and delivery context diverge in different ways."
+          subtitle="Five projects that show different kinds of divergence between public claims, observed build, and delivery context across the expanded ASEAN registry."
           eyebrow="Project Reads"
         />
 
@@ -139,7 +140,7 @@ export function CaseStudySection() {
                           color: 'var(--text-tertiary)',
                         }}
                       >
-                        {String(index + 1).padStart(2, '0')} {project.countryCode} {project.technology}
+                        {String(index + 1).padStart(2, '0')} {COUNTRY_LABELS[project.countryCode]} {TECHNOLOGY_LABELS[project.technology]}
                       </span>
                       <span
                         style={{
@@ -190,7 +191,7 @@ export function CaseStudySection() {
                           Claimed target
                         </strong>
                         <span style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                          Publicly described as {formatCapacity(project.claimedCapacityMw)}.
+                          Publicly described at {formatCapacity(project.claimedCapacityMw)}.
                         </span>
                       </div>
 

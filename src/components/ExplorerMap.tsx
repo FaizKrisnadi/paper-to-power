@@ -187,7 +187,7 @@ function buildSelectedProjectContext(project: RegistryMapProject | null) {
     properties: Record<string, string | number>;
   }> = [];
 
-  if (project.technology === 'solar') {
+  if (project.technology !== 'wind') {
     let parcelHint: [number, number][];
     if (matchedBounds) {
       const width = Math.max(0.06, (matchedBounds.maxLon - matchedBounds.minLon) * 0.58);
@@ -341,6 +341,13 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
     let cancelled = false;
     let mapInstance: MapLibreMap | null = null;
+    let resizeObserver: ResizeObserver | null = null;
+    let settleResizeTimeout: number | null = null;
+
+    const syncMapSize = () => {
+      if (!mapInstance || cancelled) return;
+      mapInstance.resize();
+    };
 
     const initMap = async () => {
       const { default: maplibregl } = await import('maplibre-gl');
@@ -361,6 +368,13 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
       mapRef.current = createdMap;
       createdMap.addControl(new maplibregl.NavigationControl(), 'top-right');
       createdMap.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
+
+      if (typeof ResizeObserver !== 'undefined') {
+        resizeObserver = new ResizeObserver(() => {
+          syncMapSize();
+        });
+        resizeObserver.observe(mapContainerRef.current);
+      }
 
       createdMap.on('load', () => {
         if (cancelled) return;
@@ -629,6 +643,12 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
             onProjectSelect(null);
           }
         });
+
+        requestAnimationFrame(() => {
+          syncMapSize();
+          requestAnimationFrame(syncMapSize);
+        });
+        settleResizeTimeout = window.setTimeout(syncMapSize, 320);
       });
     };
 
@@ -636,6 +656,10 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
     return () => {
       cancelled = true;
+      if (settleResizeTimeout !== null) {
+        window.clearTimeout(settleResizeTimeout);
+      }
+      resizeObserver?.disconnect();
       if (mapInstance) {
         mapInstance.remove();
       }

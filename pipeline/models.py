@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any, Literal, cast
 
 
-CountryCode = Literal["IDN", "PHL", "SGP", "VNM", "MYS"]
+CountryCode = Literal["BRN", "KHM", "IDN", "LAO", "MYS", "MMR", "PHL", "SGP", "THA", "VNM"]
 CountryRole = Literal["source", "anchor"]
 Technology = Literal["solar", "wind", "mixed"]
 PaperToPowerLabel = Literal[
@@ -24,7 +24,7 @@ SourceCategory = Literal[
     "anchor-context",
 ]
 
-COUNTRY_CODES: set[str] = {"IDN", "PHL", "SGP", "VNM", "MYS"}
+COUNTRY_CODES: set[str] = {"BRN", "KHM", "IDN", "LAO", "MYS", "MMR", "PHL", "SGP", "THA", "VNM"}
 COUNTRY_ROLES: set[str] = {"source", "anchor"}
 TECHNOLOGIES: set[str] = {"solar", "wind", "mixed"}
 PAPER_TO_POWER_LABELS: set[str] = {
@@ -55,6 +55,12 @@ def require_number(value: Any, field_name: str) -> float:
     if not isinstance(value, int | float):
         raise ValueError(f"{field_name} must be a number")
     return float(value)
+
+
+def require_bool(value: Any, field_name: str) -> bool:
+    if not isinstance(value, bool):
+        raise ValueError(f"{field_name} must be a boolean")
+    return value
 
 
 def require_literal(value: Any, allowed: set[str], field_name: str) -> str:
@@ -101,6 +107,9 @@ class CountrySummary:
     medianLagMonths: int
     readinessScore: int
     keySignal: str
+    observedAssetInventoryCount: int = 0
+    matchedProjectCount: int = 0
+    hasObservedCoverage: bool = False
 
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> "CountrySummary":
@@ -123,6 +132,13 @@ class CountrySummary:
             medianLagMonths=lag_months,
             readinessScore=readiness,
             keySignal=require_string(value.get("keySignal"), "keySignal"),
+            observedAssetInventoryCount=int(
+                require_number(value.get("observedAssetInventoryCount", 0), "observedAssetInventoryCount")
+            ),
+            matchedProjectCount=int(
+                require_number(value.get("matchedProjectCount", 0), "matchedProjectCount")
+            ),
+            hasObservedCoverage=require_bool(value.get("hasObservedCoverage", False), "hasObservedCoverage"),
         )
 
 

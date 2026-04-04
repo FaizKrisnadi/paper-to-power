@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CountryCode, Technology, PaperToPowerLabel } from '../types/domain';
+import { COUNTRY_OPTIONS, TECHNOLOGY_LABELS } from '../lib/countries';
 
 interface FilterBarProps {
   filters: {
@@ -41,11 +42,11 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
           onChange={(e) => handleFilterChange('country', e.target.value)}
         >
           <option value="all">All Countries</option>
-          <option value="IDN">Indonesia</option>
-          <option value="VNM">Vietnam</option>
-          <option value="PHL">Philippines</option>
-          <option value="MYS">Malaysia</option>
-          <option value="SGP">Singapore</option>
+          {COUNTRY_OPTIONS.map((country) => (
+            <option key={country.code} value={country.code}>
+              {country.label}
+            </option>
+          ))}
         </select>
 
         {/* Technology Filter */}
@@ -55,8 +56,9 @@ export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) 
           onChange={(e) => handleFilterChange('tech', e.target.value)}
         >
           <option value="all">All Technologies</option>
-          <option value="solar">Solar</option>
-          <option value="wind">Wind</option>
+          <option value="solar">{TECHNOLOGY_LABELS.solar}</option>
+          <option value="wind">{TECHNOLOGY_LABELS.wind}</option>
+          <option value="mixed">{TECHNOLOGY_LABELS.mixed}</option>
         </select>
 
         {/* Status Filter */}

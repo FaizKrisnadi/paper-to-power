@@ -1,0 +1,22 @@
+{
+  "sourceFile": "/Users/faizkrisnadi/Downloads/asean_registry_draft_import.csv",
+  "recordCount": 49,
+  "countryCounts": {
+    "BRN": 1,
+    "IDN": 8,
+    "KHM": 1,
+    "LAO": 3,
+    "MMR": 2,
+    "MYS": 6,
+    "PHL": 8,
+    "SGP": 4,
+    "THA": 8,
+    "VNM": 8
+  },
+  "technologyCounts": {
+    "solar": 30,
+    "wind": 18,
+    "mixed": 1
+  },
+  "missingCoordinates": 49
+}

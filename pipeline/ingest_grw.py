@@ -5,22 +5,27 @@ from pathlib import Path
 from typing import Any, Literal
 
 from .geo import centroid_from_geometry
-from .io import read_geojson, write_json
+from .io import read_geojson, read_json, write_json
+from .models import COUNTRY_CODES
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW_GRW_DIR = ROOT / "data" / "raw" / "grw"
 INTERIM_GRW_JSON = ROOT / "data" / "interim" / "grw_assets.json"
 OBSERVED_ASSETS_JSON = ROOT / "data" / "processed" / "observed_assets.json"
 
-COUNTRY_CODES = {"IDN", "PHL", "SGP", "VNM", "MYS"}
-COUNTRY_NAME_TO_CODE = {
-    "Indonesia": "IDN",
-    "Philippines": "PHL",
-    "Singapore": "SGP",
-    "Vietnam": "VNM",
-    "Malaysia": "MYS",
-}
+COUNTRY_MAP_PATH = ROOT / "data" / "manual" / "country_name_to_code.json"
 Technology = Literal["solar", "wind"]
+
+
+def load_country_map() -> dict[str, str]:
+    raw = read_json(COUNTRY_MAP_PATH)
+    if not isinstance(raw, dict):
+        raise ValueError("country_name_to_code.json must contain an object")
+    return {
+        str(key).strip(): str(value).strip()
+        for key, value in raw.items()
+        if str(key).strip() and str(value).strip()
+    }
 
 
 @dataclass(frozen=True)
@@ -85,6 +90,7 @@ def normalize_feature(
     source_file: str,
     feature_index: int,
     technology: Technology,
+    country_name_to_code: dict[str, str],
 ) -> GrwAssetRecord | None:
     if feature.get("type") != "Feature":
         return None
@@ -97,7 +103,7 @@ def normalize_feature(
     country_name = properties.get("COUNTRY")
     if not isinstance(country_name, str):
         return None
-    country_code = COUNTRY_NAME_TO_CODE.get(country_name.strip())
+    country_code = country_name_to_code.get(country_name.strip())
     if country_code is None:
         return None
     if country_code not in COUNTRY_CODES:
@@ -145,6 +151,7 @@ def normalize_geojson_file(path: Path, technology: Technology) -> list[GrwAssetR
         raise ValueError(f"{path.name} must contain a FeatureCollection with features")
 
     records: list[GrwAssetRecord] = []
+    country_name_to_code = load_country_map()
     for index, feature in enumerate(features):
         if not isinstance(feature, dict):
             continue
@@ -153,6 +160,7 @@ def normalize_geojson_file(path: Path, technology: Technology) -> list[GrwAssetR
             source_file=path.name,
             feature_index=index,
             technology=technology,
+            country_name_to_code=country_name_to_code,
         )
         if record is not None:
             records.append(record)

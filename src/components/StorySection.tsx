@@ -54,6 +54,7 @@ const matchedGeometryCount = registryMapProjects.filter((project) => project.mat
 const distinctCountryCount = new Set(registryMapProjects.map((project) => project.countryCode)).size;
 const solarProjectCount = registryMapProjects.filter((project) => project.technology === 'solar').length;
 const windProjectCount = registryMapProjects.filter((project) => project.technology === 'wind').length;
+const mixedProjectCount = registryMapProjects.filter((project) => project.technology === 'mixed').length;
 const averageMatchConfidence =
   registryMapProjects
     .filter((project) => project.matchConfidence !== null)
@@ -107,8 +108,8 @@ const CHAPTERS: StoryChapterConfig[] = [
     navLabel: 'Summary',
     eyebrow: 'Executive Summary',
     title: 'Announced capacity and observed build are not moving at the same pace.',
-    description: `${totalProjects} featured utility-scale sites across ${distinctCountryCount} Southeast Asian markets are tracked in this project.`,
-    secondaryText: 'The sequence follows each site from public project claims to observed footprints and delivery-side infrastructure.',
+    description: `${totalProjects} featured utility-scale renewable projects across ${distinctCountryCount} Southeast Asian markets are tracked here.`,
+    secondaryText: 'Each site is read in the same order: public claim, observed footprint, then delivery context.',
     size: 'wide',
     align: 'left' as const,
     view: {
@@ -123,8 +124,8 @@ const CHAPTERS: StoryChapterConfig[] = [
     navLabel: 'Capacity',
     eyebrow: 'Capacity Gap',
     title: 'The current verified build is only a fraction of the announced pipeline.',
-    description: `${formatCapacityGw(claimedCapacityMw)} is claimed in the promoted registry set. ${formatCapacityGw(observedCapacityMw)} is currently resolved as observed build.`,
-    secondaryText: `${formatPercent(observedShare)} of claimed capacity is visible in the available evidence.`,
+    description: `${formatCapacityGw(claimedCapacityMw)} is claimed in the active registry. ${formatCapacityGw(observedCapacityMw)} is currently resolved as observed build.`,
+    secondaryText: `${formatPercent(observedShare)} of claimed capacity is visible in the current evidence stack.`,
     size: 'regular',
     stats: [
       {
@@ -145,13 +146,16 @@ const CHAPTERS: StoryChapterConfig[] = [
     signalsLabel: 'Regional Frame',
     signals: [
       {
-        title: `${solarProjectCount} solar sites and ${windProjectCount} wind sites`,
-        detail: 'The featured project set is still dominated by solar, which shapes the observed build pattern.',
+        title:
+          mixedProjectCount > 0
+            ? `${solarProjectCount} solar, ${windProjectCount} wind, ${mixedProjectCount} hybrid`
+            : `${solarProjectCount} solar sites and ${windProjectCount} wind sites`,
+        detail: 'The registry is still led by solar-linked projects, with a smaller wind and hybrid tail.',
         tone: 'slate' as const,
       },
       {
         title: `${matchedGeometryCount} sites already resolve to an observed asset geometry`,
-        detail: 'The map can move from registry points to inspectable polygons, lines, or point clusters on the ground.',
+        detail: 'That lets the map move from registry points to inspectable polygons, lines, or point clusters.',
         tone: 'teal' as const,
       },
     ],
@@ -168,8 +172,8 @@ const CHAPTERS: StoryChapterConfig[] = [
     navLabel: 'Gap',
     eyebrow: 'Delivery Pattern',
     title: 'Most projects do not vanish. They under-deliver.',
-    description: `${smallerThanClaimedCount} of the ${totalProjects} promoted sites resolve to observed assets that are smaller than their public targets.`,
-    secondaryText: `${onScheduleCount} sites currently read as on schedule. ${notObservedCount} still have no matched observed asset in the available evidence.`,
+    description: `${smallerThanClaimedCount} of the ${totalProjects} featured sites resolve to observed assets that are smaller than their public targets.`,
+    secondaryText: `${onScheduleCount} sites read as on schedule. ${notObservedCount} still have no matched observed asset in the current evidence.`,
     size: 'regular',
     stats: [
       {
@@ -191,13 +195,13 @@ const CHAPTERS: StoryChapterConfig[] = [
     signals: [
       {
         title: `${formatPercent(averageMatchConfidence)} average match confidence`,
-        detail: 'The current location matching is already strong enough to compare claims against observed build at the site level.',
+        detail: 'The current matching is strong enough to compare public claims against observed build at site level.',
         badge: 'Confidence',
         tone: 'blue' as const,
       },
       {
         title: `${medianDistanceKm.toFixed(2)} km median project-to-asset distance`,
-        detail: 'Registry points and observed assets are generally close, but not interchangeable.',
+        detail: 'Registry points and observed assets are usually close, but not interchangeable.',
         badge: 'Distance',
         tone: 'slate' as const,
       },
@@ -215,19 +219,19 @@ const CHAPTERS: StoryChapterConfig[] = [
     navLabel: 'Evidence',
     eyebrow: 'Observed Ground Truth',
     title: 'Satellite-linked footprints turn claims into inspectable sites.',
-    description: 'The map stops being abstract once a project ID resolves to an observed polygon, corridor, or turbine point cluster.',
-    secondaryText: 'This chapter overlays the matched GRW geometry used in the site review, making the observed build visible rather than implied.',
+    description: 'The project becomes inspectable once a registry entry resolves to an observed polygon, corridor, or point cluster.',
+    secondaryText: 'This chapter overlays the matched GRW geometry used in the site review, so the build is visible rather than implied.',
     size: 'regular',
     methods: [
       {
         eyebrow: 'Registry',
         title: 'Reviewed project coordinates',
-        detail: 'Each site begins with source-backed locality and promoted registry coordinates.',
+        detail: 'Each site starts with source-backed locality and reviewed registry coordinates.',
       },
       {
         eyebrow: 'Observation',
         title: 'GRW footprint or point geometry',
-        detail: 'Observed assets are pulled in as polygons for many solar sites and point clusters for wind-heavy cases.',
+        detail: 'Observed assets are pulled in as polygons for many solar-linked sites and point clusters for wind-heavy cases.',
       },
       {
         eyebrow: 'Match',
@@ -235,7 +239,7 @@ const CHAPTERS: StoryChapterConfig[] = [
         detail: 'Every resolved site keeps the spatial gap and confidence score that made the match defensible.',
       },
     ],
-    note: 'The pale geometry layer on the map is the observed asset itself, not a decorative emphasis ring.',
+    note: 'The pale geometry on the map is the observed asset itself, not a decorative highlight.',
     align: 'left' as const,
     view: {
       center: [109.1558, 13.0489] as [number, number],
@@ -249,8 +253,8 @@ const CHAPTERS: StoryChapterConfig[] = [
     navLabel: 'Grid',
     eyebrow: 'Grid Readiness',
     title: 'Built capacity still needs credible grid-side evidence to deliver.',
-    description: `${transmissionGradeCount} sites sit near transmission-grade infrastructure in the current infrastructure read. ${ambiguousGridCount} remain ambiguous, and ${noGridEvidenceCount} show no credible grid evidence in the available open-source record.`,
-    secondaryText: 'That final infrastructure check matters because observed build can still stall before system-level delivery.',
+    description: `${transmissionGradeCount} sites sit near transmission-grade infrastructure in the current read. ${ambiguousGridCount} remain ambiguous, and ${noGridEvidenceCount} show no credible grid evidence in the open-source record.`,
+    secondaryText: 'That last infrastructure check matters because visible build can still stall before actual delivery.',
     size: 'regular',
     stats: [
       {
@@ -272,12 +276,12 @@ const CHAPTERS: StoryChapterConfig[] = [
     signals: [
       {
         title: `${ambiguousGridCount} sites with infrastructure nearby but still ambiguous`,
-        detail: 'Proximity alone is not enough; site-side connection evidence still matters.',
+        detail: 'Proximity alone is not enough. Site-side connection evidence still matters.',
         tone: 'amber' as const,
       },
       {
         title: `${noGridEvidenceCount} sites with no credible grid evidence`,
-        detail: 'These remain the weakest delivery cases in the current project view.',
+        detail: 'These remain the weakest delivery cases in the current view.',
         tone: 'coral' as const,
       },
     ],
@@ -760,6 +764,15 @@ export function StorySection() {
 
     let cancelled = false;
     let map: MapLibreMap | null = null;
+    let resizeObserver: ResizeObserver | null = null;
+    let settleResizeTimeout: number | null = null;
+
+    const syncMapSize = () => {
+      if (!map || cancelled) {
+        return;
+      }
+      map.resize();
+    };
 
     const initMap = async () => {
       const { default: maplibregl } = await import('maplibre-gl');
@@ -786,6 +799,13 @@ export function StorySection() {
 
       mapRef.current = map;
       map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
+
+      if (typeof ResizeObserver !== 'undefined') {
+        resizeObserver = new ResizeObserver(() => {
+          syncMapSize();
+        });
+        resizeObserver.observe(mapContainerRef.current);
+      }
 
       map.on('load', () => {
         if (!map) {
@@ -921,6 +941,11 @@ export function StorySection() {
           ...CHAPTERS[0].view,
           padding: getChapterPadding(CHAPTERS[0].align, CHAPTERS[0].size),
         });
+        requestAnimationFrame(() => {
+          syncMapSize();
+          requestAnimationFrame(syncMapSize);
+        });
+        settleResizeTimeout = window.setTimeout(syncMapSize, 320);
       });
     };
 
@@ -928,6 +953,10 @@ export function StorySection() {
 
     return () => {
       cancelled = true;
+      if (settleResizeTimeout !== null) {
+        window.clearTimeout(settleResizeTimeout);
+      }
+      resizeObserver?.disconnect();
       if (map) {
         map.remove();
       }

@@ -1,6 +1,7 @@
 import React from 'react';
 import type { RegistryMapProject } from '../types/domain';
 import { StatusBadge } from './shared/StatusBadge';
+import { COUNTRY_FLAGS, COUNTRY_LABELS, TECHNOLOGY_LABELS } from '../lib/countries';
 
 interface DataTableProps {
   projects: readonly RegistryMapProject[];
@@ -44,7 +45,7 @@ export function DataTable({ projects, onRowClick, selectedId }: DataTableProps) 
               position: 'sticky',
               top: 0,
               zIndex: 2,
-            }}>Ctry</th>
+            }}>Market</th>
             <th style={{
               padding: '14px 24px',
               color: 'var(--text-secondary)',
@@ -126,8 +127,22 @@ export function DataTable({ projects, onRowClick, selectedId }: DataTableProps) 
               <td style={{ padding: '14px 24px', fontWeight: 500, color: 'var(--text-primary)' }}>
                 {project.projectName}
               </td>
-              <td style={{ padding: '14px 24px' }}>{project.countryCode}</td>
-              <td style={{ padding: '14px 24px', textTransform: 'capitalize' }}>{project.technology}</td>
+              <td style={{ padding: '14px 24px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '1rem', lineHeight: 1 }}>{COUNTRY_FLAGS[project.countryCode]}</span>
+                  <div>
+                    <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                      {COUNTRY_LABELS[project.countryCode]}
+                    </div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
+                      {project.countryCode}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td style={{ padding: '14px 24px' }}>
+                {TECHNOLOGY_LABELS[project.technology]}
+              </td>
               <td style={{ padding: '14px 24px' }}>
                 <span style={{ fontFamily: 'var(--font-mono)'}}>{project.claimedCapacityMw ? project.claimedCapacityMw.toFixed(1) : 'N/A'}</span> MW
               </td>

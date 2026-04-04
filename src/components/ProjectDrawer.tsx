@@ -3,6 +3,7 @@ import type { RegistryMapProject } from '../types/domain';
 import { StatusBadge } from './shared/StatusBadge';
 import { Accordion } from './shared/Accordion';
 import { StatCard } from './shared/StatCard';
+import { COUNTRY_FLAGS, COUNTRY_LABELS, TECHNOLOGY_LABELS } from '../lib/countries';
 
 interface ProjectDrawerProps {
   project: RegistryMapProject | null;
@@ -15,7 +16,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
   // Formatting helpers
   const formatMW = (val: number) => `${val.toFixed(1)} MW`;
   
-  const techCapitalized = project.technology.charAt(0).toUpperCase() + project.technology.slice(1);
+  const techLabel = TECHNOLOGY_LABELS[project.technology];
   
   // Format grid evidence nicely
   const humanGridLabels: Record<string, string> = {
@@ -40,14 +41,10 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
           <span style={{ fontSize: '1.25rem' }}>
-            {project.countryCode === 'IDN' && '🇮🇩'}
-            {project.countryCode === 'PHL' && '🇵🇭'}
-            {project.countryCode === 'VNM' && '🇻🇳'}
-            {project.countryCode === 'MYS' && '🇲🇾'}
-            {project.countryCode === 'SGP' && '🇸🇬'}
+            {COUNTRY_FLAGS[project.countryCode]}
           </span>
           <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            {project.countryCode} • {techCapitalized}
+            {COUNTRY_LABELS[project.countryCode]} • {techLabel}
           </span>
         </div>
         

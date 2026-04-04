@@ -7,7 +7,7 @@ export function DataSourcesPanel() {
       <div style={{ marginBottom: '24px' }}>
         <div className="section-label" style={{ marginBottom: '12px' }}>Data Sources</div>
         <p className="content-prose">
-          Public sources, observed asset layers, and country-level references used throughout this project.
+          Backbone sources used across the registry, observed asset layer, and country-level validation workflow. Project-specific filings remain linked in the explorer for site-level review.
         </p>
       </div>
       

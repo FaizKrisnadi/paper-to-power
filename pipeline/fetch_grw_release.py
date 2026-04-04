@@ -18,7 +18,12 @@ RAW_GRW_DIR = ROOT / "data" / "raw" / "grw"
 CACHE_DIR = RAW_GRW_DIR / "cache"
 
 TARGET_COUNTRIES = {
+    "Brunei",
+    "Cambodia",
     "Indonesia",
+    "Laos",
+    "Myanmar",
+    "Thailand",
     "Philippines",
     "Singapore",
     "Vietnam",
