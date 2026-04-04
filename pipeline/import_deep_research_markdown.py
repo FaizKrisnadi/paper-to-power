@@ -8,9 +8,6 @@ from typing import Any
 from .io import write_json
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = Path(
-    "/Users/faizkrisnadi/Downloads/Southeast Asia Renewable Project Data Collection.md"
-)
 PROJECTS_OUTPUT = ROOT / "data" / "interim" / "deep_research_projects.json"
 SOURCES_OUTPUT = ROOT / "data" / "interim" / "deep_research_sources.json"
 UNRESOLVED_OUTPUT = ROOT / "data" / "interim" / "deep_research_unresolved.json"
@@ -19,7 +16,17 @@ UNRESOLVED_OUTPUT = ROOT / "data" / "interim" / "deep_research_unresolved.json"
 def read_input_path() -> Path:
     if len(sys.argv) > 1 and sys.argv[1].strip():
         return Path(sys.argv[1]).expanduser().resolve()
-    return DEFAULT_INPUT
+    candidates = [
+        ROOT / "data" / "manual" / "deep_research_import.md",
+        ROOT / "data" / "manual" / "deep_research_projects.md",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
+    raise FileNotFoundError(
+        "No input markdown provided. Pass a path explicitly, for example: "
+        "`python3 -m pipeline.import_deep_research_markdown /path/to/input.md`"
+    )
 
 
 def extract_section(text: str, title: str, next_title: str | None) -> str:

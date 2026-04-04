@@ -25,3 +25,8 @@ __pycache__/
 *.sln
 *.sw?
 data/raw/grw/cache/
+data/raw/context/osm/
+cache/
+data/interim/*
+!data/interim/.gitkeep
+data/processed/asean_registry_import_summary.json

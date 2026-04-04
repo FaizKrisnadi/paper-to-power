@@ -9,7 +9,6 @@ from .io import read_json, write_json
 
 ROOT = Path(__file__).resolve().parent.parent
 COUNTRY_MAP_PATH = ROOT / "data" / "manual" / "country_name_to_code.json"
-DEFAULT_INPUT = Path("/Users/faizkrisnadi/Downloads/asean_registry_draft_import.csv")
 INTERIM_OUTPUT = ROOT / "data" / "interim" / "deep_research_projects.json"
 SUMMARY_OUTPUT = ROOT / "data" / "processed" / "asean_registry_import_summary.json"
 
@@ -55,7 +54,17 @@ def normalize_key(value: str) -> str:
 def read_input_path() -> Path:
     if len(sys.argv) > 1 and sys.argv[1].strip():
         return Path(sys.argv[1]).expanduser().resolve()
-    return DEFAULT_INPUT
+    candidates = [
+        ROOT / "data" / "manual" / "asean_registry_draft_import.csv",
+        ROOT / "data" / "manual" / "registry_import.csv",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
+    raise FileNotFoundError(
+        "No input CSV provided. Pass a path explicitly, for example: "
+        "`python3 -m pipeline.import_registry_csv /path/to/import.csv`"
+    )
 
 
 def read_csv_rows(path: Path) -> list[dict[str, str]]:

@@ -29,7 +29,7 @@ The result is a public-facing map, evidence explorer, and country comparison bui
 
 - Public site: [energy.faizkrisnadi.com](https://energy.faizkrisnadi.com)
 - Stack: `React` + `Vite` + `TypeScript` + `MapLibre GL`
-- Data pipeline: Python modules in [`pipeline/`](/Users/faizkrisnadi/paper-to-power/pipeline)
+- Data pipeline: Python modules in [`pipeline/`](./pipeline)
 
 ## What The Site Shows
 
@@ -68,13 +68,13 @@ docs/                        Supporting documentation
 
 Key pipeline entry points:
 
-- [`pipeline/import_registry_csv.py`](/Users/faizkrisnadi/paper-to-power/pipeline/import_registry_csv.py)
-- [`pipeline/curate_deep_research_seed.py`](/Users/faizkrisnadi/paper-to-power/pipeline/curate_deep_research_seed.py)
-- [`pipeline/prepare_seed_enrichment.py`](/Users/faizkrisnadi/paper-to-power/pipeline/prepare_seed_enrichment.py)
-- [`pipeline/apply_seed_enrichment.py`](/Users/faizkrisnadi/paper-to-power/pipeline/apply_seed_enrichment.py)
-- [`pipeline/promote_reviewed_seed.py`](/Users/faizkrisnadi/paper-to-power/pipeline/promote_reviewed_seed.py)
-- [`pipeline/match_projects.py`](/Users/faizkrisnadi/paper-to-power/pipeline/match_projects.py)
-- [`pipeline/build_frontend_exports.py`](/Users/faizkrisnadi/paper-to-power/pipeline/build_frontend_exports.py)
+- [`pipeline/import_registry_csv.py`](./pipeline/import_registry_csv.py)
+- [`pipeline/curate_deep_research_seed.py`](./pipeline/curate_deep_research_seed.py)
+- [`pipeline/prepare_seed_enrichment.py`](./pipeline/prepare_seed_enrichment.py)
+- [`pipeline/apply_seed_enrichment.py`](./pipeline/apply_seed_enrichment.py)
+- [`pipeline/promote_reviewed_seed.py`](./pipeline/promote_reviewed_seed.py)
+- [`pipeline/match_projects.py`](./pipeline/match_projects.py)
+- [`pipeline/build_frontend_exports.py`](./pipeline/build_frontend_exports.py)
 
 ## Running It Locally
 
@@ -110,9 +110,9 @@ npm run match:firstpass
 
 The frontend is driven by generated data artifacts, especially:
 
-- [`data/processed/frontend_dataset.json`](/Users/faizkrisnadi/paper-to-power/data/processed/frontend_dataset.json)
-- [`src/data/generated.ts`](/Users/faizkrisnadi/paper-to-power/src/data/generated.ts)
-- [`data/processed/project_registry.json`](/Users/faizkrisnadi/paper-to-power/data/processed/project_registry.json)
+- [`data/processed/frontend_dataset.json`](./data/processed/frontend_dataset.json)
+- [`src/data/generated.ts`](./src/data/generated.ts)
+- [`data/processed/project_registry.json`](./data/processed/project_registry.json)
 
 That means UI updates and data updates are intentionally separate:
 
