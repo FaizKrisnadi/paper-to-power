@@ -1,0 +1,80 @@
+{
+  "audit_date": "2026-08-04",
+  "repository_head": "93b76a85134390d7a50eeec2b9e46ab1aeb12abc",
+  "grain": "one row per current registry project or project phase, though phase identity is not consistently defined",
+  "registry": {
+    "projects": 52,
+    "countries": 10,
+    "technologies": {
+      "mixed": 1,
+      "solar": 34,
+      "wind": 17
+    },
+    "claimed_statuses": {
+      "announced": 4,
+      "construction": 5,
+      "operating": 19,
+      "pre-construction": 24
+    },
+    "coordinate_accuracy": {
+      "coastal_block_representative": 7,
+      "district_representative": 9,
+      "exact": 7,
+      "province_representative": 2,
+      "representative": 15,
+      "reservoir_representative": 11,
+      "unspecified": 1
+    },
+    "missing_claimed_cod": 40,
+    "missing_source_date": 36,
+    "probable_duplicate_groups": {
+      "DUP-01": [
+        "IDN-W-001",
+        "IDN-W-ASEAN-003"
+      ],
+      "DUP-02": [
+        "SGP-S-001",
+        "SGP-S-ASEAN-004"
+      ]
+    }
+  },
+  "observation": {
+    "source": "Global Renewables Watch v1",
+    "through": "2024 Q2",
+    "assets": 2311,
+    "countries": [
+      "IDN",
+      "MYS",
+      "PHL",
+      "SGP",
+      "VNM"
+    ],
+    "covered_projects": 42,
+    "uncovered_projects": 10
+  },
+  "public_labels": {
+    "claimed_not_observed": 24,
+    "observed_on_schedule": 6,
+    "observed_smaller_than_claimed": 22
+  },
+  "grid_context": {
+    "no_credible_grid_evidence": 2,
+    "power_infrastructure_nearby_but_ambiguous": 3,
+    "transmission_grade_connected": 11,
+    "unassessed": 36
+  },
+  "critical_findings": 2,
+  "high_findings": 6,
+  "medium_findings": 2,
+  "live_baseline": {
+    "url": "https://energy.faizkrisnadi.com/",
+    "retrieved_at": "2026-08-04T11:04:00+08:00",
+    "html_bytes": 2464,
+    "html_sha256": "2e5ee8a0a51e38257935dc0edba6c5db896a812d41b3319135fa75807c85bc99",
+    "bundle_path": "/assets/index-Bn_ZyFKy.js",
+    "bundle_bytes": 397269,
+    "bundle_sha256": "043d6cc332e4df9020060d0ec645a78795a058dee634aef11f56806ba33cf036",
+    "metadata_scope": "five countries",
+    "application_scope": "ten countries"
+  }
+}

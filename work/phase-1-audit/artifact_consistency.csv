@@ -1,0 +1,8 @@
+artifact,measure,count,expected,status
+project_registry.json,projects,52,52,aligned
+paper_to_power_labels.json,project labels,52,52,aligned
+project_asset_matches.json,matches,28,28,aligned
+frontend_dataset.json,frontend projects,52,52,aligned
+geospatial/summary.json,project points,16,52,drift
+geospatial/summary.json,matched projects,14,28,drift
+geospatial/site_context_features.json,site context rows,16,52,review
