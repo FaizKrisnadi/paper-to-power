@@ -2,11 +2,6 @@ import type { Map as MapLibreMap } from 'maplibre-gl';
 
 type MapThemeVariant = 'story' | 'explorer';
 
-const TERRAIN_SOURCE_ID = 'ppt-terrain-dem';
-const HILLSHADE_SOURCE_ID = 'ppt-hillshade-dem';
-const HILLSHADE_LAYER_ID = 'ppt-hillshade';
-const TERRAIN_TILE_URL = 'https://demotiles.maplibre.org/terrain-tiles/{z}/{x}/{y}.png';
-
 const FILL_LAYERS = [
   'park',
   'landuse_residential',
@@ -242,72 +237,23 @@ const MAP_THEMES: Record<
   },
 };
 
-function setPaint(map: MapLibreMap, layerId: string, property: string, value: unknown) {
+function setPaint(map: MapLibreMap, layerId: string, property: Parameters<MapLibreMap['setPaintProperty']>[1], value: unknown) {
   if (map.getLayer(layerId)) {
     map.setPaintProperty(layerId, property, value as never);
   }
 }
 
-function setLayout(map: MapLibreMap, layerId: string, property: string, value: unknown) {
+function setLayout(map: MapLibreMap, layerId: string, property: Parameters<MapLibreMap['setLayoutProperty']>[1], value: unknown) {
   if (map.getLayer(layerId)) {
     map.setLayoutProperty(layerId, property, value as never);
   }
 }
 
-function firstSymbolLayerId(map: MapLibreMap) {
-  return map.getStyle().layers?.find((layer) => layer.type === 'symbol')?.id;
-}
-
-function addTerrain(map: MapLibreMap, variant: MapThemeVariant) {
-  if (!map.getSource(TERRAIN_SOURCE_ID)) {
-    map.addSource(TERRAIN_SOURCE_ID, {
-      type: 'raster-dem',
-      encoding: 'mapbox',
-      tiles: [TERRAIN_TILE_URL],
-      tileSize: 256,
-      maxzoom: 12,
-    });
-  }
-
-  if (!map.getSource(HILLSHADE_SOURCE_ID)) {
-    map.addSource(HILLSHADE_SOURCE_ID, {
-      type: 'raster-dem',
-      encoding: 'mapbox',
-      tiles: [TERRAIN_TILE_URL],
-      tileSize: 256,
-      maxzoom: 12,
-    });
-  }
-
-  if (!map.getLayer(HILLSHADE_LAYER_ID)) {
-    const beforeId = firstSymbolLayerId(map);
-    map.addLayer(
-      {
-        id: HILLSHADE_LAYER_ID,
-        type: 'hillshade',
-        source: HILLSHADE_SOURCE_ID,
-        paint: {},
-      },
-      beforeId,
-    );
-  }
-
-  const theme = MAP_THEMES[variant];
-  map.setTerrain({
-    source: TERRAIN_SOURCE_ID,
-    exaggeration: theme.terrainExaggeration,
-  });
-  map.setSky(theme.sky);
-  map.setLight(theme.light);
-  setPaint(map, HILLSHADE_LAYER_ID, 'hillshade-exaggeration', theme.hillshade.exaggeration);
-  setPaint(map, HILLSHADE_LAYER_ID, 'hillshade-highlight-color', theme.hillshade.highlight);
-  setPaint(map, HILLSHADE_LAYER_ID, 'hillshade-shadow-color', theme.hillshade.shadow);
-  setPaint(map, HILLSHADE_LAYER_ID, 'hillshade-accent-color', theme.hillshade.accent);
-}
-
 export function applyCinematicMapTheme(map: MapLibreMap, variant: MapThemeVariant) {
   const theme = MAP_THEMES[variant];
-  addTerrain(map, variant);
+  // The demo DEM does not cover the full study region. Keep the sourced basemap without unsupported terrain tiles.
+  map.setSky(theme.sky);
+  map.setLight(theme.light);
 
   setPaint(map, 'background', 'background-color', theme.colors.background);
 

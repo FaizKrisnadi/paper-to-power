@@ -1,8 +1,9 @@
 {
+  "datasetVersion": "2026-10-07-stage-reconciled-v1",
   "layers": [
     {
       "name": "project_registry_points",
-      "recordCount": 16,
+      "recordCount": 5136,
       "geojson": "data/processed/geospatial/project_registry_points.geojson",
       "parquet": "data/processed/geospatial/project_registry_points.parquet"
     },
@@ -14,19 +15,19 @@
     },
     {
       "name": "matched_projects",
-      "recordCount": 14,
+      "recordCount": 2,
       "geojson": "data/processed/geospatial/matched_projects.geojson",
       "parquet": "data/processed/geospatial/matched_projects.parquet"
     },
     {
       "name": "matched_assets",
-      "recordCount": 14,
+      "recordCount": 30,
       "geojson": "data/processed/geospatial/matched_assets.geojson",
       "parquet": "data/processed/geospatial/matched_assets.parquet"
     },
     {
       "name": "match_links",
-      "recordCount": 14,
+      "recordCount": 30,
       "geojson": "data/processed/geospatial/match_links.geojson",
       "parquet": "data/processed/geospatial/match_links.parquet"
     }

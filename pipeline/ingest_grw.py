@@ -79,9 +79,7 @@ def format_observed_quarter(year: Any, quarter: Any) -> str | None:
 
 
 def estimate_capacity_proxy_mw(technology: Technology, area_ha: float | None) -> float | None:
-    if technology == "solar" and area_ha is not None:
-        # Simple placeholder density for early portfolio-stage summaries.
-        return round(area_ha * 0.6, 2)
+    # A mapped footprint is not a nameplate-capacity measurement.
     return None
 
 

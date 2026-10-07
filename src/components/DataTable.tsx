@@ -1,181 +1,23 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import type { RegistryMapProject } from '../types/domain';
-import { StatusBadge } from './shared/StatusBadge';
-import { COUNTRY_FLAGS, COUNTRY_LABELS, TECHNOLOGY_LABELS } from '../lib/countries';
+import { stageText, PROJECT_STAGE_COLORS } from '../lib/projectStages';
+import { COUNTRY_LABELS, TECHNOLOGY_LABELS } from '../lib/countries';
+import { capacityText, observationText } from '../lib/evidence';
+interface DataTableProps { projects: readonly RegistryMapProject[]; onRowClick:(id:string)=>void; selectedId:string|null }
+export function DataTable({projects,onRowClick,selectedId}:DataTableProps) {
+ const [pageSize,setPageSize]=useState(()=>window.innerWidth<600?10:50);
+ useEffect(()=>{const resize=()=>setPageSize(window.innerWidth<600?10:50);window.addEventListener('resize',resize);return()=>window.removeEventListener('resize',resize)},[]);
+ const [paging,setPaging]=useState({population:projects,page:0});
+ const page=paging.population===projects?Math.min(paging.page,Math.max(0,Math.ceil(projects.length/pageSize)-1)):0;
+ const visible=projects.slice(page*pageSize,(page+1)*pageSize);
+ return <div className="data-table"><table className="evidence-table"><caption className="sr-only">Selected project claims and observation evidence. Open a project for sources and review details.</caption>
+  <thead><tr>{['Project','Country','Technology','Reported stage','Documentary capacity','Physical evidence','Claim review'].map(x=><th scope="col" key={x}>{x}</th>)}</tr></thead>
+  <tbody>{visible.map(p=><tr key={p.projectId} className={selectedId===p.projectId?'is-selected':''}>
+   <td><button className="project-link" onClick={()=>onRowClick(p.projectId)} aria-expanded={selectedId===p.projectId}>{p.projectName}</button>{p.recordScope==='project_overview'&&<small className="record-scope-label">Project overview · linked phases</small>}</td>
+   <td>{COUNTRY_LABELS[p.countryCode]}</td><td>{TECHNOLOGY_LABELS[p.technology]}</td>
+   <td><span className="project-stage-badge" style={{color:PROJECT_STAGE_COLORS[p.projectStage]}}>{stageText(p)}</span></td><td>{capacityText(p)}</td><td>{observationText(p)}</td>
+   <td>{p.claimReviewStatus==='reviewed' ? `Reviewed ${p.claimCheckedAt}` : p.registryOrigin==='gem_map' ? 'Provider record' : 'Review pending'}</td>
 
-interface DataTableProps {
-  projects: readonly RegistryMapProject[];
-  onRowClick: (id: string) => void;
-  selectedId: string | null;
-}
-
-export function DataTable({ projects, onRowClick, selectedId }: DataTableProps) {
-  return (
-      <div className="data-table">
-      <table style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        textAlign: 'left',
-        fontSize: '0.875rem',
-      }}>
-        <thead>
-          <tr>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Project Name</th>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Market</th>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Tech</th>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Claimed Target</th>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Observed Build</th>
-            <th style={{
-              padding: '14px 24px',
-              color: 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.04em',
-              background: 'var(--bg-surface-muted)',
-              borderBottom: '2px solid var(--border)',
-              position: 'sticky',
-              top: 0,
-              zIndex: 2,
-            }}>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((project) => (
-            <tr 
-              key={project.projectId}
-              onClick={() => onRowClick(project.projectId)}
-              style={{
-                borderBottom: '1px solid var(--border)',
-                cursor: 'pointer',
-                background: selectedId === project.projectId ? 'var(--status-on-schedule-soft)' : 'transparent',
-                transition: 'background 0.2s'
-              }}
-              onMouseEnter={(e) => {
-                if (selectedId !== project.projectId) {
-                    e.currentTarget.style.background = 'var(--bg-surface-muted)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (selectedId !== project.projectId) {
-                    e.currentTarget.style.background = 'transparent';
-                } else {
-                    e.currentTarget.style.background = 'var(--status-on-schedule-soft)';
-                }
-              }}
-            >
-              <td style={{ padding: '14px 24px', fontWeight: 500, color: 'var(--text-primary)' }}>
-                {project.projectName}
-              </td>
-              <td style={{ padding: '14px 24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ fontSize: '1rem', lineHeight: 1 }}>{COUNTRY_FLAGS[project.countryCode]}</span>
-                  <div>
-                    <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
-                      {COUNTRY_LABELS[project.countryCode]}
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
-                      {project.countryCode}
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td style={{ padding: '14px 24px' }}>
-                {TECHNOLOGY_LABELS[project.technology]}
-              </td>
-              <td style={{ padding: '14px 24px' }}>
-                <span style={{ fontFamily: 'var(--font-mono)'}}>{project.claimedCapacityMw ? project.claimedCapacityMw.toFixed(1) : 'N/A'}</span> MW
-              </td>
-              <td style={{ padding: '14px 24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 500 }}>
-                    {project.observedCapacityMw ? project.observedCapacityMw.toFixed(1) : '0.0'}
-                  </span>
-                  
-                  {/* Mini comparison bar inline */}
-                  <div style={{ width: '40px', height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
-                    <div style={{
-                      height: '100%',
-                      width: `${Math.min(100, ((project.observedCapacityMw || 0) / (project.claimedCapacityMw || 1)) * 100)}%`,
-                      background: 'var(--accent)'
-                    }} />
-                  </div>
-                </div>
-              </td>
-              <td style={{ padding: '14px 24px' }}>
-                <StatusBadge status={project.paperToPowerLabel} />
-              </td>
-            </tr>
-          ))}
-          {projects.length === 0 && (
-             <tr>
-               <td colSpan={6} style={{ padding: '48px', textAlign: 'center', color: 'var(--text-secondary)' }}>
-                 No projects match the current filters.
-               </td>
-             </tr>
-          )}
-        </tbody>
-      </table>
-      </div>
-  );
+  </tr>)}{!projects.length && <tr><td colSpan={7}>No projects match these filters.</td></tr>}</tbody>
+ </table>{projects.length>pageSize&&<nav className="table-pagination" aria-label="Project table pages"><button className="btn btn-outline" disabled={page===0} onClick={()=>setPaging({population:projects,page:page-1})}>Previous</button><span>{page*pageSize+1}–{Math.min((page+1)*pageSize,projects.length)} of {projects.length.toLocaleString()} records</span><button className="btn btn-outline" disabled={(page+1)*pageSize>=projects.length} onClick={()=>setPaging({population:projects,page:page+1})}>Next</button></nav>}</div>;
 }

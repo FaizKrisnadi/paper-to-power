@@ -1,0 +1,440 @@
+{
+  "scope": "32 previously unlinked research supplements; identity/phase reconciliation only, not new independent capacity/status reviews",
+  "snapshot": "2026-09",
+  "method": "Full regional CSV searched by country, normalized name/aliases, owner, capacity, phase and coordinates. Explicit decisions below; no fuzzy auto-merges. Phase groups preserve different grain. Unresolved records are not claimed to be absent from the real world.",
+  "sourceAccessNotes": {
+    "wikiFirstAttempt403": [
+      "Brunei_PV_solar_farm",
+      "Minut_solar_farm",
+      "Tembesi_Batam_floating_solar_farm",
+      "Minbu_solar_farm",
+      "NOM_FL1_Offshore_Wind_Project"
+    ],
+    "wikiRecoveredOnLaterAttempt": [
+      "Minut_solar_farm",
+      "Tembesi_Batam_floating_solar_farm"
+    ],
+    "claimReviewPromotionCount": 0
+  },
+  "decisions": [
+    {
+      "projectId": "BRN-S-ASEAN-001",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000833188"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Only 30 MW construction record in the Brunei extract, with Seri Suria ownership and a point 1.8 km from the checked Kampong Belimbing representative location. Identity inference from the bounded snapshot and retained government source; wiki access returned 403.",
+      "evidenceUrls": [
+        "https://www.mofe.gov.bn/wp-content/uploads/2025/10/Press-Release-11.08.2025-English-Grounbreaking-Ceremony-for-Solar-Power-Plant-in-Kampong-Belimbing.pdf",
+        "https://www.gem.wiki/Brunei_PV_solar_farm"
+      ]
+    },
+    {
+      "projectId": "IDN-S-ASEAN-003",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000810872"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Minut is Minahasa Utara. GEM reports 21 MW at the Likupang location; government reporting identifies Likupang at Wineru, Minahasa Utara and 21 MWp. Retain the legacy 15 MW unspecified claim as a capacity conflict, not as an equivalent rating.",
+      "evidenceUrls": [
+        "https://vieshine.com/projects/likupang-solar-power-plant/",
+        "https://www.gem.wiki/Minut_solar_farm",
+        "https://setkab.go.id/plts-likupang-panel-surya-terbesar-di-indonesia-salurkan-listrik-15-mw-per-hari/"
+      ]
+    },
+    {
+      "projectId": "IDN-S-ASEAN-004",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100001090952"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Tembesi Batam small floating development corresponds to the 35 MW research claim and PLN development reference. Do not link to the separate 333 MW Tembesi Reservoir proposal. Provider 36 MW remains a discrepancy.",
+      "evidenceUrls": [
+        "https://ptplnnr.com/news-and-articles/detail/getting-to-know-plts-terapung-tembesi-the-largest-solar-power-plant-in-indonesia-by-pln-nusantara-renewables",
+        "https://www.gem.wiki/Tembesi_Batam_floating_solar_farm",
+        "https://www.plnnusantarapower.co.id/storage/investor_sustainability_report/files/dDTEuZPX5yztZznN5sBvCCLm7kbjrEARffARROkB.pdf"
+      ]
+    },
+    {
+      "projectId": "IDN-W-ASEAN-001",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "East Lombok 115 MW claim and Lombok 99 MW provider proposal conflict in capacity and coordinates (over 1600 km apart). The generic ministry URL does not establish a common phase; retain separately pending a specific project document.",
+      "evidenceUrls": [
+        "https://www.esdm.go.id/",
+        "https://www.gem.wiki/Lombok_wind_farm"
+      ],
+      "candidateProviderUnitIds": [
+        "G100000920710"
+      ]
+    },
+    {
+      "projectId": "IDN-W-ASEAN-002",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000901205"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Tanah Laut 70 MW corresponds to phase 1, not the 20 MW shelved or 60 MW cancelled phases. Ownership descriptions require further verification.",
+      "evidenceUrls": [
+        "https://www.adaro.com/",
+        "https://www.gem.wiki/Tanah_Laut_wind_farm"
+      ]
+    },
+    {
+      "projectId": "IDN-W-ASEAN-004",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000901159"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Explicit Tolo 1 name and 72 MW operating claim identify phase 1; phase 2 has the same capacity but is shelved and distinct.",
+      "evidenceUrls": [
+        "https://vieshine.com/projects/tolo-wind-farm/",
+        "https://www.gem.wiki/Tolo_wind_farm"
+      ]
+    },
+    {
+      "projectId": "KHM-S-ASEAN-001",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000800999",
+        "G100000801000"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "The checked 100 MW park claim spans the 60 MW and 40 MW phases. Preserve the park scope and both unit-level records. The separate GEM ADB-EDC 100 MW proposal is a possible provider overlap, not silently removed.",
+      "evidenceUrls": [
+        "https://www.adb.org/news/adb-supported-national-solar-park-cambodia-connects-grid",
+        "https://www.gem.wiki/Cambodia_National_Solar_Park"
+      ]
+    },
+    {
+      "projectId": "LAO-W-ASEAN-002",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "Savan 1 495 MW cannot be confidently assigned to the 1220 MW AMI Savannakhet or 1200 MW Sepon provider developments. Similar region alone is insufficient.",
+      "evidenceUrls": [
+        "https://vietnamenergy.vn/savan-1-wpp-a-highlight-of-vietnam-laos-energy-cooperation-in-the-era-of-green-transition-35626.html",
+        "https://www.gem.wiki/AMI_Savannakhet_wind_farm",
+        "https://www.gem.wiki/Sepon_wind_farm"
+      ],
+      "candidateProviderUnitIds": [
+        "G100001027681",
+        "G100000920802"
+      ]
+    },
+    {
+      "projectId": "LAO-W-ASEAN-003",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000927625",
+        "G100001090630"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "The 600 MW project-wide claim relates to the 250 MW operating and 350 MW construction phases. It cannot be collapsed into one project stage; provider coordinates remain approximate and differ from legacy coordinates.",
+      "evidenceUrls": [
+        "https://en.evn.com.vn/d6/news/EVN-and-Phong-Subthavy-Group-Laos-signed-power-purchase-agreements-66-163-3051.aspx",
+        "https://www.gem.wiki/Truong_Son_wind_farm"
+      ]
+    },
+    {
+      "projectId": "MMR-S-ASEAN-001",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000801324",
+        "G100000801325",
+        "G100000801326",
+        "G100000801327"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Minbu development spans four provider phases with Green Earth Power ownership. The 170 MW legacy claim does not equal the provider phase capacities; retain the whole-development relationship without asserting equivalent capacity or complete operation. Wiki access returned 403.",
+      "evidenceUrls": [
+        "https://gepmyanmar.com/minbu-solar-power-plant/",
+        "https://www.gem.wiki/Minbu_solar_farm"
+      ]
+    },
+    {
+      "projectId": "MYS-S-001",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000801347"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "TNB identifies its 50 MW Sepang facility at Mukim Tanjung 12. GEM names TNB Sepang Solar as owner. Smaller Sepang-named rooftop records are different installations.",
+      "evidenceUrls": [
+        "https://www.st.gov.my/",
+        "https://www.gem.wiki/Mukim_Tanjung_solar_farm",
+        "https://www.tnb.com.my/assets/press_releases/210353bi.pdf"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-001",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "No confident LSS5+ Kelantan 100 MW counterpart in the pinned map. Kelantan-named operating 1–5 MW records do not match this tender proposal.",
+      "evidenceUrls": [
+        "https://www.st.gov.my/"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-002",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "No confident LSS5+ Port Dickson 99.99 MW counterpart. The similarly named 1.6 MW operating provider record is a different scale and stage.",
+      "evidenceUrls": [
+        "https://www.st.gov.my/"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-003",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "No confident LSS5+ Segamat 99.99 MW counterpart. Nearby UEM Lestra 500 MW phases do not establish identity.",
+      "evidenceUrls": [
+        "https://www.st.gov.my/"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-004",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "No confident LSS5+ Windsor Estate 470 MW counterpart. Nearby Bidor 30 MW and Perak rooftop facilities are different scales and cannot be merged by location.",
+      "evidenceUrls": [
+        "https://www.st.gov.my/"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-005",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "Reviewed reNIKOLA Kemaman 250 MWac shortlist claim has no confident matching phase in the snapshot. Smaller Pekan, Sik and Teluk Kalong operating plants are different developments.",
+      "evidenceUrls": [
+        "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf"
+      ]
+    },
+    {
+      "projectId": "MYS-S-ASEAN-006",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "Reviewed reNIKOLA Kemaman 150 MWac shortlist claim remains distinct from its 250 MW sibling. Shared representative coordinates do not make them aliases.",
+      "evidenceUrls": [
+        "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf"
+      ]
+    },
+    {
+      "projectId": "PHL-M-ASEAN-001",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000811002",
+        "G100000811003",
+        "G100001053914"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Terra is a project-wide solar-plus-storage research record, while GEM maps three solar phases. Preserve the hybrid scope; do not assign storage capacity to a solar phase or equate the legacy capacity with the provider sum.",
+      "evidenceUrls": [
+        "https://terrasolar.ph/",
+        "https://www.gem.wiki/Terra_solar_farm_(Philippines)"
+      ]
+    },
+    {
+      "projectId": "PHL-S-001",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000810972",
+        "G100001091038"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Olongapo is now split into a 172 MW construction phase and 128 MW announced phase. The legacy record does not resolve a phase or capacity basis; retain the development relationship rather than choosing one unit.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/sites/default/files/pdf/renewable_energy/awarded_solar_2023-10-31.pdf",
+        "https://www.gem.wiki/Olongapo_solar_farm"
+      ]
+    },
+    {
+      "projectId": "PHL-S-004",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000801272",
+        "G100001050370"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Laoag is represented by two operating phases. Preserve the 159 MW legacy project-wide construction claim separately; it is not a third plant or a third provider phase.",
+      "evidenceUrls": [
+        "https://aboitizpower.com/news/aboitizpower-starts-construction-of-159-mwp-pangasinan-solar-plant",
+        "https://www.gem.wiki/Laoag_Solar_Power_Project"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-001",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000920816"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Bulalacao Bay 1200 MW offshore claim corresponds to the CleanTech record. Nearby PacificWind 100 MW phases are separate.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/Bulalacao_Bay_(CleanTech)_Offshore_Wind_Power_Project"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-002",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000927489"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Calatagan 1830 MW offshore claim corresponds to the Domhain record, not Giga Ace 7 phases at 512 MW or the 130 MW Gigasol6 record.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/Calatagan_Offshore_wind_farm"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-004",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000927634"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Mariveles 1500 MW offshore claim corresponds to Domhain Earth, not the separate Airstream 100 MW proposal.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/Mariveles_offshore_wind_farm"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-005",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000927658"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Unique exact NOM FL1 name and 3038 MW offshore capacity in the regional CSV; representative coordinates differ. Wiki access returned 403; no independent claim review is promoted.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/NOM_FL1_Offshore_Wind_Project"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-006",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000927661"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Northern Mindoro 2000 MW offshore claim corresponds to the identically named provider record; southern Mindoro and onshore Mananao are different projects.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/Northern_Mindoro_offshore_wind_farm"
+      ]
+    },
+    {
+      "projectId": "PHL-W-ASEAN-007",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "San Miguel Bay has multiple developers/proposals. Capacity points towards CINMF but the generic legacy source does not identify the developer, so no identity link is accepted.",
+      "evidenceUrls": [
+        "https://www.doe.gov.ph/awarded-offshore-wind-projects",
+        "https://www.gem.wiki/San_Miguel_Bay_(CINMF)_Offshore_wind_farm",
+        "https://www.gem.wiki/ACX3_San_Miguel_Bay_offshore_wind_farm"
+      ],
+      "candidateProviderUnitIds": [
+        "G100001019956",
+        "G100000927444"
+      ]
+    },
+    {
+      "projectId": "SGP-S-ASEAN-002",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000801551"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "GEM explicitly lists Lower Seletar Reservoir as an alias for the 100 MW shelved development. Do not confuse this proposal with smaller installed floating arrays. PUB potential-development language is retained separately.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/public/waterloop/sustainability/solar/floating",
+        "https://www.gem.wiki/Seletar_Reservoir_solar_farm"
+      ]
+    },
+    {
+      "projectId": "SGP-S-ASEAN-003",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000801441"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Same Pandan Reservoir development and owner. GEM map retains the older 55 MW proposal while the reviewed PUB 2025 report says 86 MWp; capacities disagree and neither replaces the other.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/-/media/PUB/Publications/Report/PDF/PUB_ASR_2025.pdf",
+        "https://www.gem.wiki/Pandan_Reservoir_solar_farm"
+      ]
+    },
+    {
+      "projectId": "THA-S-ASEAN-001",
+      "outcome": "same_unit",
+      "providerUnitIds": [
+        "G100000800967"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Explicit FPV 1 name and 158 MW capacity identify phase 1. Bhumibol phases 2 and 3 are separate 300/320 MW proposals.",
+      "evidenceUrls": [
+        "https://solarquarter.com/2025/03/31/thailand-energy-egat-advances-bhumibol-dam-floating-solar-project-with-158-mw-capacity/",
+        "https://www.gem.wiki/Bhumibol_Dam_solar_farm"
+      ]
+    },
+    {
+      "projectId": "THA-S-ASEAN-002",
+      "outcome": "unresolved",
+      "providerUnitIds": [],
+      "assessedAt": "2026-10-07",
+      "reason": "No confident Saeng Pat Phalangngan 77 MW counterpart after searching names and owner fields. Nearby Hat Siao 9.7 MW and Phitsanulok 101 MW records are not sufficient identity evidence.",
+      "evidenceUrls": [
+        "https://www.findevcanada.ca/sites/default/files/2025-01/Solar%20and%20Solar%20BESS%20site%20information.pdf"
+      ]
+    },
+    {
+      "projectId": "VNM-S-002",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000801067",
+        "G100000801068"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Legacy phase 1 & 2 scope relates to the two Dau Tieng provider phases. Coordinates and capacity definitions differ; do not merge with nearby Dau Tieng 3 or Xuan Cau projects or infer one regional MW total.",
+      "evidenceUrls": [
+        "https://data.opendevelopmentmekong.net/dataset/16fdd64a-86a9-46f9-a794-c0ef25d810e9/resource/9640d37d-53ca-42fb-83a0-04de89228f1d/download/mekong-power-generation.xlsx",
+        "https://www.gem.wiki/Dau_Tieng_solar_farm"
+      ]
+    },
+    {
+      "projectId": "VNM-S-003",
+      "outcome": "phase_group",
+      "providerUnitIds": [
+        "G100000801085",
+        "G100000801086",
+        "G100001054340",
+        "G100001054341",
+        "G100001054342"
+      ],
+      "assessedAt": "2026-10-07",
+      "reason": "Xuân Thiện Ea Súp naming order and accents obscure the match. The legacy phases 1–5 cover these five 100/100/100/150/150 MW provider phases, not small Xa Ea Sup rooftop records or the proposed phases 6–10. Provider phase 2 is announced; retain the legacy operating claim separately.",
+      "evidenceUrls": [
+        "https://maps.apple.com/place?auid=921833422019915198",
+        "https://www.gem.wiki/Ea_Súp_Xuân_Thiện_solar_farm"
+      ]
+    }
+  ]
+}

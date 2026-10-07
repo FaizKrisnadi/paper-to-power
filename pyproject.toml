@@ -1,8 +1,14 @@
 [project]
 name = "paper-to-power"
-version = "0.1.0"
-description = "Data pipeline and frontend exports for the Paper to Power portfolio project."
-requires-python = ">=3.11"
+version = "0.2.0"
+description = "Reproducible documentary and geospatial evidence pipeline for Paper to Power."
+requires-python = ">=3.11,<3.14"
+dependencies = []
+
+[project.optional-dependencies]
+geo = ["geopandas>=1.0,<2", "pyarrow>=17,<24", "duckdb>=1.1,<2", "shapely>=2,<3"]
+test = ["pytest>=8,<10", "playwright>=1.50,<2"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
+testpaths = ["tests"]

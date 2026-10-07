@@ -1,3 +1,7 @@
+import { PROJECT_STAGE_COLORS, PROJECT_STAGE_LABELS } from '../lib/projectStages';
+
+import { loadMapLibre } from '../lib/maplibre';
+import type * as GeoJSON from 'geojson';
 import React, { useEffect, useRef } from 'react';
 import type { GeoJSONSource, Map as MapLibreMap } from 'maplibre-gl';
 import type { GeoJSONGeometry, RegistryMapProject } from '../types/domain';
@@ -32,46 +36,16 @@ interface CameraSnapshot {
 // Map status to color
 const getStatusColor = (status: string) => {
   const colors: Record<string, string> = {
-    'observed_on_schedule': '#2D9A6F',
-    'observed_smaller_than_claimed': '#D4882E',
-    'observed_delayed': '#C76A3C',
-    'claimed_not_observed': '#C44536',
-    'built_and_corridor_ready': '#2878B5',
-    'built_but_low_deliverability': '#8B6CA7',
+    'observed_footprint': '#2D9A6F',
+    'review_pending': '#D4882E',
+    'not_detected_by_cutoff': '#C76A3C',
+    'coverage_unavailable': '#7A7A7A',
+    'not_yet_due_at_cutoff': '#2878B5',
+    'method_not_applicable': '#8B6CA7',
     'observed_unmatched': '#7A7A7A'
   };
   return colors[status] || '#7A7A7A';
 };
-
-function rotateOffset(
-  center: [number, number],
-  dx: number,
-  dy: number,
-  angleDeg: number,
-): [number, number] {
-  const angle = (angleDeg * Math.PI) / 180;
-  const cos = Math.cos(angle);
-  const sin = Math.sin(angle);
-  return [
-    center[0] + dx * cos - dy * sin,
-    center[1] + dx * sin + dy * cos,
-  ];
-}
-
-function createRectPolygon(
-  center: [number, number],
-  halfWidth: number,
-  halfHeight: number,
-  angleDeg = 0,
-) {
-  const corners = [
-    rotateOffset(center, -halfWidth, -halfHeight, angleDeg),
-    rotateOffset(center, halfWidth, -halfHeight, angleDeg),
-    rotateOffset(center, halfWidth, halfHeight, angleDeg),
-    rotateOffset(center, -halfWidth, halfHeight, angleDeg),
-  ];
-  return [...corners, corners[0]];
-}
 
 function getGeometryBounds(geometry: GeoJSONGeometry | null) {
   if (!geometry) {
@@ -124,7 +98,7 @@ function mergeBounds(
 }
 
 function getProjectFocusBounds(project: RegistryMapProject) {
-  const matchedBounds = getGeometryBounds(project.matchedAssetGeometry);
+  const matchedBounds = project.matchedAssetGeometries.reduce<ReturnType<typeof getGeometryBounds>>((bounds, geometry) => mergeBounds(bounds, getGeometryBounds(geometry)), null);
   const centerBounds = {
     minLon: project.longitude,
     maxLon: project.longitude,
@@ -162,167 +136,14 @@ function getProjectFocusPadding() {
   };
 }
 
-function buildLabelAnchor(center: [number, number], technology: RegistryMapProject['technology']) {
-  return technology === 'wind'
-    ? [center[0] + 0.34, center[1] - 0.16] as [number, number]
-    : [center[0] + 0.26, center[1] + 0.12] as [number, number];
-}
-
 function buildSelectedProjectContext(project: RegistryMapProject | null) {
-  if (!project) {
-    return { type: 'FeatureCollection' as const, features: [] };
-  }
-
-  const center: [number, number] = [project.longitude, project.latitude];
-  const gridDistance = project.nearestSiteSideGridDistanceKm ?? project.distanceKm ?? 18;
-  const baseRadius = Math.max(0.18, Math.min(1.25, gridDistance / 55));
-  const crosshairArm = Math.max(0.08, baseRadius * 0.42);
-  const color = getStatusColor(project.paperToPowerLabel);
-  const labelAnchor = buildLabelAnchor(center, project.technology);
-  const matchedGeometry = project.matchedAssetGeometry;
-  const matchedBounds = getGeometryBounds(matchedGeometry);
-  const features: Array<{
-    type: 'Feature';
-    geometry: GeoJSONGeometry;
-    properties: Record<string, string | number>;
-  }> = [];
-
-  if (project.technology !== 'wind') {
-    let parcelHint: [number, number][];
-    if (matchedBounds) {
-      const width = Math.max(0.06, (matchedBounds.maxLon - matchedBounds.minLon) * 0.58);
-      const height = Math.max(0.045, (matchedBounds.maxLat - matchedBounds.minLat) * 0.58);
-      const parcelCenter: [number, number] = [
-        (matchedBounds.minLon + matchedBounds.maxLon) / 2,
-        (matchedBounds.minLat + matchedBounds.maxLat) / 2,
-      ];
-      parcelHint = createRectPolygon(parcelCenter, width, height, 0);
-    } else {
-      parcelHint = createRectPolygon(center, Math.max(0.11, baseRadius * 0.72), Math.max(0.08, baseRadius * 0.48), 0);
-    }
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [parcelHint],
-      },
-      properties: {
-        kind: 'focus-area',
-        color,
-      },
-    });
-  } else {
-    const count = Math.max(1, project.observedAssetCount ?? 1);
-    const axisLength = Math.max(0.16, Math.min(0.72, 0.2 + count * 0.014));
-    const axisWidth = axisLength * 0.12;
-    const axisAngle = 28;
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[...createRectPolygon(center, axisLength, axisWidth, axisAngle)]],
-      },
-      properties: {
-        kind: 'focus-area',
-        color,
-      },
-    });
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'LineString',
-        coordinates: [
-          rotateOffset(center, -axisLength, 0, axisAngle),
-          rotateOffset(center, axisLength, 0, axisAngle),
-        ],
-      },
-      properties: {
-        kind: 'wind-axis',
-        color,
-      },
-    });
-  }
-
-  if (matchedGeometry) {
-    features.push({
-      type: 'Feature',
-      geometry: matchedGeometry,
-      properties: {
-        kind: matchedGeometry.type === 'Point' ? 'analysis-point' : 'analysis-geometry',
-        color,
-      },
-    });
-  }
-
-  features.push(
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'LineString',
-        coordinates: [
-          [center[0] - crosshairArm, center[1]],
-          [center[0] + crosshairArm, center[1]],
-        ],
-      },
-      properties: {
-        kind: 'crosshair',
-      },
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'LineString',
-        coordinates: [
-          [center[0], center[1] - crosshairArm],
-          [center[0], center[1] + crosshairArm],
-        ],
-      },
-      properties: {
-        kind: 'crosshair',
-      },
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'LineString',
-        coordinates: [center, labelAnchor],
-      },
-      properties: {
-        kind: 'leader-line',
-      },
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: center,
-      },
-      properties: {
-        kind: 'selected-point',
-        color,
-      },
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: labelAnchor,
-      },
-      properties: {
-        kind: 'label-anchor',
-        color,
-        label: project.projectName.toUpperCase(),
-        region: (project.provinceStateRegion ?? project.locationText ?? project.countryName).toUpperCase(),
-      },
-    },
-  );
-
-  return {
-    type: 'FeatureCollection' as const,
-    features,
-  };
+ if (!project) return {type:'FeatureCollection' as const,features:[]};
+ const color=getStatusColor(project.observationStatus);
+ const features: Array<{type:'Feature';geometry:GeoJSONGeometry;properties:Record<string,string|number>}> = project.matchedAssetGeometries.map(geometry=>({
+  type:'Feature',geometry,properties:{kind:geometry.type==='Point'?'analysis-point':'analysis-geometry',color}
+ }));
+ features.push({type:'Feature',geometry:{type:'Point',coordinates:[project.longitude,project.latitude]},properties:{kind:'selected-point',color}});
+ return {type:'FeatureCollection' as const,features};
 }
 
 export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: ExplorerMapProps) {
@@ -350,7 +171,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
     };
 
     const initMap = async () => {
-      const { default: maplibregl } = await import('maplibre-gl');
+      const maplibregl = await loadMapLibre();
       if (cancelled || !mapContainerRef.current || mapRef.current) return;
 
       const createdMap = new maplibregl.Map({
@@ -366,7 +187,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
       mapInstance = createdMap;
       mapRef.current = createdMap;
-      createdMap.addControl(new maplibregl.NavigationControl(), 'top-right');
+      createdMap.addControl(new maplibregl.NavigationControl(), 'top-left');
       createdMap.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
       if (typeof ResizeObserver !== 'undefined') {
@@ -377,6 +198,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
       }
 
       createdMap.on('load', () => {
+        if (mapContainerRef.current) mapContainerRef.current.dataset.mapReady='true';
         if (cancelled) return;
 
         applyCinematicMapTheme(createdMap, 'explorer');
@@ -392,8 +214,8 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
             name: project.projectName,
             tech: project.technology,
             status: project.paperToPowerLabel,
-            color: getStatusColor(project.paperToPowerLabel),
-            claimed: project.claimedCapacityMw ?? 40,
+            color: PROJECT_STAGE_COLORS[project.projectStage],
+            claimed: project.claimedCapacityMw ?? 0,
           },
         }));
 
@@ -404,6 +226,9 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
             features,
           },
           generateId: true,
+          cluster: true,
+          clusterRadius: 42,
+          clusterMaxZoom: 9,
         });
 
         createdMap.addSource(SELECTED_CONTEXT_SOURCE_ID, {
@@ -413,18 +238,11 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
         createdMap.addLayer({
           id: 'projects-layer-bg',
+          filter: ['!', ['has', 'point_count']],
           type: 'circle',
           source: 'projects',
           paint: {
-            'circle-radius': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              4,
-              ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 6, 220, 14],
-              9,
-              ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 12, 220, 24],
-            ],
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 4, 6, 9, 10],
             'circle-color': ['get', 'color'],
             'circle-opacity': 0.24,
             'circle-blur': 0.8,
@@ -433,24 +251,29 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
         createdMap.addLayer({
           id: 'projects-layer',
+          filter: ['!', ['has', 'point_count']],
           type: 'circle',
           source: 'projects',
           paint: {
-            'circle-radius': [
-              'interpolate',
-              ['linear'],
-              ['zoom'],
-              4,
-              ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 2.5, 220, 6],
-              9,
-              ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 5.5, 220, 10],
-            ],
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 4, 6, 9, 10],
             'circle-color': ['get', 'color'],
             'circle-stroke-width': 1.2,
             'circle-stroke-color': 'rgba(237, 244, 247, 0.94)',
             'circle-opacity': 0.94,
           },
         });
+
+        createdMap.addLayer({id:'project-clusters',type:'circle',source:'projects',filter:['has','point_count'],paint:{'circle-color':'#087c70','circle-radius':['step',['get','point_count'],17,20,22,100,28],'circle-stroke-width':2,'circle-stroke-color':'#f7f5ee','circle-opacity':0.94}});
+        createdMap.addLayer({id:'project-cluster-count',type:'symbol',source:'projects',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':13,'text-font':['Noto Sans Regular'],'text-allow-overlap':true},paint:{'text-color':'#ffffff'}});
+        createdMap.on('click','project-clusters',async (event)=>{
+          const feature=event.features?.[0];
+          if (!feature || feature.geometry.type!=='Point') return;
+          const source=createdMap.getSource('projects') as GeoJSONSource;
+          const zoom=await source.getClusterExpansionZoom(Number(feature.properties?.cluster_id));
+          createdMap.easeTo({center:feature.geometry.coordinates as [number,number],zoom,duration:700});
+        });
+        createdMap.on('mouseenter','project-clusters',()=>{createdMap.getCanvas().style.cursor='pointer'});
+        createdMap.on('mouseleave','project-clusters',()=>{createdMap.getCanvas().style.cursor=''});
 
         createdMap.addLayer({
           id: SELECTED_CONTEXT_FILL_LAYER_ID,
@@ -619,9 +442,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
 
           popup
             .setLngLat(coordinates as [number, number])
-            .setHTML(
-              `<div style="padding: 8px 12px; font-weight: 500; font-size: 14px;">${description}</div>`,
-            )
+            .setText(String(description))
             .addTo(createdMap);
         });
 
@@ -687,8 +508,8 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
           name: p.projectName,
           tech: p.technology,
           status: p.paperToPowerLabel,
-          color: getStatusColor(p.paperToPowerLabel),
-          claimed: p.claimedCapacityMw ?? 40,
+          color: PROJECT_STAGE_COLORS[p.projectStage],
+          claimed: p.claimedCapacityMw ?? 0,
         }
       }));
 
@@ -726,7 +547,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
         pitch: selected.technology === 'wind' ? 52 : 48,
         bearing: selected.technology === 'wind' ? 16 : -12,
         duration: 1050,
-        essential: true,
+        essential: false,
       });
     } else if (!selected && previousSelectedProjectId && previousCameraRef.current) {
       map.easeTo({
@@ -735,7 +556,7 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
         pitch: previousCameraRef.current.pitch,
         bearing: previousCameraRef.current.bearing,
         duration: 850,
-        essential: true,
+        essential: false,
       });
       previousCameraRef.current = null;
     }
@@ -763,14 +584,10 @@ export function ExplorerMap({ projects, onProjectSelect, selectedProjectId }: Ex
         pointerEvents: 'none' /* let clicks pass through to map if needed */
       }}>
         <div style={{ fontWeight: 700, marginBottom: '10px', color: 'rgba(23, 32, 37, 0.88)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          Status
+          Project stage
         </div>
         <div style={{ display: 'grid', gap: '6px' }}>
-          {[
-            { label: 'On Schedule', color: '#2D9A6F' },
-            { label: 'Delayed / Smaller', color: '#D4882E' },
-            { label: 'Not Observed', color: '#C44536' }
-          ].map(item => (
+          {Object.entries(PROJECT_STAGE_LABELS).filter(([stage])=>projects.some(p=>p.projectStage===stage)).map(([stage,label]) => ({label,color:PROJECT_STAGE_COLORS[stage as keyof typeof PROJECT_STAGE_COLORS]})).map(item => (
             <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ 
                 display: 'inline-block', 

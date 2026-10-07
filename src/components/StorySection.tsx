@@ -1,7 +1,8 @@
+import { loadMapLibre } from '../lib/maplibre';
+import type * as GeoJSON from 'geojson';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import { registryMapProjects } from '../data/generated';
-import type { RegistryMapProject } from '../types/domain';
 import { applyCinematicMapTheme } from '../lib/mapTheme';
 import {
   StoryChapter,
@@ -22,306 +23,17 @@ const STORY_OBSERVED_FILL_LAYER_ID = 'story-observed-fill';
 const STORY_OBSERVED_LINE_LAYER_ID = 'story-observed-line';
 const STORY_OBSERVED_POINT_LAYER_ID = 'story-observed-point';
 
-const totalProjects = registryMapProjects.length;
-const claimedCapacityMw = registryMapProjects.reduce(
-  (sum, project) => sum + (project.claimedCapacityMw ?? 0),
-  0,
-);
-const observedCapacityMw = registryMapProjects.reduce(
-  (sum, project) => sum + (project.observedCapacityMw ?? 0),
-  0,
-);
-const observedShare = claimedCapacityMw > 0 ? observedCapacityMw / claimedCapacityMw : 0;
-const smallerThanClaimedCount = registryMapProjects.filter(
-  (project) => project.paperToPowerLabel === 'observed_smaller_than_claimed',
-).length;
-const onScheduleCount = registryMapProjects.filter(
-  (project) => project.paperToPowerLabel === 'observed_on_schedule',
-).length;
-const notObservedCount = registryMapProjects.filter(
-  (project) => project.paperToPowerLabel === 'claimed_not_observed',
-).length;
-const transmissionGradeCount = registryMapProjects.filter(
-  (project) => project.gridEvidenceClass === 'transmission_grade_connected',
-).length;
-const ambiguousGridCount = registryMapProjects.filter(
-  (project) => project.gridEvidenceClass === 'power_infrastructure_nearby_but_ambiguous',
-).length;
-const noGridEvidenceCount = registryMapProjects.filter(
-  (project) => project.gridEvidenceClass === 'no_credible_grid_evidence',
-).length;
-const matchedGeometryCount = registryMapProjects.filter((project) => project.matchedAssetGeometry).length;
-const distinctCountryCount = new Set(registryMapProjects.map((project) => project.countryCode)).size;
-const solarProjectCount = registryMapProjects.filter((project) => project.technology === 'solar').length;
-const windProjectCount = registryMapProjects.filter((project) => project.technology === 'wind').length;
-const mixedProjectCount = registryMapProjects.filter((project) => project.technology === 'mixed').length;
-const averageMatchConfidence =
-  registryMapProjects
-    .filter((project) => project.matchConfidence !== null)
-    .reduce((sum, project, _, source) => sum + (project.matchConfidence ?? 0) / source.length, 0) || 0;
-const sortedDistancesKm = registryMapProjects
-  .reduce<number[]>((distances, project) => {
-    if (typeof project.distanceKm === 'number') {
-      distances.push(project.distanceKm);
-    }
-    return distances;
-  }, [])
-  .sort((left, right) => left - right);
-const medianDistanceKm =
-  sortedDistancesKm.length === 0
-    ? 0
-    : sortedDistancesKm[Math.floor(sortedDistancesKm.length / 2)] ?? 0;
-
 interface StoryChapterConfig {
-  id: string;
-  navLabel: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-  secondaryText?: string;
-  size: 'narrow' | 'regular' | 'wide';
-  stats?: StoryStat[];
-  signalsLabel?: string;
-  signals?: StorySignal[];
-  methods?: StoryMethod[];
-  note?: string;
-  align: 'left' | 'right' | 'center';
-  view: {
-    center: [number, number];
-    zoom: number;
-    pitch: number;
-    bearing: number;
-  };
+ id: string; navLabel: string; eyebrow: string; title: string; description: string; secondaryText?: string;
+ size: 'narrow' | 'regular' | 'wide'; stats?: StoryStat[]; signalsLabel?: string; signals?: StorySignal[];
+ methods?: StoryMethod[]; note?: string; align: 'left' | 'right' | 'center';
+ view: { center: [number,number]; zoom: number; pitch: number; bearing: number };
 }
-
-function formatCapacityGw(valueMw: number) {
-  return `${(valueMw / 1000).toFixed(2)} GW`;
-}
-
-function formatPercent(value: number) {
-  return `${(value * 100).toFixed(1)}%`;
-}
-
 const CHAPTERS: StoryChapterConfig[] = [
-  {
-    id: 'chapter-1',
-    navLabel: 'Summary',
-    eyebrow: 'Executive Summary',
-    title: 'Announced capacity and observed build are not moving at the same pace.',
-    description: `${totalProjects} featured utility-scale renewable projects across ${distinctCountryCount} Southeast Asian markets are tracked here.`,
-    secondaryText: 'Each site is read in the same order: public claim, observed footprint, then delivery context.',
-    size: 'wide',
-    align: 'left' as const,
-    view: {
-      center: [116.2, 6.8] as [number, number],
-      zoom: 4.2,
-      pitch: 26,
-      bearing: -14,
-    },
-  },
-  {
-    id: 'chapter-2',
-    navLabel: 'Capacity',
-    eyebrow: 'Capacity Gap',
-    title: 'The current verified build is only a fraction of the announced pipeline.',
-    description: `${formatCapacityGw(claimedCapacityMw)} is claimed in the active registry. ${formatCapacityGw(observedCapacityMw)} is currently resolved as observed build.`,
-    secondaryText: `${formatPercent(observedShare)} of claimed capacity is visible in the current evidence stack.`,
-    size: 'regular',
-    stats: [
-      {
-        label: 'Announced Capacity',
-        value: formatCapacityGw(claimedCapacityMw),
-        detail: 'Publicly stated total',
-        tone: 'blue' as const,
-        barValue: 1,
-      },
-      {
-        label: 'Observed Build',
-        value: formatCapacityGw(observedCapacityMw),
-        detail: `${formatPercent(observedShare)} of claimed capacity`,
-        tone: 'teal' as const,
-        barValue: observedShare,
-      },
-    ],
-    signalsLabel: 'Regional Frame',
-    signals: [
-      {
-        title:
-          mixedProjectCount > 0
-            ? `${solarProjectCount} solar, ${windProjectCount} wind, ${mixedProjectCount} hybrid`
-            : `${solarProjectCount} solar sites and ${windProjectCount} wind sites`,
-        detail: 'The registry is still led by solar-linked projects, with a smaller wind and hybrid tail.',
-        tone: 'slate' as const,
-      },
-      {
-        title: `${matchedGeometryCount} sites already resolve to an observed asset geometry`,
-        detail: 'That lets the map move from registry points to inspectable polygons, lines, or point clusters.',
-        tone: 'teal' as const,
-      },
-    ],
-    align: 'left' as const,
-    view: {
-      center: [116.8, 7.4] as [number, number],
-      zoom: 4.95,
-      pitch: 32,
-      bearing: -12,
-    },
-  },
-  {
-    id: 'chapter-3',
-    navLabel: 'Gap',
-    eyebrow: 'Delivery Pattern',
-    title: 'Most projects do not vanish. They under-deliver.',
-    description: `${smallerThanClaimedCount} of the ${totalProjects} featured sites resolve to observed assets that are smaller than their public targets.`,
-    secondaryText: `${onScheduleCount} sites read as on schedule. ${notObservedCount} still have no matched observed asset in the current evidence.`,
-    size: 'regular',
-    stats: [
-      {
-        label: 'Smaller Than Claimed',
-        value: `${smallerThanClaimedCount} sites`,
-        detail: 'Dominant delivery outcome',
-        tone: 'amber' as const,
-        barValue: smallerThanClaimedCount / totalProjects,
-      },
-      {
-        label: 'On Schedule',
-        value: `${onScheduleCount} sites`,
-        detail: 'Observed close to target',
-        tone: 'teal' as const,
-        barValue: onScheduleCount / totalProjects,
-      },
-    ],
-    signalsLabel: 'Observed Pattern',
-    signals: [
-      {
-        title: `${formatPercent(averageMatchConfidence)} average match confidence`,
-        detail: 'The current matching is strong enough to compare public claims against observed build at site level.',
-        badge: 'Confidence',
-        tone: 'blue' as const,
-      },
-      {
-        title: `${medianDistanceKm.toFixed(2)} km median project-to-asset distance`,
-        detail: 'Registry points and observed assets are usually close, but not interchangeable.',
-        badge: 'Distance',
-        tone: 'slate' as const,
-      },
-    ],
-    align: 'left' as const,
-    view: {
-      center: [121.18, 14.82] as [number, number],
-      zoom: 6.35,
-      pitch: 40,
-      bearing: -20,
-    },
-  },
-  {
-    id: 'chapter-4',
-    navLabel: 'Evidence',
-    eyebrow: 'Observed Ground Truth',
-    title: 'Satellite-linked footprints turn claims into inspectable sites.',
-    description: 'The project becomes inspectable once a registry entry resolves to an observed polygon, corridor, or point cluster.',
-    secondaryText: 'This chapter overlays the matched GRW geometry used in the site review, so the build is visible rather than implied.',
-    size: 'regular',
-    methods: [
-      {
-        eyebrow: 'Registry',
-        title: 'Reviewed project coordinates',
-        detail: 'Each site starts with source-backed locality and reviewed registry coordinates.',
-      },
-      {
-        eyebrow: 'Observation',
-        title: 'GRW footprint or point geometry',
-        detail: 'Observed assets are pulled in as polygons for many solar-linked sites and point clusters for wind-heavy cases.',
-      },
-      {
-        eyebrow: 'Match',
-        title: 'Distance and confidence checks',
-        detail: 'Every resolved site keeps the spatial gap and confidence score that made the match defensible.',
-      },
-    ],
-    note: 'The pale geometry on the map is the observed asset itself, not a decorative highlight.',
-    align: 'left' as const,
-    view: {
-      center: [109.1558, 13.0489] as [number, number],
-      zoom: 9.2,
-      pitch: 46,
-      bearing: 18,
-    },
-  },
-  {
-    id: 'chapter-5',
-    navLabel: 'Grid',
-    eyebrow: 'Grid Readiness',
-    title: 'Built capacity still needs credible grid-side evidence to deliver.',
-    description: `${transmissionGradeCount} sites sit near transmission-grade infrastructure in the current read. ${ambiguousGridCount} remain ambiguous, and ${noGridEvidenceCount} show no credible grid evidence in the open-source record.`,
-    secondaryText: 'That last infrastructure check matters because visible build can still stall before actual delivery.',
-    size: 'regular',
-    stats: [
-      {
-        label: 'Transmission-Grade',
-        value: `${transmissionGradeCount} sites`,
-        detail: 'Strong nearby grid support',
-        tone: 'teal' as const,
-        barValue: transmissionGradeCount / totalProjects,
-      },
-      {
-        label: 'Ambiguous or Weak',
-        value: `${ambiguousGridCount + noGridEvidenceCount} sites`,
-        detail: 'Further review still needed',
-        tone: 'coral' as const,
-        barValue: (ambiguousGridCount + noGridEvidenceCount) / totalProjects,
-      },
-    ],
-    signalsLabel: 'Connection Readout',
-    signals: [
-      {
-        title: `${ambiguousGridCount} sites with infrastructure nearby but still ambiguous`,
-        detail: 'Proximity alone is not enough. Site-side connection evidence still matters.',
-        tone: 'amber' as const,
-      },
-      {
-        title: `${noGridEvidenceCount} sites with no credible grid evidence`,
-        detail: 'These remain the weakest delivery cases in the current view.',
-        tone: 'coral' as const,
-      },
-    ],
-    align: 'left' as const,
-    view: {
-      center: [119.711472, -3.987306] as [number, number],
-      zoom: 9.6,
-      pitch: 52,
-      bearing: 24,
-    },
-  },
-  {
-    id: 'chapter-6',
-    navLabel: 'Watchlist',
-    eyebrow: 'Risk Snapshot',
-    title: 'The weakest sites are the ones that still lack a clear delivery path.',
-    description: `${noGridEvidenceCount} sites still show no credible grid evidence, while ${ambiguousGridCount} sit in the gray zone between nearby infrastructure and actual site-side connection.`,
-    secondaryText: 'These are the cases where closer reporting, stronger infrastructure records, and finer site review matter most.',
-    size: 'narrow',
-    signalsLabel: 'What To Inspect Next',
-    signals: [
-      {
-        title: 'No credible grid evidence',
-        detail: 'Treat these as the highest-risk delivery cases in the current project.',
-        tone: 'coral' as const,
-      },
-      {
-        title: 'Infrastructure nearby but ambiguous',
-        detail: 'These need closer site-side review before they can be counted as delivery-ready.',
-        tone: 'amber' as const,
-      },
-    ],
-    align: 'left' as const,
-    view: {
-      center: [103.018, 21.386] as [number, number],
-      zoom: 7.5,
-      pitch: 42,
-      bearing: 14,
-    },
-  },
+ {id:'chapter-1',navLabel:'The region',eyebrow:'Southeast Asia',title:'A regional view of renewable energy',description:'Paper to Power aims to follow renewable energy development across Southeast Asia, from public announcements to reported operation and mapped evidence.',secondaryText:'The September 2026 baseline spans eleven countries and five renewable technologies. Explore individual units and phases, alongside the sources behind reviewed claims.',note:'Solar · Wind · Hydro · Geothermal · Bioenergy.',size:'wide',align:'left',view:{center:[116.2,6.8],zoom:4.2,pitch:26,bearing:-14}},
+ {id:'chapter-2',navLabel:'Project journeys',eyebrow:'From announcement to operation',title:'Projects leave a trail of records',description:'An announcement sets out a capacity or target date. Construction and operating reports add later milestones, each with its own source.',secondaryText:'Those stages remain separate in the record, so a promise and a reported operating plant can be read in context.',size:'regular',align:'left',view:{center:[108.6,13.2],zoom:5.5,pitch:30,bearing:8}},
+ {id:'chapter-3',navLabel:'Mapped evidence',eyebrow:'Another view of the project',title:'A footprint adds physical evidence',description:'Mapped arrays and turbine points can help identify a project’s physical presence. Their detection dates sit alongside the dates in public records.',secondaryText:'Generating capacity and electricity output need separate sources. The saved mapped observations run through June 2024.',size:'regular',align:'left',view:{center:[103.642,1.348],zoom:12.8,pitch:35,bearing:10}},
+ {id:'chapter-4',navLabel:'Explore',eyebrow:'The regional project record',title:'Follow projects across Southeast Asia',description:'Explore the selection by country, technology or review status, then open a project’s dates, sources and mapped evidence.',secondaryText:'Detailed examples later in the page show how the records and footprints can be read together.',size:'regular',align:'left',view:{center:[116.2,6.8],zoom:4.2,pitch:20,bearing:0}},
 ];
 
 function buildStoryProjectCollection() {
@@ -336,7 +48,7 @@ function buildStoryProjectCollection() {
       properties: {
         id: project.projectId,
         name: project.projectName,
-        claimed: project.claimedCapacityMw ?? 40,
+        claimed: project.claimedCapacityMw ?? 0,
         status: project.paperToPowerLabel,
         grid: project.gridEvidenceClass ?? 'unknown',
         tech: project.technology,
@@ -346,163 +58,13 @@ function buildStoryProjectCollection() {
 }
 
 function buildStoryObservedCollection() {
-  return {
-    type: 'FeatureCollection' as const,
-    features: registryMapProjects
-      .filter((project) => project.matchedAssetGeometry)
-      .map((project) => ({
-        type: 'Feature' as const,
-        geometry: project.matchedAssetGeometry as unknown as GeoJSON.Geometry,
-        properties: {
-          chapter: 'chapter-4',
-          id: project.projectId,
-          tech: project.technology,
-          status: project.paperToPowerLabel,
-        },
-      })),
-  };
+ return {type:'FeatureCollection' as const,features:registryMapProjects.flatMap(project=>project.matchedAssetGeometries.map(geometry=>({
+  type:'Feature' as const,geometry:geometry as unknown as GeoJSON.Geometry,properties:{chapter:'chapter-4',id:project.projectId,tech:project.technology,status:project.observationStatus}
+ })))};
 }
-
-function createEllipsePolygon(
-  center: [number, number],
-  radiusLon: number,
-  radiusLat: number,
-  steps = 40,
-) {
-  const coordinates: [number, number][] = [];
-
-  for (let step = 0; step <= steps; step += 1) {
-    const angle = (Math.PI * 2 * step) / steps;
-    coordinates.push([
-      center[0] + Math.cos(angle) * radiusLon,
-      center[1] + Math.sin(angle) * radiusLat,
-    ]);
-  }
-
-  return coordinates;
-}
-
 function buildStoryContextCollection() {
-  const byCountry = new Map<string, RegistryMapProject[]>();
-  const observedProjects = registryMapProjects.filter(
-    (project) => project.paperToPowerLabel !== 'claimed_not_observed',
-  );
-
-  registryMapProjects.forEach((project) => {
-    const existing = byCountry.get(project.countryCode) ?? [];
-    byCountry.set(project.countryCode, [...existing, project]);
-  });
-
-  const features: Array<{
-    type: 'Feature';
-    geometry: GeoJSON.Geometry;
-    properties: Record<string, string | number>;
-  }> = [];
-
-  byCountry.forEach((projects, countryCode) => {
-    const centroidLon = projects.reduce((sum, project) => sum + project.longitude, 0) / projects.length;
-    const centroidLat = projects.reduce((sum, project) => sum + project.latitude, 0) / projects.length;
-    const lonSpread = Math.max(...projects.map((project) => Math.abs(project.longitude - centroidLon)));
-    const latSpread = Math.max(...projects.map((project) => Math.abs(project.latitude - centroidLat)));
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[
-          ...createEllipsePolygon(
-            [centroidLon, centroidLat],
-            Math.max(1.2, lonSpread * 1.3 + 0.95),
-            Math.max(0.9, latSpread * 1.35 + 0.8),
-          ),
-        ]],
-      },
-      properties: {
-        chapter: 'chapter-1',
-        kind: 'country-envelope',
-        countryCode,
-      },
-    });
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[
-          ...createEllipsePolygon(
-            [centroidLon, centroidLat],
-            Math.max(1.2, lonSpread * 1.3 + 0.95),
-            Math.max(0.9, latSpread * 1.35 + 0.8),
-          ),
-        ]],
-      },
-      properties: {
-        chapter: 'chapter-2',
-        kind: 'country-envelope',
-        countryCode,
-      },
-    });
-
-    if (projects.length > 1) {
-      const spine = [...projects].sort((left, right) => left.longitude - right.longitude || left.latitude - right.latitude);
-      features.push({
-        type: 'Feature',
-        geometry: {
-          type: 'LineString',
-          coordinates: spine.map((project) => [project.longitude, project.latitude]),
-        },
-        properties: {
-          chapter: 'chapter-3',
-          kind: 'country-spine',
-          countryCode,
-        },
-      });
-    }
-  });
-
-  observedProjects.forEach((project) => {
-    const radiiByGrid = {
-      transmission_grade_connected: [0.75, 0.55],
-      transmission_corridor_only: [0.62, 0.46],
-      distribution_only_nearby: [0.48, 0.36],
-      power_infrastructure_nearby_but_ambiguous: [0.56, 0.4],
-      no_credible_grid_evidence: [0.42, 0.3],
-    } as const;
-
-    const [radiusLon, radiusLat] =
-      radiiByGrid[project.gridEvidenceClass ?? 'no_credible_grid_evidence'] ?? [0.42, 0.3];
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[...createEllipsePolygon([project.longitude, project.latitude], radiusLon, radiusLat, 28)]],
-      },
-      properties: {
-        chapter: 'chapter-5',
-        kind: 'readiness-halo',
-        grid: project.gridEvidenceClass ?? 'unknown',
-      },
-    });
-
-    features.push({
-      type: 'Feature',
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[...createEllipsePolygon([project.longitude, project.latitude], radiusLon, radiusLat, 28)]],
-      },
-      properties: {
-        chapter: 'chapter-6',
-        kind: 'readiness-halo',
-        grid: project.gridEvidenceClass ?? 'unknown',
-      },
-    });
-  });
-
-  return {
-    type: 'FeatureCollection' as const,
-    features,
-  };
+ // The story uses only sourced project points and reviewed assets. No fabricated site boundaries or grid corridors.
+ return {type:'FeatureCollection' as const,features:[]};
 }
 
 function getChapterPadding(
@@ -523,58 +85,17 @@ function applyStoryProjectTheme(map: MapLibreMap, chapterId: string) {
     return;
   }
 
-  const sharedRadius = [
-    'interpolate',
-    ['linear'],
-    ['zoom'],
-    4,
-    ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 2.4, 220, 8],
-    10,
-    ['interpolate', ['linear'], ['coalesce', ['get', 'claimed'], 40], 40, 5.2, 220, 14],
-  ];
-
-  const statusColors = [
-    'match',
-    ['get', 'status'],
-    'observed_on_schedule',
-    '#48b78d',
-    'built_and_corridor_ready',
-    '#67d4ff',
-    'built_but_low_deliverability',
-    '#9b83d1',
-    'observed_smaller_than_claimed',
-    '#d99844',
-    'observed_delayed',
-    '#d47c4d',
-    'claimed_not_observed',
-    '#d86a5b',
-    '#8f9ba2',
-  ] as const;
-
-  const gridColors = [
-    'match',
-    ['get', 'grid'],
-    'transmission_grade_connected',
-    '#48b78d',
-    'transmission_corridor_only',
-    '#5d8fe8',
-    'distribution_only_nearby',
-    '#c3a554',
-    'power_infrastructure_nearby_but_ambiguous',
-    '#d78f51',
-    'no_credible_grid_evidence',
-    '#d86a5b',
-    '#88939a',
-  ] as const;
+  const sharedRadius = ['interpolate',['linear'],['zoom'],4,5,10,10];
+  const statusColors = ['match',['get','status'],'observed_footprint','#2D9A6F','review_pending','#D4882E','not_detected_by_cutoff','#C76A3C','coverage_unavailable','#7A7A7A','not_yet_due_at_cutoff','#2878B5','method_not_applicable','#8B6CA7','#8f9ba2'] as const;
 
   let haloColor: string | readonly unknown[] = '#78a7ba';
-  let coreColor: string | readonly unknown[] = '#507889';
+  let coreColor: string | readonly unknown[] = ['match',['get','tech'],'solar','#c99536','wind','#3b8ea5','hydro','#3868a6','geothermal','#ad5e42','bioenergy','#63864b','pumped_storage','#747b88','#8b6ca7'];
   let haloOpacity = 0.3;
   let coreStroke = 'rgba(249, 245, 236, 0.9)';
 
   if (chapterId === 'chapter-2') {
     haloColor = '#6a9fc4';
-    coreColor = '#4e7f9f';
+    coreColor = ['match',['get','tech'],'solar','#c99536','wind','#3b8ea5','hydro','#3868a6','geothermal','#ad5e42','bioenergy','#63864b','pumped_storage','#747b88','#8b6ca7'];
     haloOpacity = 0.34;
     coreStroke = 'rgba(248, 244, 236, 0.94)';
   }
@@ -588,17 +109,11 @@ function applyStoryProjectTheme(map: MapLibreMap, chapterId: string) {
 
   if (chapterId === 'chapter-4') {
     haloColor = 'rgba(84, 160, 168, 0.45)';
-    coreColor = 'rgba(30, 88, 105, 0.92)';
+    coreColor = ['match',['get','tech'],'solar','#c99536','wind','#3b8ea5','hydro','#3868a6','geothermal','#ad5e42','bioenergy','#63864b','pumped_storage','#747b88','#8b6ca7'];
     haloOpacity = 0.36;
     coreStroke = 'rgba(250, 246, 238, 0.96)';
   }
 
-  if (chapterId === 'chapter-5' || chapterId === 'chapter-6') {
-    haloColor = gridColors;
-    coreColor = gridColors;
-    haloOpacity = 0.4;
-    coreStroke = 'rgba(248, 244, 236, 0.92)';
-  }
 
   map.setPaintProperty(STORY_PROJECT_HALO_LAYER_ID, 'circle-color', haloColor as never);
   map.setPaintProperty(STORY_PROJECT_HALO_LAYER_ID, 'circle-radius', sharedRadius as never);
@@ -613,7 +128,7 @@ function applyStoryProjectTheme(map: MapLibreMap, chapterId: string) {
   map.setPaintProperty(
     STORY_PROJECT_CORE_LAYER_ID,
     'circle-radius',
-    ['interpolate', ['linear'], ['zoom'], 4, 1.8, 10, 4.8] as never,
+    ['interpolate', ['linear'], ['zoom'], 4, 4, 10, 6] as never,
   );
   map.setPaintProperty(STORY_PROJECT_CORE_LAYER_ID, 'circle-stroke-color', coreStroke as never);
   map.setPaintProperty(
@@ -627,79 +142,9 @@ function applyStoryProjectTheme(map: MapLibreMap, chapterId: string) {
     ['interpolate', ['linear'], ['zoom'], 4, 0.88, 10, 0.96] as never,
   );
 
-  if (map.getLayer(STORY_CONTEXT_FILL_LAYER_ID) && map.getLayer(STORY_CONTEXT_OUTLINE_LAYER_ID)) {
-    const fillColorByChapter = [
-      'match',
-      ['get', 'chapter'],
-      'chapter-1',
-      'rgba(79, 136, 168, 0.18)',
-      'chapter-2',
-      'rgba(79, 136, 168, 0.18)',
-      'chapter-5',
-      [
-        'match',
-        ['get', 'grid'],
-        'transmission_grade_connected',
-        'rgba(76, 164, 132, 0.15)',
-        'power_infrastructure_nearby_but_ambiguous',
-        'rgba(219, 166, 95, 0.15)',
-        'no_credible_grid_evidence',
-        'rgba(229, 110, 88, 0.14)',
-        'rgba(120, 154, 168, 0.1)',
-      ],
-      'rgba(0,0,0,0)',
-    ] as const;
-
-    map.setFilter(STORY_CONTEXT_FILL_LAYER_ID, [
-      'all',
-      ['==', ['geometry-type'], 'Polygon'],
-      ['==', ['get', 'chapter'], chapterId],
-    ] as never);
-    map.setFilter(STORY_CONTEXT_OUTLINE_LAYER_ID, [
-      'all',
-      ['==', ['geometry-type'], 'Polygon'],
-      ['==', ['get', 'chapter'], chapterId],
-    ] as never);
-    map.setPaintProperty(STORY_CONTEXT_FILL_LAYER_ID, 'fill-color', fillColorByChapter as never);
-    map.setPaintProperty(
-      STORY_CONTEXT_FILL_LAYER_ID,
-      'fill-opacity',
-      chapterId === 'chapter-1' || chapterId === 'chapter-2'
-        ? 0.95
-        : chapterId === 'chapter-5'
-          ? 1
-          : 0,
-    );
-    map.setPaintProperty(
-      STORY_CONTEXT_OUTLINE_LAYER_ID,
-      'line-color',
-      chapterId === 'chapter-1' ? 'rgba(72, 114, 141, 0.56)' : 'rgba(92, 114, 124, 0.48)',
-    );
-    map.setPaintProperty(
-      STORY_CONTEXT_OUTLINE_LAYER_ID,
-      'line-width',
-      chapterId === 'chapter-1' ? 1.4 : 1.1,
-    );
-    map.setPaintProperty(
-      STORY_CONTEXT_OUTLINE_LAYER_ID,
-      'line-opacity',
-      chapterId === 'chapter-1' || chapterId === 'chapter-2' || chapterId === 'chapter-5' ? 0.92 : 0,
-    );
-  }
-
-  if (map.getLayer(STORY_CONTEXT_LINE_LAYER_ID)) {
-    map.setFilter(STORY_CONTEXT_LINE_LAYER_ID, [
-      'all',
-      ['==', ['geometry-type'], 'LineString'],
-      ['==', ['get', 'chapter'], chapterId],
-    ] as never);
-    map.setPaintProperty(STORY_CONTEXT_LINE_LAYER_ID, 'line-color', 'rgba(63, 126, 160, 0.78)' as never);
-    map.setPaintProperty(
-      STORY_CONTEXT_LINE_LAYER_ID,
-      'line-width',
-      ['interpolate', ['linear'], ['zoom'], 4, 1.1, 8, 3.4] as never,
-    );
-    map.setPaintProperty(STORY_CONTEXT_LINE_LAYER_ID, 'line-opacity', chapterId === 'chapter-3' ? 0.82 : 0);
+  if (chapterId === 'chapter-3') {
+    map.setPaintProperty(STORY_PROJECT_CORE_LAYER_ID, 'circle-opacity', 0);
+    map.setPaintProperty(STORY_PROJECT_HALO_LAYER_ID, 'circle-opacity', 0);
   }
 
   if (
@@ -737,7 +182,7 @@ function applyStoryProjectTheme(map: MapLibreMap, chapterId: string) {
       'rgba(87, 110, 116, 0.88)',
     ] as const;
 
-    const showObserved = chapterId === 'chapter-4';
+    const showObserved = chapterId === 'chapter-3';
     map.setPaintProperty(STORY_OBSERVED_FILL_LAYER_ID, 'fill-color', observedFill as never);
     map.setPaintProperty(STORY_OBSERVED_FILL_LAYER_ID, 'fill-opacity', showObserved ? 1 : 0);
     map.setPaintProperty(STORY_OBSERVED_LINE_LAYER_ID, 'line-color', observedLine as never);
@@ -775,7 +220,7 @@ export function StorySection() {
     };
 
     const initMap = async () => {
-      const { default: maplibregl } = await import('maplibre-gl');
+      const maplibregl = await loadMapLibre();
       if (cancelled || !mapContainerRef.current || mapRef.current) {
         return;
       }
@@ -808,6 +253,7 @@ export function StorySection() {
       }
 
       map.on('load', () => {
+        if (mapContainerRef.current) mapContainerRef.current.dataset.mapReady='true';
         if (!map) {
           return;
         }
@@ -984,9 +430,9 @@ export function StorySection() {
           mapRef.current.flyTo({
             ...chapter.view,
             padding: getChapterPadding(chapter.align, chapter.size),
-            speed: 0.56,
+            duration: 2200,
             curve: 1.25,
-            essential: true,
+            essential: false,
           });
         });
       },
@@ -1017,7 +463,7 @@ export function StorySection() {
 
         <div className="story-stage__overlay">
           <div className="story-stage__overlay-inner">
-            <aside className="story-progress" aria-hidden="true">
+            <aside className="story-progress" aria-label="Story chapters">
               <div className="story-progress__topline">
                 <span className="story-progress__eyebrow">Story Guide</span>
                 <span className="story-progress__count">
@@ -1026,13 +472,15 @@ export function StorySection() {
               </div>
               <div className="story-progress__list">
                 {CHAPTERS.map((chapter, index) => (
-                  <div
+                  <a
                     key={chapter.id}
+                    href={`#${chapter.id}`}
+                    aria-current={activeChapterId === chapter.id ? 'step' : undefined}
                     className={`story-progress__item ${activeChapterId === chapter.id ? 'is-active' : ''}`}
                   >
                     <span className="story-progress__index">{String(index + 1).padStart(2, '0')}</span>
                     <span className="story-progress__label">{chapter.navLabel}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </aside>

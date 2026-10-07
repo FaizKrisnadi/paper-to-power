@@ -1,0 +1,14 @@
+{
+  "sourceUrl": "https://publicgemdata.nyc3.cdn.digitaloceanspaces.com/Current_maps/integrated-power/2026-09/integrated_map_2026-09.csv",
+  "publisher": "Global Energy Monitor",
+  "release": "2026-09",
+  "retrievedAt": "2026-10-07",
+  "sourceLastModified": "2026-09-24T11:20:47Z",
+  "sourceSha256": "19018cdc52b3e7f61b563c3c91aec664a7eacbf18d738e867bbcba7d4b4418c0",
+  "regionalSha256": "3ae524364e78e1e20ad997508162a141aeccadd76fe1f07e32ae8fbc91178f4d",
+  "sourceKind": "Official public tracker map CSV derivative; not the full workbook",
+  "selection": "country-area1 in eleven Southeast Asian countries; solar, wind, hydropower, geothermal, bioenergy",
+  "rowCount": 5118,
+  "grain": "Provider unit / phase, not unique power station",
+  "license": "GEM CC BY 4.0; see DATA-LICENSE.md"
+}

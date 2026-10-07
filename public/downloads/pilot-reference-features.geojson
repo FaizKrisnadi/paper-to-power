@@ -1,0 +1,802 @@
+{
+  "type": "FeatureCollection",
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "retrievedAt": "2026-10-05",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "tengeh-commercial-boundary",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.6411046,
+              1.3550227
+            ],
+            [
+              103.6422022,
+              1.3541204
+            ],
+            [
+              103.6419709,
+              1.3538303
+            ],
+            [
+              103.6427702,
+              1.3532683
+            ],
+            [
+              103.6428827,
+              1.3522053
+            ],
+            [
+              103.6438613,
+              1.3514039
+            ],
+            [
+              103.6434009,
+              1.3507759
+            ],
+            [
+              103.6442882,
+              1.3500722
+            ],
+            [
+              103.6442319,
+              1.3500235
+            ],
+            [
+              103.6466324,
+              1.348029
+            ],
+            [
+              103.6465894,
+              1.3479698
+            ],
+            [
+              103.6476774,
+              1.3470642
+            ],
+            [
+              103.6476252,
+              1.3469982
+            ],
+            [
+              103.6487486,
+              1.3460763
+            ],
+            [
+              103.6486583,
+              1.3459736
+            ],
+            [
+              103.6502145,
+              1.3447023
+            ],
+            [
+              103.6501551,
+              1.3446272
+            ],
+            [
+              103.6503617,
+              1.3444918
+            ],
+            [
+              103.6509848,
+              1.3439906
+            ],
+            [
+              103.6506092,
+              1.3434784
+            ],
+            [
+              103.6499784,
+              1.3439858
+            ],
+            [
+              103.6498395,
+              1.3442282
+            ],
+            [
+              103.6496481,
+              1.3443795
+            ],
+            [
+              103.648902,
+              1.3434363
+            ],
+            [
+              103.6486553,
+              1.3436313
+            ],
+            [
+              103.6484564,
+              1.3433799
+            ],
+            [
+              103.6482939,
+              1.3435084
+            ],
+            [
+              103.6481282,
+              1.3432954
+            ],
+            [
+              103.6476714,
+              1.3436522
+            ],
+            [
+              103.6474975,
+              1.3434268
+            ],
+            [
+              103.6469802,
+              1.3438521
+            ],
+            [
+              103.6466974,
+              1.3434945
+            ],
+            [
+              103.6464152,
+              1.3437175
+            ],
+            [
+              103.6462428,
+              1.3434995
+            ],
+            [
+              103.6456143,
+              1.3439771
+            ],
+            [
+              103.6456807,
+              1.344075
+            ],
+            [
+              103.6445933,
+              1.344934
+            ],
+            [
+              103.6449612,
+              1.3454399
+            ],
+            [
+              103.6445342,
+              1.3458633
+            ],
+            [
+              103.6441104,
+              1.3463979
+            ],
+            [
+              103.6440686,
+              1.3466384
+            ],
+            [
+              103.6441503,
+              1.3469448
+            ],
+            [
+              103.6443433,
+              1.3471986
+            ],
+            [
+              103.6428904,
+              1.3483274
+            ],
+            [
+              103.6427761,
+              1.3481831
+            ],
+            [
+              103.6419151,
+              1.3488977
+            ],
+            [
+              103.6412376,
+              1.3480021
+            ],
+            [
+              103.6404222,
+              1.348651
+            ],
+            [
+              103.6408407,
+              1.3499597
+            ],
+            [
+              103.6394797,
+              1.3509554
+            ],
+            [
+              103.6411046,
+              1.3550227
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/way/979479451",
+        "osmVersion": 5,
+        "updatedAt": "2026-04-16T11:40:50Z",
+        "checkedAt": "2026-10-05",
+        "role": "Current community-mapped commercial site boundary; attribution reference only",
+        "geometryCaution": "Refine geometry once imagery available; boundary is approximate."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7089624,
+          -3.9979853
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227737",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "2",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-30",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7205281,
+          -3.9554301
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227738",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "30",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-29",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7168374,
+          -3.9577206
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227739",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "29",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-28",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7156143,
+          -3.9592619
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227740",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "28",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-27",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7146702,
+          -3.9613597
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227741",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "27",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-26",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.714241,
+          -3.9635003
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227742",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "26",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-25",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7122025,
+          -3.965748
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227743",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "25",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-23",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7090697,
+          -3.969751
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227744",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "23",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-24",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7115373,
+          -3.9674391
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227745",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "24",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7076535,
+          -3.9779281
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227746",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "22",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7064948,
+          -3.9798118
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227747",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "21",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.71452,
+          -3.9760444
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227748",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "12",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7144556,
+          -3.9786131
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227749",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "11",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7134256,
+          -3.9806681
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227750",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "10",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.6986842,
+          -3.9959517
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227751",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "14",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.6991133,
+          -3.9941109
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227752",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "15",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7015166,
+          -3.9911355
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227753",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "16",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7102284,
+          -3.9957805
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227754",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "3",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7102928,
+          -3.9937042
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227755",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "4",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7104215,
+          -3.991478
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227756",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "5",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7108936,
+          -3.9896371
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227757",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "6",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7114515,
+          -3.9871326
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227758",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "7",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7116232,
+          -3.9850349
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227759",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "8",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7125459,
+          -3.9829157
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227760",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "9",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7059369,
+          -3.9816313
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227761",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "20",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7052288,
+          -3.9837719
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227762",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "19",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-18",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7051859,
+          -3.9862336
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227763",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "18",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.7045421,
+          -3.9882457
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227764",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "17",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.707632,
+          -4.0002542
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227765",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "1",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sidrap-turbine-13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.6982336,
+          -3.9979853
+        ]
+      },
+      "properties": {
+        "sourceUrl": "https://www.openstreetmap.org/node/5738227766",
+        "osmVersion": 2,
+        "updatedAt": "2020-04-27T21:58:32Z",
+        "checkedAt": "2026-10-05",
+        "turbineRef": "13",
+        "role": "Community-mapped turbine position; attribution reference only"
+      }
+    }
+  ]
+}

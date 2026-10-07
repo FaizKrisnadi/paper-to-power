@@ -1,33 +1,9 @@
-export type CountryCode = 'BRN' | 'KHM' | 'IDN' | 'LAO' | 'MYS' | 'MMR' | 'PHL' | 'SGP' | 'THA' | 'VNM'
-
-export type CountryRole = 'source' | 'anchor'
-
-export type Technology = 'solar' | 'wind' | 'mixed'
-
-export type PaperToPowerLabel =
-  | 'claimed_not_observed'
-  | 'observed_on_schedule'
-  | 'observed_delayed'
-  | 'observed_smaller_than_claimed'
-  | 'observed_unmatched'
-  | 'built_but_low_deliverability'
-  | 'built_and_corridor_ready'
-
-export type RegionalLinkKind = 'corridor' | 'comparison'
-
-export type GridEvidenceClass =
-  | 'transmission_grade_connected'
-  | 'transmission_corridor_only'
-  | 'distribution_only_nearby'
-  | 'power_infrastructure_nearby_but_ambiguous'
-  | 'no_credible_grid_evidence'
-
-export type PublicSourceCategory =
-  | 'observed-assets'
-  | 'project-registry'
-  | 'country-validator'
-  | 'anchor-context'
-
+import type * as GeoJSON from 'geojson';
+export type CountryCode = 'BRN' | 'KHM' | 'IDN' | 'LAO' | 'MYS' | 'MMR' | 'PHL' | 'SGP' | 'THA' | 'VNM' | 'TLS'
+export type Technology = 'solar' | 'wind' | 'mixed' | 'hydro' | 'geothermal' | 'bioenergy' | 'pumped_storage'
+export type ProjectStage = 'operating' | 'construction' | 'pre-construction' | 'announced' | 'shelved' | 'cancelled' | 'mothballed' | 'retired' | 'mixed_stage' | 'other'
+export type PaperToPowerLabel = 'observed_footprint' | 'not_detected_by_cutoff' | 'coverage_unavailable' | 'method_not_applicable' | 'not_yet_due_at_cutoff' | 'review_pending'
+export type GridEvidenceClass = 'not_assessed' | 'infrastructure_nearby' | 'proximity_not_found'
 export type GeoJSONPointGeometry = {
   type: 'Point'
   coordinates: [number, number]
@@ -54,98 +30,154 @@ export type GeoJSONGeometry =
   | GeoJSONPolygonGeometry
   | GeoJSONMultiPolygonGeometry
 
+
 export interface CountrySummary {
-  code: CountryCode
-  name: string
-  role: CountryRole
-  shortLabel: string
-  description: string
-  claimedCapacityGw: number
-  observedCapacityGw: number
-  gapShare: number
-  medianLagMonths: number
-  readinessScore: number
-  keySignal: string
-  observedAssetInventoryCount: number
-  matchedProjectCount: number
-  hasObservedCoverage: boolean
+ code: CountryCode
+ name: string
+ projectCount: number
+ hasObservedCoverage: boolean
+ documentaryReviewedCount: number
+ approvedFootprintCount: number
+ eligibleProjectCount: number
+ notDetectedCount: number
+ notDetectedShare: number | null
 }
-
-export interface FeatureCard {
-  title: string
-  eyebrow: string
-  description: string
-}
-
-export interface RegionalLink {
-  from: CountryCode
-  to: CountryCode
-  kind: RegionalLinkKind
-}
-
-export interface EvidenceRow {
-  id: string
-  projectName: string
-  countryCode: CountryCode
-  technology: Technology
-  claimedCapacityMw: number
-  observedCapacityMw: number
-  label: PaperToPowerLabel
-  firstSeenQuarter: string
-  readinessScore: number
-}
-
-export interface CaseStudy {
-  id: string
-  countryCode: CountryCode
-  title: string
-  label: PaperToPowerLabel
-  summary: string
-  whyItMatters: string
-}
-
 export interface PublicSource {
-  id: string
-  name: string
-  scope: CountryCode[]
-  category: PublicSourceCategory
-  url: string
-  notes: string
+ id: string
+ name: string
+ scope: readonly CountryCode[]
+ category: string
+ url: string
+ notes: string
+}
+export interface ReleaseMetadata {
+ projectCount: number
+ countryCount: number
+ coverageCountryCount: number
+ documentaryReviewedCount: number
+ approvedFootprintCount: number
+ eligibleProjectCount: number
+ notDetectedCount: number
+ notDetectedShare: number | null
+ observationCounts: Readonly<Record<string, number>>
+ observationCutoff: string
+ methodVersion: string
+ releaseDate: string
+ duplicateAliasCount: number
+ datasetVersion: string
+ sourceRefreshStatus: string
+ dataLicense: string
+ inputHashes: Readonly<Record<string,string>>
+ limitations: readonly string[]
+}
+export interface RegistryMapProject {
+ projectStage: ProjectStage
+ projectStageRaw: string | null
+ projectStageSource: string
+ projectStageSourceUrl: string | null
+ recordScope: string
+ reconciliation?: { projectId:string; outcome:string; providerUnitIds:string[]; assessedAt:string; reason:string; evidenceUrls:string[] }
+ relatedProviderRecords?: { projectId:string; unitId:string; name:string; phase:string|null; capacityMw:number|null; status:string; url:string }[]
+ providerDiscrepancies?: string[]
+ registryOrigin?: string
+ registryRelease?: string | null
+ providerSnapshot?: { unitId: string; plantId: string; name: string; phase: string | null; capacityMw: number | null; status: string; startYear: string | null; technologyDetail: string; fuel: string; locationAccuracy: string; url: string; release: string }
+ projectId: string
+ projectName: string
+ countryCode: CountryCode
+ countryName: string
+ technology: Technology
+ phaseName: string | null
+ claimedCapacityMw: number | null
+ capacityBasis: string
+ claimedStatus: string | null
+ claimedCod: string | null
+ expectedOperatingDate: string | null
+ reportedOperatingDate: string | null
+ locationText: string | null
+ provinceStateRegion: string | null
+ latitude: number
+ longitude: number
+ coordinateAccuracy: string
+ sourcePrimaryUrl: string | null
+ sourcePrimaryType: string | null
+ sourceConfidence: string | null
+ dataQualityFlags: string | null
+ sourceAccessCheckedAt: string | null
+ sourceAccessResult: string | null
+ claimReviewStatus: string
+ claimCheckedAt: string | null
+ sourcePublishedAt: string | null
+ claimSources: readonly { url: string; publishedAt: string | null; checkedAt: string; supports: string }[]
+ reviewNotes: string
+ conflicts: readonly string[]
+ aliasProjectIds: readonly string[]
+ paperToPowerLabel: PaperToPowerLabel
+ observationExtent: string
+ attributionReviews: readonly {siteId: string; reviewer: string; reviewedAt: string; reason: string; evidenceUrls: readonly string[]; [key: string]: unknown}[]
+ observationStatus: PaperToPowerLabel
+ observationReason: string
+ observationSource: string
+ observationCutoff: string
+ methodVersion: string
+ nonDetectionEligible: boolean
+ eligibilityReasons: readonly string[]
+ scheduleAssessment: string
+ scheduleReason: string
+ matchReviewStatus: string
+ pendingCandidateCount: number
+ rejectedCandidateCount: number
+ approvedMatchCount: number
+ candidateCount: number
+ observedCapacityMw: number | null
+ observedAreaHectares: number | null
+ observedAssetCount: number | null
+ observedFirstSeenQuarter: string | null
+ matchConfidence: number | null
+ distanceKm: number | null
+ gridEvidenceClass: GridEvidenceClass | null
+ gridEvidenceReason: string | null
+ gridContextScore: number | null
+ gridMetadataScore: number | null
+ maxNearbyGridVoltageKv: number | null
+ nearestSiteSideGridDistanceKm: number | null
+ directConnectedSubstationCount: number | null
+ directConnectedTransmissionCount: number | null
+ matchedAssetSiteId: string | null
+ matchedAssetSiteIds: readonly string[]
+ matchedAssetGeometry: GeoJSONGeometry | null
+ matchedAssetGeometries: readonly GeoJSONGeometry[]
+ matchedAssetCentroidLatitude: number | null
+ matchedAssetCentroidLongitude: number | null
+ [key: string]: unknown
 }
 
-export interface RegistryMapProject {
-  projectId: string
-  projectName: string
-  countryCode: CountryCode
-  countryName: string
-  technology: Technology
-  claimedCapacityMw: number | null
-  claimedStatus: string | null
-  claimedCod: string | null
-  locationText: string | null
-  provinceStateRegion: string | null
-  latitude: number
-  longitude: number
-  sourcePrimaryUrl: string | null
-  sourcePrimaryType: string | null
-  sourceConfidence: string | null
-  dataQualityFlags: string | null
-  paperToPowerLabel: PaperToPowerLabel
-  observedCapacityMw: number | null
-  observedAssetCount: number | null
-  observedFirstSeenQuarter: string | null
-  matchConfidence: number | null
-  distanceKm: number | null
-  gridEvidenceClass: GridEvidenceClass | null
-  gridEvidenceReason: string | null
-  gridContextScore: number | null
-  gridMetadataScore: number | null
-  maxNearbyGridVoltageKv: number | null
-  nearestSiteSideGridDistanceKm: number | null
-  directConnectedSubstationCount: number | null
-  directConnectedTransmissionCount: number | null
-  matchedAssetSiteId: string | null
-  matchedAssetGeometry: GeoJSONGeometry | null
-  matchedAssetCentroidLatitude: number | null
-  matchedAssetCentroidLongitude: number | null
+export interface PilotShape {
+ geometry: GeoJSON.Geometry;
+ kind: 'point' | 'polygon'
+ x: number | null
+ y: number | null
+ path: string | null
+}
+export interface PilotStudy {
+ projectId: string
+ shortName: string
+ eyebrow: string
+ title: string
+ finding: string
+ takeaway: string
+ limitations: string
+ approvedAssetCount: number
+ referenceCount: number
+ reviewedAt: string
+ reviewer: string
+ attribution: string
+ referenceLicense: string
+ spatialSummary: string
+ totalAreaHa: number | null
+ milestones: readonly {date: string; title: string; detail: string}[]
+ sourceLinks: readonly {label: string; url: string}[]
+ referenceShapes: readonly (PilotShape & {id: string; label: string; url: string})[]
+ assets: readonly (PilotShape & {siteId: string; label: string; firstSeenQuarter: string; firstSeenIndex: number; status: string; areaHa: number | null; reviewReason: string; spatialNote: string})[]
+ [key: string]: unknown
 }

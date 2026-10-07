@@ -1,0 +1,124 @@
+{
+  "reviewedAt": "2026-10-05",
+  "studies": [
+    {
+      "projectId": "SGP-S-001",
+      "shortName": "Tengeh",
+      "eyebrow": "Singapore \u00b7 floating solar",
+      "title": "Tengeh Reservoir",
+      "finding": "Three 2021 polygons match the commercial site.",
+      "takeaway": "The earlier polygon predates construction and lies outside the mapped commercial boundary.",
+      "limitations": "These three polygons total 10.4 ha in the saved extract. PUB describes ten commercial floating islands, so this is partial geometry. Mapped hectares do not establish MWp, output or complete construction.",
+      "referenceFeatureIds": [
+        "tengeh-commercial-boundary"
+      ],
+      "contextAssetSiteIds": [
+        "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::5"
+      ],
+      "milestones": [
+        {
+          "date": "2016",
+          "title": "Testbed launched",
+          "detail": "PUB describes a separate 1 MWp testbed."
+        },
+        {
+          "date": "2020-08",
+          "title": "Commercial construction",
+          "detail": "Construction began on the later 60 MWp farm."
+        },
+        {
+          "date": "2021-07-14",
+          "title": "Commercial operation reported",
+          "detail": "PUB and Sembcorp announce opening and operation."
+        }
+      ],
+      "sourceLinks": [
+        {
+          "label": "PUB opening announcement",
+          "url": "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM"
+        },
+        {
+          "label": "PUB testbed and commercial history",
+          "url": "https://www.pub.gov.sg/public/waterloop/sustainability/solar/floating"
+        },
+        {
+          "label": "OSM attribution reference",
+          "url": "https://www.openstreetmap.org/way/979479451"
+        }
+      ]
+    },
+    {
+      "projectId": "IDN-W-001",
+      "shortName": "Sidrap",
+      "eyebrow": "Indonesia \u00b7 onshore wind",
+      "title": "Sidrap I",
+      "finding": "27 points match the mapped turbine layout.",
+      "takeaway": "Three of the 30 reference positions have no corresponding point in the saved extract.",
+      "limitations": "References 19, 24 and 27 have no corresponding point in this saved GRW extract. That does not mean the turbines are absent. The approximate community map corroborates attribution and is not an as-built engineering survey. No MW estimate is derived.",
+      "referenceFeatureIds": [
+        "sidrap-turbine-2",
+        "sidrap-turbine-30",
+        "sidrap-turbine-29",
+        "sidrap-turbine-28",
+        "sidrap-turbine-27",
+        "sidrap-turbine-26",
+        "sidrap-turbine-25",
+        "sidrap-turbine-23",
+        "sidrap-turbine-24",
+        "sidrap-turbine-22",
+        "sidrap-turbine-21",
+        "sidrap-turbine-12",
+        "sidrap-turbine-11",
+        "sidrap-turbine-10",
+        "sidrap-turbine-14",
+        "sidrap-turbine-15",
+        "sidrap-turbine-16",
+        "sidrap-turbine-3",
+        "sidrap-turbine-4",
+        "sidrap-turbine-5",
+        "sidrap-turbine-6",
+        "sidrap-turbine-7",
+        "sidrap-turbine-8",
+        "sidrap-turbine-9",
+        "sidrap-turbine-20",
+        "sidrap-turbine-19",
+        "sidrap-turbine-18",
+        "sidrap-turbine-17",
+        "sidrap-turbine-1",
+        "sidrap-turbine-13"
+      ],
+      "contextAssetSiteIds": [],
+      "milestones": [
+        {
+          "date": "2017-09-30",
+          "title": "Operating target published",
+          "detail": "ESDM targets early 2018; quarter precision retained."
+        },
+        {
+          "date": "2018-03",
+          "title": "Grid supply reported",
+          "detail": "UPC reports power supplied to the PLN grid."
+        },
+        {
+          "date": "2018-04-05",
+          "title": "Construction completion",
+          "detail": "UPC reports a separate completion milestone."
+        }
+      ],
+      "sourceLinks": [
+        {
+          "label": "UPC project milestones",
+          "url": "https://upcrenewables.com/projects/sidrap"
+        },
+        {
+          "label": "ESDM pre-operation baseline",
+          "url": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-ebtke/pltb-sidrap-pembangkit-listrik-angin-terbesar-di-indonesia"
+        },
+        {
+          "label": "OSM turbine layout reference",
+          "url": "https://www.openstreetmap.org/way/604841861"
+        }
+      ]
+    }
+  ]
+}

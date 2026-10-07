@@ -30,3 +30,17 @@ cache/
 data/interim/*
 !data/interim/.gitkeep
 data/processed/asean_registry_import_summary.json
+
+.venv/
+.pytest_cache/
+work/repair-2026-10-05/
+
+work/evidence-pilot/
+work/browser-smoke/
+
+work/editorial-refresh/
+
+work/design-v3/
+
+work/phase-2-refresh/
+work/stage-reconciliation/

@@ -1,0 +1,10 @@
+# Sources, attribution and reuse
+
+The application code has no owner-selected distribution license. This repair does not grant new code rights or apply a blanket license to third-party material.
+
+- [Global Renewables Watch](https://github.com/microsoft/global-renewables-watch) supplies the saved solar-polygon and onshore-wind-point observations. Its software repository identifies an MIT code license; do not assume this settles all data or imagery rights. Retain the dataset's release-specific terms and attribution before redistributing extracts or deriving new imagery outputs.
+- [Global Energy Monitor's Global Solar Power Tracker](https://globalenergymonitor.org/projects/global-solar-power-tracker/) provides project research leads. Its page states CC BY 4.0 for the tracker, with a CC BY-NC 4.0 exception for some TransitionZero location data. Check the exact source and field before reuse, and retain the requested attribution. The February 2026 tracker is not fully reconciled into this release.
+- [OpenStreetMap](https://www.openstreetmap.org/copyright) data is subject to ODbL and attribution requirements. The map retains its attribution control. Cached infrastructure context is incomplete and its snapshot date is unresolved. The separately fetched pilot reference geometry has a known 5 October 2026 retrieval date. Its bounded derivative GeoJSON is distributed with OpenStreetMap attribution and ODbL 1.0; source URLs and element version dates are preserved. Do not apply this reference license to GRW observations or application code.
+- Project developer, government and multilateral publications support documentary reviews. Public accessibility does not grant permission to redistribute entire publications. The evidence release records references and bounded factual notes.
+
+Downloads carry project-level references, review status and limitations. These notes explain provenance and outstanding rights checks; they are not a declaration that every input can be relicensed or freely redistributed.

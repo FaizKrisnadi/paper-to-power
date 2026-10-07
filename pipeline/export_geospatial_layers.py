@@ -1,205 +1,40 @@
+"""Export versioned geometries and parquet from the same active registry and approved matches."""
 from __future__ import annotations
-
+import json
 from pathlib import Path
-from typing import Any
-
+from .io import read_json,write_json
 from .geospatial_runtime import ensure_modules
-from .io import read_json, write_json
+ROOT=Path(__file__).resolve().parent.parent
+OUTPUT_DIR=ROOT/'data/processed/geospatial'
 
-ROOT = Path(__file__).resolve().parent.parent
-PROJECT_REGISTRY_PATH = ROOT / "data" / "processed" / "project_registry.json"
-OBSERVED_ASSETS_PATH = ROOT / "data" / "processed" / "observed_assets.json"
-MATCHES_PATH = ROOT / "data" / "processed" / "project_asset_matches.json"
-LABELS_PATH = ROOT / "data" / "processed" / "paper_to_power_labels.json"
-OUTPUT_DIR = ROOT / "data" / "processed" / "geospatial"
-
-
-def load_records(path: Path, key: str) -> list[dict[str, Any]]:
-    payload = read_json(path)
-    if not isinstance(payload, dict):
-        raise ValueError(f"{path.name} must contain an object")
-    records = payload.get(key)
-    if not isinstance(records, list):
-        raise ValueError(f"{path.name} must contain a list at '{key}'")
-    return [record for record in records if isinstance(record, dict)]
-
-
-def build_project_points_gdf(projects: list[dict[str, Any]]):
-    import geopandas as gpd
-    from shapely.geometry import Point
-
-    rows: list[dict[str, Any]] = []
-    for project in projects:
-        latitude = project.get("latitude")
-        longitude = project.get("longitude")
-        if not isinstance(latitude, int | float) or not isinstance(longitude, int | float):
-            continue
-        row = dict(project)
-        row["geometry"] = Point(float(longitude), float(latitude))
-        rows.append(row)
-    return gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
-
-
-def build_observed_assets_gdf(assets: list[dict[str, Any]]):
+def main():
+    ensure_modules(['geopandas','pyarrow','shapely'],module_name='pipeline.export_geospatial_layers')
     import geopandas as gpd
     from shapely.geometry import shape
-
-    rows: list[dict[str, Any]] = []
-    for asset in assets:
-        geometry = asset.get("geometry")
-        if not isinstance(geometry, dict):
-            continue
-        row = dict(asset)
-        row["geometry"] = shape(geometry)
-        rows.append(row)
-    return gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
-
-
-def build_match_layers(
-    projects: list[dict[str, Any]],
-    assets: list[dict[str, Any]],
-    matches: list[dict[str, Any]],
-    labels: list[dict[str, Any]],
-):
-    import geopandas as gpd
-    from shapely.geometry import LineString, Point, shape
-
-    project_by_id = {str(project.get("projectId")): project for project in projects}
-    asset_by_id = {str(asset.get("siteId")): asset for asset in assets}
-    label_by_project = {
-        str(label.get("projectId")): str(label.get("paperToPowerLabel"))
-        for label in labels
-        if label.get("projectId") is not None and label.get("paperToPowerLabel") is not None
-    }
-
-    matched_project_rows: list[dict[str, Any]] = []
-    matched_asset_rows: list[dict[str, Any]] = []
-    match_link_rows: list[dict[str, Any]] = []
-
-    for match in matches:
-        project_id = str(match.get("projectId") or "")
-        site_id = str(match.get("siteId") or "")
-        project = project_by_id.get(project_id)
-        asset = asset_by_id.get(site_id)
-        if project is None or asset is None:
-            continue
-
-        project_lat = project.get("latitude")
-        project_lon = project.get("longitude")
-        asset_lat = asset.get("centroidLatitude")
-        asset_lon = asset.get("centroidLongitude")
-        asset_geometry = asset.get("geometry")
-        if not (
-            isinstance(project_lat, int | float)
-            and isinstance(project_lon, int | float)
-            and isinstance(asset_lat, int | float)
-            and isinstance(asset_lon, int | float)
-            and isinstance(asset_geometry, dict)
-        ):
-            continue
-
-        label = label_by_project.get(project_id, str(match.get("paperToPowerLabel") or "claimed_not_observed"))
-
-        matched_project_rows.append(
-            {
-                "projectId": project_id,
-                "projectName": project.get("projectName"),
-                "countryCode": project.get("countryCode"),
-                "technology": project.get("technology"),
-                "paperToPowerLabel": label,
-                "matchConfidence": match.get("matchConfidence"),
-                "distanceKm": match.get("distanceKm"),
-                "geometry": Point(float(project_lon), float(project_lat)),
-            }
-        )
-
-        matched_asset_rows.append(
-            {
-                "siteId": site_id,
-                "projectId": project_id,
-                "projectName": project.get("projectName"),
-                "countryCode": asset.get("countryCode"),
-                "technology": asset.get("technology"),
-                "paperToPowerLabel": label,
-                "matchConfidence": match.get("matchConfidence"),
-                "distanceKm": match.get("distanceKm"),
-                "observedFirstSeenQuarter": asset.get("observedFirstSeenQuarter"),
-                "estimatedCapacityProxyMw": asset.get("estimatedCapacityProxyMw"),
-                "geometry": shape(asset_geometry),
-            }
-        )
-
-        match_link_rows.append(
-            {
-                "matchId": match.get("matchId"),
-                "projectId": project_id,
-                "siteId": site_id,
-                "projectName": project.get("projectName"),
-                "paperToPowerLabel": label,
-                "matchConfidence": match.get("matchConfidence"),
-                "distanceKm": match.get("distanceKm"),
-                "geometry": LineString(
-                    [
-                        (float(project_lon), float(project_lat)),
-                        (float(asset_lon), float(asset_lat)),
-                    ]
-                ),
-            }
-        )
-
-    return (
-        gpd.GeoDataFrame(matched_project_rows, geometry="geometry", crs="EPSG:4326"),
-        gpd.GeoDataFrame(matched_asset_rows, geometry="geometry", crs="EPSG:4326"),
-        gpd.GeoDataFrame(match_link_rows, geometry="geometry", crs="EPSG:4326"),
-    )
-
-
-def write_geospatial_outputs(name: str, gdf) -> dict[str, Any]:
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    geojson_path = OUTPUT_DIR / f"{name}.geojson"
-    parquet_path = OUTPUT_DIR / f"{name}.parquet"
-    gdf.to_file(geojson_path, driver="GeoJSON")
-    gdf.to_parquet(parquet_path, index=False)
-    return {
-        "name": name,
-        "recordCount": int(len(gdf)),
-        "geojson": str(geojson_path.relative_to(ROOT)),
-        "parquet": str(parquet_path.relative_to(ROOT)),
-    }
-
-
-def main() -> None:
-    ensure_modules(
-        ["geopandas", "pyarrow", "shapely"],
-        module_name="pipeline.export_geospatial_layers",
-    )
-
-    projects = load_records(PROJECT_REGISTRY_PATH, "records")
-    assets = load_records(OBSERVED_ASSETS_PATH, "records")
-    matches = load_records(MATCHES_PATH, "matches")
-    labels = load_records(LABELS_PATH, "projectLabels")
-
-    project_points = build_project_points_gdf(projects)
-    observed_assets = build_observed_assets_gdf(assets)
-    matched_projects, matched_assets, match_links = build_match_layers(
-        projects=projects,
-        assets=assets,
-        matches=matches,
-        labels=labels,
-    )
-
-    summary = {
-        "layers": [
-            write_geospatial_outputs("project_registry_points", project_points),
-            write_geospatial_outputs("observed_assets", observed_assets),
-            write_geospatial_outputs("matched_projects", matched_projects),
-            write_geospatial_outputs("matched_assets", matched_assets),
-            write_geospatial_outputs("match_links", match_links),
-        ]
-    }
-    write_json(OUTPUT_DIR / "summary.json", summary)
-    print(f"Wrote {OUTPUT_DIR.relative_to(ROOT) / 'summary.json'}")
-
-
-if __name__ == "__main__":
-    main()
+    registry=read_json(ROOT/'data/processed/frontend_dataset.json')['registryMapProjects']
+    assets=read_json(ROOT/'data/processed/observed_assets.json')['records']
+    matches=read_json(ROOT/'data/processed/project_asset_matches.json')['matches']
+    by_asset={a['siteId']:a for a in assets};by_project={p['projectId']:p for p in registry}
+    def feature(geometry,properties):return {'type':'Feature','geometry':geometry,'properties':properties}
+    points=[feature({'type':'Point','coordinates':[p['longitude'],p['latitude']]},p) for p in registry]
+    observed=[feature(a['geometry'],{k:v for k,v in a.items() if k!='geometry'}) for a in assets]
+    linked_assets=[];links=[]
+    for m in matches:
+        a=by_asset[m['siteId']];p=by_project[m['projectId']]
+        linked_assets.append(feature(a['geometry'],{**m,'projectName':p['projectName']}))
+        links.append(feature({'type':'LineString','coordinates':[[p['longitude'],p['latitude']],[a['centroidLongitude'],a['centroidLatitude']]]},m))
+    matched_projects=[f for f in points if f['properties']['matchedAssetSiteIds']]
+    layers={'project_registry_points':points,'observed_assets':observed,'matched_projects':matched_projects,'matched_assets':linked_assets,'match_links':links}
+    summary=[]
+    for name,features in layers.items():
+        (OUTPUT_DIR/f'{name}.geojson').write_text(json.dumps({'type':'FeatureCollection','features':features},separators=(',',':'),ensure_ascii=True)+'\n')
+        rows=[]
+        for f in features:
+            props={k:(json.dumps(v,sort_keys=True) if isinstance(v,(list,dict)) else v) for k,v in f['properties'].items() if k not in ('geometry','matchedAssetGeometry','matchedAssetGeometries')}
+            rows.append({**props,'geometry':shape(f['geometry'])})
+        gdf=gpd.GeoDataFrame(rows,geometry='geometry',crs='EPSG:4326') if rows else gpd.GeoDataFrame({'geometry':[]},geometry='geometry',crs='EPSG:4326')
+        gdf.to_parquet(OUTPUT_DIR/f'{name}.parquet',index=False)
+        summary.append({'name':name,'recordCount':len(features),'geojson':f'data/processed/geospatial/{name}.geojson','parquet':f'data/processed/geospatial/{name}.parquet'})
+    write_json(OUTPUT_DIR/'summary.json',{'datasetVersion':read_json(ROOT/'data/processed/frontend_dataset.json')['releaseMetadata']['datasetVersion'],'layers':summary})
+    print('Geospatial exports rebuilt from active reviewed evidence')
+if __name__=='__main__':main()

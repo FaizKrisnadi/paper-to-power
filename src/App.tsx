@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SiteNav } from './components/SiteNav';
 import { registryMapProjects } from './data/generated';
+import { PilotSection } from './components/PilotSection';
 import { HeroSection } from './components/HeroSection';
 import { StorySection } from './components/StorySection';
-import { ExplorerSection } from './components/ExplorerSection';
+import { ExplorerSection, type ExplorerFilters } from './components/ExplorerSection';
 import { CountrySection } from './components/CountrySection';
 import { MethodologySection } from './components/MethodologySection';
 import { DataSourcesPanel } from './components/DataSourcesPanel';
-import { CaseStudySection } from './components/CaseStudySection';
+import { AppClosing } from './components/AppClosing';
 import { Footer } from './components/Footer';
 
 function App() {
+  const [filters, setFilters] = useState<ExplorerFilters>({ country: 'all', tech: 'all', status: 'all', stage:'all', query:'' });
   return (
     <div className="app-container">
+      <SiteNav />
       <HeroSection />
       <StorySection />
-      <ExplorerSection allProjects={registryMapProjects} />
-      <CountrySection allProjects={registryMapProjects} />
+      <ExplorerSection allProjects={registryMapProjects} filters={filters} setFilters={setFilters} />
+      <CountrySection allProjects={registryMapProjects} onSelectCountry={country => setFilters({ country, tech: 'all', status: 'all', stage:'all', query:'' })} />
+      <PilotSection />
       <MethodologySection />
       
       {/* Container for the panels inside methodology zone */}
@@ -25,7 +30,7 @@ function App() {
         </div>
       </div>
       
-      <CaseStudySection />
+      <AppClosing />
       <Footer />
     </div>
   );

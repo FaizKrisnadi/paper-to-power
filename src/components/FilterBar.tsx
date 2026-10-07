@@ -1,95 +1,24 @@
-import React from 'react';
-import type { CountryCode, Technology, PaperToPowerLabel } from '../types/domain';
+import type { Dispatch, SetStateAction } from 'react';
+import type { ExplorerFilters } from './ExplorerSection';
+import type { CountryCode, Technology, ProjectStage, PaperToPowerLabel } from '../types/domain';
+import { OBSERVATION_LABELS } from '../lib/evidence';
 import { COUNTRY_OPTIONS, TECHNOLOGY_LABELS } from '../lib/countries';
-
-interface FilterBarProps {
-  filters: {
-    country: CountryCode | 'all';
-    tech: Technology | 'all';
-    status: PaperToPowerLabel | 'all';
-  };
-  setFilters: React.Dispatch<React.SetStateAction<{
-    country: CountryCode | 'all';
-    tech: Technology | 'all';
-    status: PaperToPowerLabel | 'all';
-  }>>;
-  resultCount: number;
-}
-
-export function FilterBar({ filters, setFilters, resultCount }: FilterBarProps) {
-  const handleFilterChange = (key: string, value: string) => {
-    setFilters({ ...filters, [key]: value });
-  };
-
-  const handleClearAll = () => {
-    setFilters({
-      country: 'all',
-      tech: 'all',
-      status: 'all'
-    });
-  };
-
-  const hasActiveFilters = filters.country !== 'all' || filters.tech !== 'all' || filters.status !== 'all';
-
-  return (
-    <div className="filter-bar">
-      <div className="filter-bar__controls">
-        
-        {/* Country Filter */}
-        <select 
-          className="filter-bar__select"
-          value={filters.country} 
-          onChange={(e) => handleFilterChange('country', e.target.value)}
-        >
-          <option value="all">All Countries</option>
-          {COUNTRY_OPTIONS.map((country) => (
-            <option key={country.code} value={country.code}>
-              {country.label}
-            </option>
-          ))}
-        </select>
-
-        {/* Technology Filter */}
-        <select 
-          className="filter-bar__select"
-          value={filters.tech} 
-          onChange={(e) => handleFilterChange('tech', e.target.value)}
-        >
-          <option value="all">All Technologies</option>
-          <option value="solar">{TECHNOLOGY_LABELS.solar}</option>
-          <option value="wind">{TECHNOLOGY_LABELS.wind}</option>
-          <option value="mixed">{TECHNOLOGY_LABELS.mixed}</option>
-        </select>
-
-        {/* Status Filter */}
-        <select 
-          className="filter-bar__select"
-          value={filters.status} 
-          onChange={(e) => handleFilterChange('status', e.target.value)}
-        >
-          <option value="all">All Statuses</option>
-          <option value="observed_on_schedule">On Schedule</option>
-          <option value="observed_smaller_than_claimed">Smaller Than Claimed</option>
-          <option value="observed_delayed">Delayed</option>
-          <option value="claimed_not_observed">Not Yet Observed</option>
-          <option value="built_and_corridor_ready">Built & Grid Ready</option>
-          <option value="built_but_low_deliverability">Built, Low Connectivity</option>
-          <option value="observed_unmatched">Unmatched</option>
-        </select>
-
-        {hasActiveFilters && (
-          <button 
-            className="filter-bar__clear"
-            onClick={handleClearAll}
-          >
-            Clear filters
-          </button>
-        )}
-      </div>
-
-      <div className="filter-bar__count">
-        Showing {resultCount} projects
-      </div>
-    </div>
-  );
+import { PROJECT_STAGE_LABELS } from '../lib/projectStages';
+interface FilterBarProps {filters:ExplorerFilters;setFilters:Dispatch<SetStateAction<ExplorerFilters>>;resultCount:number}
+export function FilterBar({filters,setFilters,resultCount}:FilterBarProps) {
+ const active=filters.country!=='all'||filters.tech!=='all'||filters.stage!=='all'||filters.status!=='all'||!!filters.query;
+ return <div className="filter-bar stage-filter-bar">
+  <div className="filter-bar__main">
+   <div className="filter-bar__controls">
+    <select className="filter-bar__select" aria-label="Country" value={filters.country} onChange={e=>setFilters({...filters,country:e.target.value as CountryCode|'all'})}><option value="all">All countries</option>{COUNTRY_OPTIONS.map(c=><option key={c.code} value={c.code}>{c.label}</option>)}</select>
+    <select className="filter-bar__select" aria-label="Technology" value={filters.tech} onChange={e=>setFilters({...filters,tech:e.target.value as Technology|'all'})}><option value="all">All technologies</option>{Object.entries(TECHNOLOGY_LABELS).map(([v,label])=><option key={v} value={v}>{label}</option>)}</select>
+    <select className="filter-bar__select" aria-label="Project stage" value={filters.stage} onChange={e=>setFilters({...filters,stage:e.target.value as ProjectStage|'all'})}><option value="all">All project stages</option>{Object.entries(PROJECT_STAGE_LABELS).map(([v,label])=><option key={v} value={v}>{label}</option>)}</select>
+    {active&&<button className="filter-bar__clear" onClick={()=>setFilters({country:'all',tech:'all',stage:'all',status:'all',query:''})}>Clear filters</button>}
+   </div>
+   <div className="filter-bar__count">Showing {resultCount.toLocaleString()} records</div>
+  </div>
+  <details className="review-filter-details"><summary>Review filters{filters.status!=='all'?' · active':''}</summary>
+   <select className="filter-bar__select" aria-label="Observation status" value={filters.status} onChange={e=>setFilters({...filters,status:e.target.value as PaperToPowerLabel|'all'})}><option value="all">All observation reviews</option>{Object.entries(OBSERVATION_LABELS).map(([v,label])=><option key={v} value={v}>{label}</option>)}</select>
+  </details>
+ </div>;
 }

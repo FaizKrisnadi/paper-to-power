@@ -1,32 +1,14 @@
-import React from 'react';
+import { releaseMetadata } from '../data/generated';
 import { SectionHeader } from './shared/SectionHeader';
 import { Accordion } from './shared/Accordion';
-
-export function MethodologySection() {
-  return (
-    <div style={{ padding: '80px 24px', background: 'var(--bg-surface)' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <SectionHeader 
-          title="How It Works" 
-          subtitle="How public renewable project announcements are checked against observed sites and grid access."
-          align="center"
-          eyebrow="Methodology"
-        />
-
-        <div style={{ marginTop: '24px' }}>
-          <Accordion title="1. Multimodal Evidence Gathering" defaultOpen={true}>
-            The process starts with public announcements, developer releases, and national project lists. This sets the baseline for each project: how much capacity is being promised, where it is meant to be, and when it is expected to come online. The registry can include solar, wind, and hybrid utility-scale projects when the public record is strong enough to locate and review them.
-          </Accordion>
-
-          <Accordion title="2. Geospatial Matching">
-            Those project locations are then checked against Global Renewables Watch (GRW) and Sentinel-2 imagery. The result is a site-level match between what is being claimed publicly and what can actually be seen on the ground.
-          </Accordion>
-
-          <Accordion title="3. Grid Context">
-            Visible build-out is only part of the story. Each observed site is also checked against nearby substations, transmission lines, and related infrastructure to understand whether the project appears ready to deliver power at utility scale.
-          </Accordion>
-        </div>
-      </div>
-    </div>
-  );
+export function MethodologySection(){
+ return <section id="methodology" style={{padding:'80px 24px',background:'var(--bg-surface)'}}><div style={{maxWidth:800,margin:'0 auto'}}>
+  <SectionHeader title="Methods & sources" eyebrow="Methodology" subtitle="Sources checked October 2026. Mapped observations through June 2024."/>
+  <Accordion title="1. Project sources" defaultOpen><p>The regional baseline is GEM’s September 2026 public map dataset, at unit and phase level. Coverage follows GEM’s technology thresholds and is not a census of all installations. Government, developer and financing documents support the checked claims. Unresolved dates, phases and capacity units remain flagged, while merged aliases retain their original sources. Provider records are imported separately from independent claim reviews. Research supplements may overlap the baseline, so record counts are not unique plant counts and no regional capacity total is calculated. Pumped storage is separate; bioenergy may contain mixed fuels.</p></Accordion>
+  <Accordion title="2. Footprint review"><p>The saved Global Renewables Watch extract covers five countries through June 2024. Each approved match has a recorded review, source links and geometry fingerprints. Tengeh and Sidrap have partial matches against approximate OpenStreetMap references fetched in October 2026. No new satellite inference was run.</p></Accordion>
+  <Accordion title="3. Dates and non-detection"><p>Non-detection needs suitable coverage, verified site coordinates, a sourced operating target before the cutoff, and a completed site review. There are {releaseMetadata.eligibleProjectCount} eligible reviews, so a non-detection percentage is unavailable.</p><p>A footprint supports physical presence. Its first-detection date does not establish commissioning, delay or abandonment.</p></Accordion>
+  <Accordion title="4. Capacity and grid connection"><p>Mapped area and turbine counts do not measure generating capacity. AC, DC/peak and hybrid claims retain their reported units. Nearby OpenStreetMap infrastructure provides context; a working connection needs a separate source. The infrastructure extract date remains unknown.</p></Accordion>
+  <Accordion title="5. Release and reuse"><p>Release {releaseMetadata.datasetVersion} · Method {releaseMetadata.methodVersion}. The downloads retain sources and review status, and the manifest records file hashes.</p><ul>{releaseMetadata.limitations.map(x=><li key={x}>{x}</li>)}</ul><p>Third-party terms and attribution apply. OpenStreetMap reference geometry is distributed under ODbL.</p></Accordion>
+  <div className="evidence-downloads"><a className="btn btn-outline" href="/downloads/project-evidence.csv" download>Registry CSV</a><a className="btn btn-outline" href="/downloads/project-evidence.json" download>Evidence JSON</a><a className="btn btn-outline" href="/downloads/release-manifest.json" download>Release manifest</a></div>
+ </div></section>;
 }

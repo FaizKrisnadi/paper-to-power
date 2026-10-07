@@ -1,0 +1,1633 @@
+{
+  "reviewDate": "2026-10-05",
+  "duplicateAliases": {
+    "IDN-W-ASEAN-003": {
+      "canonicalProjectId": "IDN-W-001",
+      "reason": "Same Sidrap phase 1, 75 MW identity confirmed by UPC project page; preserve alternate source and original row in baseline."
+    },
+    "SGP-S-ASEAN-004": {
+      "canonicalProjectId": "SGP-S-001",
+      "reason": "Same Tengeh 60 MWp project name and PUB opening source; preserve original row in baseline."
+    }
+  },
+  "projects": {
+    "BRN-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "Brunei Ministry of Finance and Economy reports groundbreaking of the 30 MW Kampong Belimbing project on 11 August 2025. Groundbreaking is not operating evidence.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.mofe.gov.bn/wp-content/uploads/2025/10/Press-Release-11.08.2025-English-Grounbreaking-Ceremony-for-Solar-Power-Plant-in-Kampong-Belimbing.pdf",
+          "publishedAt": "2025-08-11",
+          "checkedAt": "2026-10-05",
+          "supports": "Brunei Ministry of Finance and Economy reports groundbreaking of the 30 MW Kampong Belimbing project on 11 August 2025. Groundbreaking is not operating evidence."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Brunei PV solar farm",
+          "url": "https://www.gem.wiki/Brunei_PV_solar_farm",
+          "revisionId": 1129178,
+          "lastEditedAt": "2026-02-06T04:24:44Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Construction",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "30 MWac",
+              "Technology": "PV",
+              "Owner": "Seri Suria Power"
+            }
+          ]
+        },
+        {
+          "title": "Kampung Sungai Akar solar farm",
+          "url": "https://www.gem.wiki/Kampung_Sungai_Akar_solar_farm",
+          "revisionId": 1271209,
+          "lastEditedAt": "2026-08-21T23:15:28Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": []
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "construction announced",
+      "capacityBasis": "MW",
+      "claimedCapacityMw": 30,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-08-11",
+      "sourcePrimaryUrl": "https://www.mofe.gov.bn/wp-content/uploads/2025/10/Press-Release-11.08.2025-English-Grounbreaking-Ceremony-for-Solar-Power-Plant-in-Kampong-Belimbing.pdf",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "IDN-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "Masdar reports inauguration and operation of Cirata phase 1 on 9 November 2023 at 145 MWac / 192 MWp. The proposed 500 MW expansion is a separate phase.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://masdar.ae/en/news/newsroom/president-of-indonesia-inaugurates-",
+          "publishedAt": "2023-11-09",
+          "checkedAt": "2026-10-05",
+          "supports": "Masdar reports inauguration and operation of Cirata phase 1 on 9 November 2023 at 145 MWac / 192 MWp. The proposed 500 MW expansion is a separate phase."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Cirata Reservoir solar farm",
+          "url": "https://www.gem.wiki/Cirata_Reservoir_solar_farm",
+          "revisionId": 1133863,
+          "lastEditedAt": "2026-02-06T04:43:43Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2023",
+              "Nameplate capacity": "192 MWp/dc",
+              "Technology": "PV",
+              "Owner": "PT PLN Nusantara Power; Masdar Clean Energy (\u0645\u0635\u062f\u0631)"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Announced",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "500 MW",
+              "Technology": "PV",
+              "Owner": "PT PLN Nusantara Power; Masdar Clean Energy (\u0645\u0635\u062f\u0631)"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "reportedOperatingDate": "2023-11-09",
+      "claimedStatus": "operating",
+      "capacityBasis": "MWac",
+      "phaseName": "1",
+      "claimedCapacityMw": 145,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2023-11-09",
+      "sourcePrimaryUrl": "https://masdar.ae/en/news/newsroom/president-of-indonesia-inaugurates-",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "IDN-S-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "PLN Nusantara Power reports development and procurement/site activity in March 2026 for 100 MWac / 133 MWp. An earlier portfolio target of 2025 is not proof of commissioning.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.plnnusantarapower.co.id/media-relation/press-release/percepat-transisi-energi-bersih-pln-nusantara-power-perkuat-pengembangan-plts-terapung-karangkates",
+          "publishedAt": "2026-03-06",
+          "checkedAt": "2026-10-05",
+          "supports": "PLN Nusantara Power reports development and procurement/site activity in March 2026 for 100 MWac / 133 MWp. An earlier portfolio target of 2025 is not proof of commissioning."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Karangkates floating solar farm",
+          "url": "https://www.gem.wiki/Karangkates_floating_solar_farm",
+          "revisionId": 1091701,
+          "lastEditedAt": "2026-02-06T00:25:51Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Nameplate capacity": "100 MW",
+              "Technology": "PV",
+              "Owner": "PT PLN (Persero) (PT Perusahaan Listrik Negara)"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "development / construction activity reported",
+      "capacityBasis": "MWac",
+      "claimedCapacityMw": 100,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2026-03-06",
+      "sourcePrimaryUrl": "https://www.plnnusantarapower.co.id/media-relation/press-release/percepat-transisi-energi-bersih-pln-nusantara-power-perkuat-pengembangan-plts-terapung-karangkates",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "IDN-S-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Minut solar farm",
+          "url": "https://www.gem.wiki/Minut_solar_farm",
+          "revisionId": 890992,
+          "lastEditedAt": "2025-05-08T17:51:24Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2019",
+              "Nameplate capacity": "21 MWac",
+              "Technology": "PV"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "IDN-S-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "IDN-W-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "UPC documents 75 MW and 30 turbines, grid supply from March 2018 and construction completion on 5 April 2018. A September 2017 ESDM report targeted early 2018 operation. Twenty-seven GRW points align with distinct mapped turbine positions; the saved extract is a partial footprint, not measured capacity or a schedule verdict.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://upcrenewables.com/projects/sidrap",
+          "publishedAt": null,
+          "checkedAt": "2026-10-05",
+          "supports": "UPC reports 75 MW, 30 turbines, grid supply from March 2018 and construction completion on 5 April 2018. These dates represent different milestones."
+        },
+        {
+          "url": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-ebtke/pltb-sidrap-pembangkit-listrik-angin-terbesar-di-indonesia",
+          "publishedAt": "2017-09-30",
+          "checkedAt": "2026-10-05",
+          "supports": "75 MW, 30 turbines and a planned early-2018 commercial operating date; early 2018 retained at quarter precision."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Sidrap wind farm",
+          "url": "https://www.gem.wiki/Sidrap_wind_farm",
+          "revisionId": 1078441,
+          "lastEditedAt": "2026-02-05T23:03:10Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2018",
+              "Nameplate capacity": "75 MW",
+              "Type": "Onshore",
+              "Owner": "Barito Renewables",
+              "Operator": "PT UPC Sidrap Bayu Energi (UPC SIDRAP)"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Pre-construction",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "69 MW",
+              "Type": "Onshore",
+              "Owner": "ACEN Investments HK Ltd [49%]; Barito Renewables [51%]",
+              "Operator": "\u2013"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "operating",
+      "reportedOperatingDate": "2018-03",
+      "capacityBasis": "MW",
+      "phaseName": "1",
+      "claimedCapacityMw": 75,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": null,
+      "sourcePrimaryUrl": "https://upcrenewables.com/projects/sidrap",
+      "sourcePrimaryType": "Project-specific authoritative source",
+      "observationExtent": "partial",
+      "observationReviewComplete": false,
+      "expectedOperatingDate": "2018 Q1"
+    },
+    "IDN-W-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "IDN-W-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "IDN-W-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Sidrap wind farm",
+          "url": "https://www.gem.wiki/Sidrap_wind_farm",
+          "revisionId": 1078441,
+          "lastEditedAt": "2026-02-05T23:03:10Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2018",
+              "Nameplate capacity": "75 MW",
+              "Type": "Onshore",
+              "Owner": "Barito Renewables",
+              "Operator": "PT UPC Sidrap Bayu Energi (UPC SIDRAP)"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Pre-construction",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "69 MW",
+              "Type": "Onshore",
+              "Owner": "ACEN Investments HK Ltd [49%]; Barito Renewables [51%]",
+              "Operator": "\u2013"
+            }
+          ]
+        },
+        {
+          "title": "Tanah Laut wind farm",
+          "url": "https://www.gem.wiki/Tanah_Laut_wind_farm",
+          "revisionId": 1078937,
+          "lastEditedAt": "2026-02-05T23:06:04Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Pre-construction",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "70 MW",
+              "Type": "Onshore",
+              "Owner": "Pace Energy Pvt Ltd; PT Juvisk Tri Swarna"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Shelved (inferred November 2025)",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "20 MW",
+              "Type": "Onshore",
+              "Owner": "Pace Energy Pvt Ltd; PT Juvisk Tri Swarna"
+            },
+            {
+              "Phase name": "3",
+              "Status": "Cancelled (inferred November 2025)",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "60 MW",
+              "Type": "Onshore",
+              "Owner": "Pace Energy Pvt Ltd; PT Juvisk Tri Swarna"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "IDN-W-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Tolo wind farm",
+          "url": "https://www.gem.wiki/Tolo_wind_farm",
+          "revisionId": 1079206,
+          "lastEditedAt": "2026-02-05T23:07:33Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2019",
+              "Nameplate capacity": "72 MW",
+              "Type": "Onshore",
+              "Owner": "Vena Energy [100%] (\u53f0\u7063\u97cb\u80fd\u80fd\u6e90\u80a1\u4efd\u6709\u9650\u516c\u53f8)",
+              "Operator": "PT Pembangunan Perumahan (Persero); PT Siemens Indonesia"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Shelved (inferred July 2025)",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "72 MW",
+              "Type": "Onshore",
+              "Owner": "Vena Energy [100%] (\u53f0\u7063\u97cb\u80fd\u80fd\u6e90\u80a1\u4efd\u6709\u9650\u516c\u53f8)",
+              "Operator": "\u2013"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "KHM-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "ADB confirms the 100 MW park comprises 60 MW and 40 MW phases and confirms grid connection of the first 60 MW in November 2022. Full-park operation is not inferred from this phase-specific release.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.adb.org/news/adb-supported-national-solar-park-cambodia-connects-grid",
+          "publishedAt": "2022-11-15",
+          "checkedAt": "2026-10-05",
+          "supports": "ADB confirms the 100 MW park comprises 60 MW and 40 MW phases and confirms grid connection of the first 60 MW in November 2022. Full-park operation is not inferred from this phase-specific release."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "National Solar Park Project",
+          "url": "https://www.gem.wiki/National_Solar_Park_Project",
+          "revisionId": 1102783,
+          "lastEditedAt": "2026-02-06T02:16:52Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Nameplate capacity": "100 MW",
+              "Technology": "PV",
+              "Owner": "Asian Development Bank; Electricite du Cambodge"
+            }
+          ]
+        },
+        {
+          "title": "Cambodia National Solar Park",
+          "url": "https://www.gem.wiki/Cambodia_National_Solar_Park",
+          "revisionId": 1130920,
+          "lastEditedAt": "2026-02-06T04:32:47Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2022",
+              "Nameplate capacity": "60 MWac",
+              "Technology": "PV",
+              "Owner": "Prime Road Power PCL (PRIME ROAD) [100%]",
+              "Operator": "Prime Road Alternative (Cambodia) CO LTD (PRAC)"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Operating",
+              "Commissioning year": "2022",
+              "Nameplate capacity": "40 MWac",
+              "Technology": "PV",
+              "Owner": "Trina Solar Co Ltd [100%] (\u5929\u5408\u5149\u80fd\u80a1\u4efd\u6709\u9650\u516c\u53f8)",
+              "Operator": "Trina Solar (\u5929\u5408\u5149\u80fd\u80a1\u4efd\u6709\u9650\u516c\u53f8)"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "phase 1 operating; full-park status requires reconciliation",
+      "capacityBasis": "MWac",
+      "phaseName": "park (60 + 40 MW)",
+      "claimedCapacityMw": 100,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2022-11-15",
+      "sourcePrimaryUrl": "https://www.adb.org/news/adb-supported-national-solar-park-cambodia-connects-grid",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "LAO-W-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "BCPG reports commercial operation on 22 August 2025 for Monsoon phase 1 at 600 MW. This is later than the saved GRW cutoff.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.bcpggroup.com/en/newsroom/news/615/bcpg-celebrates-the-official-commercial-operation-of-monsoon-wind-power-project-delivering-clean-cross-border-energy-to-strengthen-asean-energy-security",
+          "publishedAt": "2025-08-28",
+          "checkedAt": "2026-10-05",
+          "supports": "BCPG reports commercial operation on 22 August 2025 for Monsoon phase 1 at 600 MW. This is later than the saved GRW cutoff."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Monsoon wind farm",
+          "url": "https://www.gem.wiki/Monsoon_wind_farm",
+          "revisionId": 1075436,
+          "lastEditedAt": "2026-02-05T22:36:25Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2025",
+              "Nameplate capacity": "600 MW",
+              "Type": "Onshore",
+              "Owner": "BCPG Public Company LTD (BCPG) [45%]; Impact Energy Asia Development LTD (IEAD) [55%]",
+              "Operator": "Monsoon Wind Power Company"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Shelved (inferred July 2025)",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "1000 MW",
+              "Type": "Onshore",
+              "Owner": "Impact Electrons Siam CO LTD (IES) [100%]",
+              "Operator": "\u2013"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "operating",
+      "reportedOperatingDate": "2025-08-22",
+      "capacityBasis": "MW",
+      "phaseName": "1",
+      "claimedCapacityMw": 600,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-08-28",
+      "sourcePrimaryUrl": "https://www.bcpggroup.com/en/newsroom/news/615/bcpg-celebrates-the-official-commercial-operation-of-monsoon-wind-power-project-delivering-clean-cross-border-energy-to-strengthen-asean-energy-security",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "LAO-W-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "The 1,200 MW Sepon GEM search hit is not accepted as the 495 MW Savan 1 project."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Sepon wind farm",
+          "url": "https://www.gem.wiki/Sepon_wind_farm",
+          "revisionId": 1077806,
+          "lastEditedAt": "2026-02-05T22:52:55Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Nameplate capacity": "1200 MW",
+              "Type": "Onshore",
+              "Owner": "Savan Vayu Renewable Energy Co"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "LAO-W-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Truong Son wind farm",
+          "url": "https://www.gem.wiki/Truong_Son_wind_farm",
+          "revisionId": 1079335,
+          "lastEditedAt": "2026-02-05T23:08:16Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2025",
+              "Nameplate capacity": "250 MW",
+              "Type": "Onshore",
+              "Owner": "Viet-Lao Power JSC"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Construction",
+              "Commissioning year": "\u2013",
+              "Nameplate capacity": "350 MW",
+              "Type": "Onshore",
+              "Owner": "\u2013"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "MMR-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Mukim Tanjung solar farm",
+          "url": "https://www.gem.wiki/Mukim_Tanjung_solar_farm",
+          "revisionId": 1101478,
+          "lastEditedAt": "2026-02-06T02:10:22Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2018",
+              "Nameplate capacity": "50 MWac",
+              "Technology": "PV",
+              "Owner": "TNB Sepang Solar Sdn Bhd [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Gurun solar farm",
+          "url": "https://www.gem.wiki/Gurun_solar_farm",
+          "revisionId": 1143586,
+          "lastEditedAt": "2026-02-06T05:33:27Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2018",
+              "Nameplate capacity": "65 MWp/dc",
+              "Technology": "PV",
+              "Owner": "ITRAMAS Corporation Sdn Bhd [51%]; Scatec ASA [49%] (\u0633\u0643\u0627\u062a\u0643)",
+              "Operator": "Scatec (\u0633\u0643\u0627\u062a\u0643)"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "MYS-S-ASEAN-005": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "reNIKOLA reports shortlisting of the 250 MWac Kemaman project under LSS5+ on 4 September 2025. Shortlisting is not a commissioning or operating claim.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf",
+          "publishedAt": "2025-09-04",
+          "checkedAt": "2026-10-05",
+          "supports": "reNIKOLA reports shortlisting of the 250 MWac Kemaman project under LSS5+ on 4 September 2025. Shortlisting is not a commissioning or operating claim."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "shortlisted",
+      "capacityBasis": "MWac",
+      "claimedCapacityMw": 250,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-09-04",
+      "sourcePrimaryUrl": "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "MYS-S-ASEAN-006": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "reNIKOLA reports shortlisting of the 150 MWac Kemaman project under LSS5+ on 4 September 2025. Shortlisting is not a commissioning or operating claim.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf",
+          "publishedAt": "2025-09-04",
+          "checkedAt": "2026-10-05",
+          "supports": "reNIKOLA reports shortlisting of the 150 MWac Kemaman project under LSS5+ on 4 September 2025. Shortlisting is not a commissioning or operating claim."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "shortlisted",
+      "capacityBasis": "MWac",
+      "claimedCapacityMw": 150,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-09-04",
+      "sourcePrimaryUrl": "https://renikola.com/assets/files/reNIKOLA-_PR_LSS5_04092025.pdf",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "PHL-M-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Olongapo solar farm",
+          "url": "https://www.gem.wiki/Olongapo_solar_farm",
+          "revisionId": 1105206,
+          "lastEditedAt": "2026-02-06T02:31:59Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Construction",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "172 MWac",
+              "Technology": "PV",
+              "Owner": "AP Renewable Energy Corp"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Announced",
+              "Commissioning year": "2028 (planned)",
+              "Nameplate capacity": "128 MW",
+              "Technology": "PV",
+              "Owner": "AP Renewable Energy Corp"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Opus Solar Power Project",
+          "url": "https://www.gem.wiki/Opus_Solar_Power_Project",
+          "revisionId": 1105316,
+          "lastEditedAt": "2026-02-06T02:33:00Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "318.75 MWac",
+              "Technology": "PV",
+              "Owner": "Opus Solar Energy Corp [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Laoag Solar Power Project",
+          "url": "https://www.gem.wiki/Laoag_Solar_Power_Project",
+          "revisionId": 1095488,
+          "lastEditedAt": "2026-02-06T00:38:48Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2024",
+              "Nameplate capacity": "57.8 MWac",
+              "Technology": "PV",
+              "Owner": "PV Sinag Power Inc",
+              "Operator": "PV Sinag Power"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Operating",
+              "Commissioning year": "2024",
+              "Nameplate capacity": "71.4 MWac",
+              "Technology": "PV",
+              "Owner": "PV Sinag Power Inc",
+              "Operator": "PV Sinag Power"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-005": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Calatrava solar farm",
+          "url": "https://www.gem.wiki/Calatrava_solar_farm",
+          "revisionId": 1130857,
+          "lastEditedAt": "2026-02-06T04:32:28Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2024",
+              "Nameplate capacity": "173 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Aboitiz Power Corp [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-S-006": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "Armenia results include separate 35 MWac (2024) and 7.1 MWp (2016) plants; retain the legacy 46.658 MW claim until units and identity are reconciled."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Armenia Solar Power Plant",
+          "url": "https://www.gem.wiki/Armenia_Solar_Power_Plant",
+          "revisionId": 1094347,
+          "lastEditedAt": "2026-02-06T00:34:43Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2024",
+              "Nameplate capacity": "35 MWac",
+              "Technology": "PV",
+              "Owner": "RE Resources Inc"
+            }
+          ]
+        },
+        {
+          "title": "Armenia Solar Power Project",
+          "url": "https://www.gem.wiki/Armenia_Solar_Power_Project",
+          "revisionId": 1094348,
+          "lastEditedAt": "2026-02-06T00:34:43Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2016",
+              "Nameplate capacity": "7.1 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Citicore Solar Tarlac 1 Inc"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-W-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Bulalacao Bay Offshore Wind Power Project",
+          "url": "https://www.gem.wiki/Bulalacao_Bay_Offshore_Wind_Power_Project",
+          "revisionId": 1067847,
+          "lastEditedAt": "2026-02-05T21:44:44Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Nameplate capacity": "1200 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Viento Energy 1 Corp [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-W-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion. Candidate tracker planned date: 2030; not promoted as a verified baseline.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Calatagan (Domhain) wind farm",
+          "url": "https://www.gem.wiki/Calatagan_(Domhain)_wind_farm",
+          "revisionId": 1067968,
+          "lastEditedAt": "2026-02-05T21:45:26Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Commissioning year": "2030 (planned)",
+              "Nameplate capacity": "1830 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Domhain Earth Corp"
+            }
+          ]
+        },
+        {
+          "title": "Calatagan (Giga Ace 7) wind farm",
+          "url": "https://www.gem.wiki/Calatagan_(Giga_Ace_7)_wind_farm",
+          "revisionId": 1067971,
+          "lastEditedAt": "2026-02-05T21:45:26Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Announced",
+              "Commissioning year": "2029 (planned)",
+              "Nameplate capacity": "512 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Giga Ace 7 Inc"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Announced",
+              "Commissioning year": "2029 (planned)",
+              "Nameplate capacity": "512 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Giga Ace 7 Inc"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "trackerExpectedOperatingDate": "2030"
+    },
+    "PHL-W-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "DOE indicative list dated 30 June 2025 identifies Domhain Earth Claveria at 1,600 MW, target testing February 2031 and commercial operation April 2032. The 440 MW Pagudpud-Saint Praxedes-Claveria project is a different identity.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://prod-cms.doe.gov.ph/documents/d/guest/06-luzon-indicative-1-pdf",
+          "publishedAt": "2025-06-30",
+          "checkedAt": "2026-10-05",
+          "supports": "DOE indicative list dated 30 June 2025 identifies Domhain Earth Claveria at 1,600 MW, target testing February 2031 and commercial operation April 2032. The 440 MW Pagudpud-Saint Praxedes-Claveria project is a different identity."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Pagudpud Saint Praxedes Claveria wind farm",
+          "url": "https://www.gem.wiki/Pagudpud_Saint_Praxedes_Claveria_wind_farm",
+          "revisionId": 1076323,
+          "lastEditedAt": "2026-02-05T22:41:15Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Nameplate capacity": "440 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Citicore Renewable Energy Corp"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "expectedOperatingDate": "2032-04",
+      "claimedStatus": "indicative",
+      "capacityBasis": "MW",
+      "developer": "Domhain Earth Corp.",
+      "claimedCapacityMw": 1600,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-06-30",
+      "sourcePrimaryUrl": "https://prod-cms.doe.gov.ph/documents/d/guest/06-luzon-indicative-1-pdf",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "PHL-W-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion. Candidate tracker planned date: 2030; not promoted as a verified baseline.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Mariveles (Domhain Earth) wind farm",
+          "url": "https://www.gem.wiki/Mariveles_(Domhain_Earth)_wind_farm",
+          "revisionId": 1075083,
+          "lastEditedAt": "2026-02-05T22:34:36Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Commissioning year": "2030 (planned)",
+              "Nameplate capacity": "1500 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Domhain Earth Corp"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "trackerExpectedOperatingDate": "2030"
+    },
+    "PHL-W-ASEAN-005": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "NOM FL1 Offshore Wind Project",
+          "url": "https://www.gem.wiki/NOM_FL1_Offshore_Wind_Project",
+          "revisionId": 1076001,
+          "lastEditedAt": "2026-02-05T22:39:22Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Nameplate capacity": "3038 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Vind Energy Corp"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "PHL-W-ASEAN-006": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion. Candidate tracker planned date: 2030; not promoted as a verified baseline.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Northern Mindoro offshore wind farm",
+          "url": "https://www.gem.wiki/Northern_Mindoro_offshore_wind_farm",
+          "revisionId": 1076056,
+          "lastEditedAt": "2026-02-05T22:39:37Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Commissioning year": "2030 (planned)",
+              "Nameplate capacity": "2000 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "BuhaWind Energy Nothern Mindoro Corp [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "trackerExpectedOperatingDate": "2030"
+    },
+    "PHL-W-ASEAN-007": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "soft_404",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "GEM search hits describe 500 MW and 600 MW San Miguel Bay projects, while the legacy record is 1,000 MW CI NMF; identity is unresolved."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "San Miguel Bay (ACX3) wind farm",
+          "url": "https://www.gem.wiki/San_Miguel_Bay_(ACX3)_wind_farm",
+          "revisionId": 1077646,
+          "lastEditedAt": "2026-02-05T22:50:35Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Nameplate capacity": "500 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Nexif Ratch Energy",
+              "Operator": "ACX3 Capital Holdings"
+            }
+          ]
+        },
+        {
+          "title": "San Miguel Bay (Sitex Windkraft) wind farm",
+          "url": "https://www.gem.wiki/San_Miguel_Bay_(Sitex_Windkraft)_wind_farm",
+          "revisionId": 1077650,
+          "lastEditedAt": "2026-02-05T22:50:36Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Nameplate capacity": "600 MW",
+              "Type": "Offshore mount unknown",
+              "Owner": "Sitex Windkraft Corp [100%]"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "SGP-S-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "PUB documents operation of the 60 MWp commercial farm in July 2021, distinct from the earlier 1 MWp testbed. Three 2021 GRW polygons have reviewed attribution to the commercial site; this is a partial footprint, not a capacity measurement. The registry point is the centroid of the approximate community-mapped commercial boundary.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+          "publishedAt": "2021-07-14",
+          "checkedAt": "2026-10-05",
+          "supports": "PUB reports opening and commencement of operations on 14 July 2021 at 60 MWp. This is documentary operating evidence, not a satellite capacity measurement."
+        },
+        {
+          "url": "https://www.pub.gov.sg/public/waterloop/sustainability/solar/floating",
+          "publishedAt": null,
+          "checkedAt": "2026-10-05",
+          "supports": "Distinguishes the 2016 1 MWp testbed from the later 60 MWp commercial farm and its ten floating islands."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Tengeh Reservoir solar farm",
+          "url": "https://www.gem.wiki/Tengeh_Reservoir_solar_farm",
+          "revisionId": 914661,
+          "lastEditedAt": "2025-05-08T19:05:01Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2021",
+              "Nameplate capacity": "60 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Sembcorp Solar Singapore Pte Ltd [100%]",
+              "Operator": "Sembcorp Solar Singapore"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "operating",
+      "reportedOperatingDate": "2021-07-14",
+      "capacityBasis": "MWp/DC",
+      "claimedCapacityMw": 60,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2021-07-14",
+      "sourcePrimaryUrl": "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+      "sourcePrimaryType": "Project-specific authoritative source",
+      "observationExtent": "partial",
+      "observationReviewComplete": false,
+      "latitude": 1.3483764,
+      "longitude": 103.6443967
+    },
+    "SGP-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Kranji Reservoir floating solar farm",
+          "url": "https://www.gem.wiki/Kranji_Reservoir_floating_solar_farm",
+          "revisionId": 1094150,
+          "lastEditedAt": "2026-02-06T00:34:01Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Commissioning year": "2028 (planned)",
+              "Nameplate capacity": "150 MW",
+              "Technology": "PV",
+              "Owner": "Sembcorp Solar Singapore Pte Ltd"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "SGP-S-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "PUB distinguishes the operating 1.5 MWp Lower Seletar pilot from a potential 100 MWp development. The registry row describes the latter; operation of the pilot does not establish operation of the expansion.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.pub.gov.sg/public/waterloop/sustainability/solar/floating",
+          "publishedAt": null,
+          "checkedAt": "2026-10-05",
+          "supports": "PUB distinguishes the operating 1.5 MWp Lower Seletar pilot from a potential 100 MWp development. The registry row describes the latter; operation of the pilot does not establish operation of the expansion."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Seletar Reservoir solar farm",
+          "url": "https://www.gem.wiki/Seletar_Reservoir_solar_farm",
+          "revisionId": 1114293,
+          "lastEditedAt": "2026-02-06T03:12:46Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Shelved (inferred July 2025)",
+              "Nameplate capacity": "100 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Public Utilities Board Singapore"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "potential development",
+      "capacityBasis": "MWp/DC",
+      "phaseName": "100 MWp proposed development",
+      "claimedCapacityMw": 100,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": null,
+      "sourcePrimaryUrl": "https://www.pub.gov.sg/public/waterloop/sustainability/solar/floating",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "SGP-S-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "PUB annual sustainability report 2025 updates the Pandan project from an initial 55 MWp estimate to around 86 MWp. The earlier June 2024 tender targeted completion in 2028; that historical target is retained separately.",
+      "conflicts": [
+        "GEM candidate still reports 55 MWp; PUB 2025 report gives around 86 MWp. Capacity is approximate and source-specific."
+      ],
+      "claimSources": [
+        {
+          "url": "https://www.pub.gov.sg/-/media/PUB/Publications/Report/PDF/PUB_ASR_2025.pdf",
+          "publishedAt": null,
+          "checkedAt": "2026-10-05",
+          "supports": "PUB annual sustainability report 2025 updates the Pandan project from an initial 55 MWp estimate to around 86 MWp. The earlier June 2024 tender targeted completion in 2028; that historical target is retained separately."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [
+        {
+          "title": "Pandan Reservoir solar farm",
+          "url": "https://www.gem.wiki/Pandan_Reservoir_solar_farm",
+          "revisionId": 896984,
+          "lastEditedAt": "2025-05-08T18:10:17Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Pre-construction",
+              "Commissioning year": "2028 (planned)",
+              "Nameplate capacity": "55 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Public Utilities Board Singapore"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "upcoming development (PUB 2025 report)",
+      "capacityBasis": "MWp/DC",
+      "claimedCapacityMw": 86,
+      "expectedOperatingDate": "2028",
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": null,
+      "sourcePrimaryUrl": "https://www.pub.gov.sg/-/media/PUB/Publications/Report/PDF/PUB_ASR_2025.pdf",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "SGP-S-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Tengeh Reservoir solar farm",
+          "url": "https://www.gem.wiki/Tengeh_Reservoir_solar_farm",
+          "revisionId": 914661,
+          "lastEditedAt": "2025-05-08T19:05:01Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2021",
+              "Nameplate capacity": "60 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Sembcorp Solar Singapore Pte Ltd [100%]",
+              "Operator": "Sembcorp Solar Singapore"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "THA-S-ASEAN-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [
+        "158 MW Bhumibol phase 1 identified in EGAT procurement documents; current completion status and target date require review."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "THA-S-ASEAN-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "THA-S-ASEAN-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "EGAT identifies Srinagarind phase 1 at 140 MW and scheduled commercial operation in Buddhist year 2570 (2027). Phase 3 is separately 280 MW.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.egat.co.th/home/20251026-pre133/",
+          "publishedAt": "2025-10-26",
+          "checkedAt": "2026-10-05",
+          "supports": "EGAT identifies Srinagarind phase 1 at 140 MW and scheduled commercial operation in Buddhist year 2570 (2027). Phase 3 is separately 280 MW."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative",
+      "projectName": "Srinagarind Dam FPV 1",
+      "claimedStatus": "planned",
+      "expectedOperatingDate": "2027",
+      "capacityBasis": "MW",
+      "phaseName": "1",
+      "claimedCapacityMw": 140,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-10-26",
+      "sourcePrimaryUrl": "https://www.egat.co.th/home/20251026-pre133/",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "THA-S-ASEAN-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "reviewed_content",
+      "reviewNotes": "EGAT identifies Srinagarind Floating Solar Project 3 at 280 MWac and planned commercial operation in 2028. Project 1 is a distinct 140 MW phase.",
+      "conflicts": [],
+      "claimSources": [
+        {
+          "url": "https://www.egat.co.th/home/en/20250826e/",
+          "publishedAt": "2025-08-26",
+          "checkedAt": "2026-10-05",
+          "supports": "EGAT identifies Srinagarind Floating Solar Project 3 at 280 MWac and planned commercial operation in 2028. Project 1 is a distinct 140 MW phase."
+        }
+      ],
+      "claimReviewStatus": "reviewed",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative",
+      "claimedStatus": "tender / planned",
+      "expectedOperatingDate": "2028",
+      "capacityBasis": "MWac",
+      "phaseName": "3",
+      "claimedCapacityMw": 280,
+      "claimCheckedAt": "2026-10-05",
+      "sourcePublishedAt": "2025-08-26",
+      "sourcePrimaryUrl": "https://www.egat.co.th/home/en/20250826e/",
+      "sourcePrimaryType": "Project-specific authoritative source"
+    },
+    "VNM-S-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "Legacy 2025-01-13 value is not accepted as a commissioning date; documentary provenance is unresolved."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Thu\u1eadn B\u1eafc solar farm",
+          "url": "https://www.gem.wiki/Thu\u1eadn_B\u1eafc_solar_farm",
+          "revisionId": 1121398,
+          "lastEditedAt": "2026-02-06T03:51:45Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2018",
+              "Nameplate capacity": "204 MWac",
+              "Technology": "Assumed PV",
+              "Owner": "A Chau Industrial Technology JSC; Trungnam Group"
+            }
+          ]
+        },
+        {
+          "title": "Trung Nam solar farm",
+          "url": "https://www.gem.wiki/Trung_Nam_solar_farm",
+          "revisionId": 917220,
+          "lastEditedAt": "2025-05-08T19:12:49Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2019",
+              "Nameplate capacity": "255 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Trungnam Group; A Chau Industrial Technology JSC"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "VNM-S-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "Legacy 2025-01-13 value is not accepted as a commissioning date; documentary provenance is unresolved.",
+        "Dau Tieng phases and AC/DC capacities require reconciliation before aggregation."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Dau Tieng solar farm",
+          "url": "https://www.gem.wiki/Dau_Tieng_solar_farm",
+          "revisionId": 1135414,
+          "lastEditedAt": "2026-02-06T04:50:24Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Phase name": "1",
+              "Status": "Operating",
+              "Commissioning year": "2019",
+              "Nameplate capacity": "180 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Xuan Cau Holdings [100%]"
+            },
+            {
+              "Phase name": "2",
+              "Status": "Operating",
+              "Commissioning year": "2019",
+              "Nameplate capacity": "240 MWp/dc",
+              "Technology": "PV",
+              "Owner": "Xuan Cau Co Ltd [4%]; B.Grimm Power PCL [96%] (\u0e1a\u0e35.\u0e01\u0e23\u0e34\u0e21 \u0e40\u0e1e\u0e32\u0e40\u0e27\u0e2d\u0e23\u0e4c \u0e08\u0e33\u0e01\u0e31\u0e14 (\u0e21\u0e2b\u0e32\u0e0a\u0e19))"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "VNM-S-003": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "accessible",
+      "reviewNotes": "Legacy claim retained. Source access checked; claim content has not been independently verified.",
+      "conflicts": [
+        "Legacy 2025-01-13 value is not accepted as a commissioning date; documentary provenance is unresolved."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "pending",
+      "trackerCandidates": [],
+      "coordinateAccuracy": "representative"
+    },
+    "VNM-S-004": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion.",
+      "conflicts": [
+        "Legacy 2025-01-13 value is not accepted as a commissioning date; documentary provenance is unresolved.",
+        "Hoa Hoi sources report different AC/DC capacity bases and dates; the legacy 2025-01-13 date is not promoted."
+      ],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Hoa Hoi solar farm",
+          "url": "https://www.gem.wiki/Hoa_Hoi_solar_farm",
+          "revisionId": 941660,
+          "lastEditedAt": "2025-05-08T20:28:49Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2020",
+              "Nameplate capacity": "268 MWp/dc",
+              "Technology": "PV",
+              "Owner": "B.Grimm Power PCL [100%] (\u0e1a\u0e35.\u0e01\u0e23\u0e34\u0e21 \u0e40\u0e1e\u0e32\u0e40\u0e27\u0e2d\u0e23\u0e4c \u0e08\u0e33\u0e01\u0e31\u0e14 (\u0e21\u0e2b\u0e32\u0e0a\u0e19))",
+              "Operator": "Phu Yen TTP"
+            }
+          ]
+        },
+        {
+          "title": "Ph\u00fa Y\u00ean solar farm",
+          "url": "https://www.gem.wiki/Ph\u00fa_Y\u00ean_solar_farm",
+          "revisionId": 898014,
+          "lastEditedAt": "2025-05-08T18:13:24Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Operating",
+              "Commissioning year": "2020",
+              "Nameplate capacity": "257 MW",
+              "Technology": "PV",
+              "Owner": "B.Grimm Power PCL [50%]; Truong Thanh Vietnam Group JSC [50%] (T\u1eadp \u0111o\u00e0n Tr\u01b0\u1eddng Th\u00e0nh Vi\u1ec7t Nam; \u0e1a\u0e35.\u0e01\u0e23\u0e34\u0e21 \u0e40\u0e1e\u0e32\u0e40\u0e27\u0e2d\u0e23\u0e4c \u0e08\u0e33\u0e01\u0e31\u0e14 (\u0e21\u0e2b\u0e32\u0e0a\u0e19))"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative"
+    },
+    "VNM-W-001": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion. Candidate tracker planned date: 2026; not promoted as a verified baseline.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "BCG Dien Bien 1 Wind Power Plant",
+          "url": "https://www.gem.wiki/BCG_Dien_Bien_1_Wind_Power_Plant",
+          "revisionId": 1067440,
+          "lastEditedAt": "2026-02-05T21:41:08Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "175 MW",
+              "Type": "Onshore"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "trackerExpectedOperatingDate": "2026"
+    },
+    "VNM-W-002": {
+      "sourceAccessCheckedAt": "2026-10-05",
+      "sourceAccessResult": "unavailable",
+      "reviewNotes": "Current GEM Wiki candidate records inspected on 5 October 2026. Candidate identity, phase and capacity basis require reconciliation before promotion. Candidate tracker planned date: 2026; not promoted as a verified baseline.",
+      "conflicts": [],
+      "claimSources": [],
+      "claimReviewStatus": "needs_reconciliation",
+      "trackerCandidates": [
+        {
+          "title": "Nam Bung Wind Power Plant",
+          "url": "https://www.gem.wiki/Nam_Bung_Wind_Power_Plant",
+          "revisionId": 831638,
+          "lastEditedAt": "2025-02-09T11:51:38Z",
+          "checkedAt": "2026-10-05",
+          "reportedRows": [
+            {
+              "Status": "Announced",
+              "Commissioning year": "2026 (planned)",
+              "Nameplate capacity": "200 MW",
+              "Type": "Unknown"
+            }
+          ]
+        }
+      ],
+      "coordinateAccuracy": "representative",
+      "trackerExpectedOperatingDate": "2026"
+    }
+  },
+  "limitations": [
+    "Current GEM Wiki revisions are supplementary evidence, not an imported February 2026 tracker release.",
+    "Successful source access is not claim verification.",
+    "Unresolved identities, units and dates remain explicitly flagged."
+  ]
+}

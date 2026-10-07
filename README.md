@@ -1,140 +1,74 @@
 # Paper to Power
 
-<p align="center">
-  <strong>SEA Renewable Energy Map</strong><br/>
-  A public geospatial audit of announced renewable energy projects across Southeast Asia.
-</p>
+Paper to Power is a public evidence explorer for renewable-energy project claims across Southeast Asia. It separates documentary claims, observed physical footprints, commissioning dates, source review and nearby infrastructure so that missing information cannot become a verdict about project delivery.
 
-<p align="center">
-  <a href="https://energy.faizkrisnadi.com">Live site</a>
-  ·
-  <a href="https://github.com/FaizKrisnadi/paper-to-power">Repository</a>
-</p>
+The local release dated **7 October 2026** contains **5,136 records across 11 Southeast Asian countries**: 5,118 provider units or phases from GEM's September 2026 public map, eight research overviews linked to provider phases, and ten research records with unresolved provider identities. These are record counts, not unique plants. The preserved research baseline has 50 unique projects, including 14 documentary reviews; importing or linking a provider record does not create an independent review. See [the current stage and identity reconciliation](docs/stage-and-identity-reconciliation.md) and [the initial provider refresh](docs/september-2026-refresh.md).
 
-<p align="center">
-  <img alt="Projects" src="https://img.shields.io/badge/Featured%20Projects-52-1f2937?style=flat-square">
-  <img alt="Countries" src="https://img.shields.io/badge/Countries-10-1f2937?style=flat-square">
-  <img alt="Not Yet Observed" src="https://img.shields.io/badge/Not%20Yet%20Observed-46%25-b7791f?style=flat-square">
-</p>
+The saved Global Renewables Watch extract still ends in **2024 Q2**, covers five countries and contains 2,311 assets. **30 approved partial asset attributions across Tengeh and Sidrap** and five excluded candidates are preserved. These reviews establish partial footprints, without establishing capacity or completion. There are currently zero fully eligible site reviews, so no non-detection percentage is published.
 
-## What This Is
+[Public site](https://energy.faizkrisnadi.com) · [Repository](https://github.com/FaizKrisnadi/paper-to-power)
 
-Paper to Power compares public project claims with observed build evidence.
+The public site may still serve the earlier release. This repair has been built and checked locally; it has not been deployed.
 
-The site tracks utility-scale renewable projects across Southeast Asia and asks a simple question: how much of what has been announced is actually visible on the ground?
+## Local setup
 
-The result is a public-facing map, evidence explorer, and country comparison built from a registry pipeline that combines project-level claims, geospatial matching, and manual review.
-
-## Live Product
-
-- Public site: [energy.faizkrisnadi.com](https://energy.faizkrisnadi.com)
-- Stack: `React` + `Vite` + `TypeScript` + `MapLibre GL`
-- Data pipeline: Python modules in [`pipeline/`](./pipeline)
-
-## What The Site Shows
-
-- A curated registry of `52` featured utility-scale projects
-- Coverage across `10` Southeast Asian markets
-- Project-level status labels such as `claimed_not_observed`
-- Country summaries that distinguish announced capacity from observed evidence coverage
-- A scroll-based story layer, map explorer, evidence table, and project drawer
-
-## Method
-
-The project runs in three broad layers:
-
-1. Build a project registry from structured sources, manual curation, and deep-research imports.
-2. Ingest observed geospatial evidence and contextual layers.
-3. Match claims to observed assets, export frontend datasets, and review edge cases manually.
-
-This is not a pure “scrape and publish” project. The workflow is deliberately opinionated:
-
-- claims can be imported before they are promoted
-- location and coordinate quality can be staged and enriched
-- reviewed seed projects are promoted into the active registry only after validation
-- frontend exports are generated from processed data, not hand-maintained page content
-
-## Repository Layout
-
-```text
-src/                         React frontend
-pipeline/                    Python data pipeline and export scripts
-data/manual/                 Manual overrides and enrichment files
-data/interim/                Staging outputs
-data/processed/              Generated registry and frontend datasets
-public/                      Static public assets
-docs/                        Supporting documentation
-```
-
-Key pipeline entry points:
-
-- [`pipeline/import_registry_csv.py`](./pipeline/import_registry_csv.py)
-- [`pipeline/curate_deep_research_seed.py`](./pipeline/curate_deep_research_seed.py)
-- [`pipeline/prepare_seed_enrichment.py`](./pipeline/prepare_seed_enrichment.py)
-- [`pipeline/apply_seed_enrichment.py`](./pipeline/apply_seed_enrichment.py)
-- [`pipeline/promote_reviewed_seed.py`](./pipeline/promote_reviewed_seed.py)
-- [`pipeline/match_projects.py`](./pipeline/match_projects.py)
-- [`pipeline/build_frontend_exports.py`](./pipeline/build_frontend_exports.py)
-
-## Running It Locally
-
-Requirements:
-
-- `Node.js`
-- `Python 3`
-
-Install and run:
+Use Node.js 22.12 or later, Python 3.11–3.13 and [uv](https://docs.astral.sh/uv/). Both JavaScript and Python dependency resolutions are committed.
 
 ```bash
-git clone https://github.com/FaizKrisnadi/paper-to-power.git
-cd paper-to-power
-npm install
+npm ci
+uv sync --locked --all-extras --python 3.11
+npm run build:data
+npm run build:research
+npm test
+npm run lint
+npm run build
+npm run validate:data
 npm run dev
 ```
 
-Useful commands:
+`build:data` reconstructs the canonical registry, saved observation assets, candidate matches, evidence labels and frontend exports without network requests. `build:research` also rebuilds cached infrastructure proximity, GeoJSON/Parquet exports, the DuckDB warehouse and site-audit downloads. Fetching new sources is a separate research operation, because a successful download does not establish identity, phase, coverage or claim validity.
 
-```bash
-npm run build
-npm run lint
-npm run build:data
-npm run import:registry-csv
-npm run curate:deepresearch
-npm run prepare:seed-enrichment
-npm run apply:seed-enrichment
-npm run promote:reviewed-seed
-npm run match:firstpass
-```
+## Evidence rules
 
-## Data Outputs
+- Documentary capacity retains its reported AC, DC/MWp, unspecified or hybrid basis. Incompatible bases are not summed into a delivery gap.
+- Observed polygons and turbine points establish geometry only after explicit attribution review. Area and turbine counts are not converted into generation capacity.
+- Non-detection requires suitable technology, included observation coverage, verified site coordinates, a reviewed expected operating date before the cutoff and a completed site review. A missing candidate is insufficient.
+- First-seen imagery dates do not establish commissioning dates or schedule compliance.
+- Infrastructure proximity describes the saved open-map extract, not a grid connection or evacuation capacity. Unknown snapshot dates and coverage remain visible.
+- Each candidate approval requires a reviewer, date, reason, supporting URLs and fingerprints of both the project and asset. Stale approvals fail validation. Multiple assets may belong to one project, but one asset cannot silently be allocated to multiple phases.
 
-The frontend is driven by generated data artifacts, especially:
+See [the methodology](docs/evidence-methodology.md), [repair checkpoint](docs/repair-checkpoint-2026-10-05.md) and [source and reuse notes](docs/data-rights.md).
 
-- [`data/processed/frontend_dataset.json`](./data/processed/frontend_dataset.json)
-- [`src/data/generated.ts`](./src/data/generated.ts)
-- [`data/processed/project_registry.json`](./data/processed/project_registry.json)
+## Editable sources and generated outputs
 
-That means UI updates and data updates are intentionally separate:
+Edit `data/manual/registry_reviews.json` for sourced documentary corrections and `data/manual/match_reviews.json` for asset decisions. `registry_baseline.json` preserves the original registry, including legacy values. Do not edit generated frontend data as a substitute for reviewing source records.
 
-- frontend components live in `src/`
-- registry logic and evidence exports live in `pipeline/`
-- processed outputs live in `data/processed/`
+The current release pipeline is `refresh_registry` → `ingest_grw` → `match_projects` → `build_frontend_exports`, followed by optional geospatial and warehouse exports. Earlier import/enrichment/promote scripts are staging tools; their outputs must be reconciled into the explicit review inputs before entering this release. `npm run build:data` restores the canonical release from those inputs.
 
-## Why This Repo Exists
+| Output | Purpose |
+| --- | --- |
+| `data/processed/project_registry.json` | Canonical projects, reviews and resolved aliases |
+| `data/processed/match_candidates.json` | Unapproved spatial research candidates |
+| `data/processed/project_asset_matches.json` | Explicitly approved attributions only |
+| `data/processed/frontend_dataset.json`, `src/data/generated.ts` | Shared frontend evidence contract |
+| `public/downloads/project-evidence.json`, `.csv` | Public evidence downloads |
+| `data/processed/release_manifest.json` | Input and public-output SHA-256 hashes |
+| `data/processed/geospatial/` | Active-release geometry, warehouse and audit exports |
 
-Energy project announcements are easy to publish. Ground truth is harder.
+The interface opens with a cinematic video hero and fixed section navigation, followed by the four-chapter animated regional map story. The explorer leads with country, technology and reported project stage; observation review filters expand on demand. Research overviews link to individual provider phases. The country index follows the explorer, and Tengeh and Sidrap close the regional story with geographic basemaps, reviewed GRW geometry, a detection timeline and keyboard-accessible asset selection. Manrope is used consistently across interface headings, body text and controls.
 
-This repo exists to make that gap legible, inspectable, and publicly explorable.
+## Interactive evidence pilot
 
-## Status
+The Tengeh/Sidrap section shows attributed solar polygons and turbine points against bounded OpenStreetMap references. A quarter slider reveals first detections while retaining the distinction between detection and commissioning. Readers can select geometry, inspect phase reasoning and download all 35 decisions plus the attributed reference GeoJSON. The reference is community-mapped geometry, not an engineering survey. Its retrieval date and ODbL attribution are explicit.
 
-Current public build:
+## Validation and remaining research
 
-- ASEAN-wide registry scope
-- hybrid projects supported in the public dataset
-- mobile/desktop landing page with animated hero background
-- Cloudflare Pages deployment on [energy.faizkrisnadi.com](https://energy.faizkrisnadi.com)
+Optional interactive smoke checks use `uv run --extra test python tests/browser_smoke.py` against a preview on port 4173. Install Playwright Chromium with `uv run --extra test playwright install chromium`, or set `CHROME_PATH` to an existing Chrome binary. `PREVIEW_URL` and `BROWSER_ARTIFACTS` can override the preview address and screenshot directory.
 
-## License
+The test suite covers date precision, temporal and technology exclusions, unknown-versus-zero behavior, reviewed matching, stale approvals, duplicate resolution, deterministic exports, source-review provenance and CSV formula protection. GitHub Actions runs locked installation, rebuilds, tests, lint, production build, release validation and the dependency audit. The workflow has been added; a hosted CI run is not claimed until the change is pushed.
 
-No license file is currently included in this repository. Treat reuse as restricted until a project license is added.
+The remaining research queue consists of 36 documentary reconciliations, verification of project coordinates, review of 279 remaining spatial candidates and any justified observation updates after June 2024. Tengeh and Sidrap now have reviewed partial asset bundles; Claveria's offshore proposal is outside the current method and its reviewed commercial target is April 2032. No new satellite inference or imagery acquisition has been performed in this repair.
+
+## Reuse
+
+No project code license has been granted here. Treat reuse as restricted until the owner chooses a license. External data and maps have their own terms and attribution requirements; see `docs/data-rights.md`. A source citation does not grant redistribution rights to a full report or dataset.

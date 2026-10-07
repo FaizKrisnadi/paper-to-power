@@ -12,6 +12,7 @@ export const COUNTRY_LABELS: Record<CountryCode, string> = {
   SGP: 'Singapore',
   THA: 'Thailand',
   VNM: 'Vietnam',
+  TLS: 'Timor-Leste',
 };
 
 export const COUNTRY_FLAGS: Record<CountryCode, string> = {
@@ -25,6 +26,7 @@ export const COUNTRY_FLAGS: Record<CountryCode, string> = {
   SGP: '🇸🇬',
   THA: '🇹🇭',
   VNM: '🇻🇳',
+  TLS: '🇹🇱',
 };
 
 export const COUNTRY_OPTIONS = Object.entries(COUNTRY_LABELS).map(([code, label]) => ({
@@ -35,7 +37,11 @@ export const COUNTRY_OPTIONS = Object.entries(COUNTRY_LABELS).map(([code, label]
 export const TECHNOLOGY_LABELS: Record<Technology, string> = {
   solar: 'Solar',
   wind: 'Wind',
-  mixed: 'Mixed / Hybrid',
+  mixed: 'Solar + storage / Hybrid',
+  hydro: 'Hydropower',
+  geothermal: 'Geothermal',
+  bioenergy: 'Bioenergy',
+  pumped_storage: 'Pumped storage',
 };
 
 export const COUNTRY_COMPARISON_INFO: Partial<

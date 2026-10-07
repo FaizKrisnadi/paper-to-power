@@ -1,0 +1,943 @@
+{
+  "reviewedAt": "2026-10-05",
+  "reviewMethod": "Explicit analyst review of phase chronology, named source references, overlay and one-to-one turbine correspondence. No new imagery interpretation or field verification.",
+  "reviews": [
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::213",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 7: 28.3 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227758",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "56ab02276f3d5b1df18c501e882aa3ae141e4e7aa0f9e0ee67d95b0af4571c06",
+      "referenceFeatureId": "sidrap-turbine-7",
+      "referenceFingerprint": "7991a38f31e8e65852684fb3323238e6d2c59bbf4c8ea4d62885455cda056c64",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::213",
+        "sourceFeatureIndex": 213,
+        "nearestOsmNodeId": 5738227758,
+        "turbineRef": "7",
+        "distanceM": 28.3,
+        "firstSeen": "2020 Q3"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::786",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 6: 29.0 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227757",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "a7f73abf5b239f073034d33b17c85952db527f24798e08a11d685a43838aa92e",
+      "referenceFeatureId": "sidrap-turbine-6",
+      "referenceFingerprint": "f1f818b240d933d38e6d93f4fd60ab7991aba99f176225ca5b42de9a3dfab6ce",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::786",
+        "sourceFeatureIndex": 786,
+        "nearestOsmNodeId": 5738227757,
+        "turbineRef": "6",
+        "distanceM": 29.0,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::784",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 8: 10.2 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227759",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "4a9e9f5a6a16004ba20901cdba9ab40f8d3057a37ffa9fb04ba816e4efaf7569",
+      "referenceFeatureId": "sidrap-turbine-8",
+      "referenceFingerprint": "a8e67d97784841ead4ff6d01360036c361f5a05b27d3488fbda08a82f3456c70",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::784",
+        "sourceFeatureIndex": 784,
+        "nearestOsmNodeId": 5738227759,
+        "turbineRef": "8",
+        "distanceM": 10.2,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::787",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 5: 14.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227756",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "ec36d6c1ba3bba5f06f59da8abd938f37a1b17323c5c6d1e8d417bf22e1a70c2",
+      "referenceFeatureId": "sidrap-turbine-5",
+      "referenceFingerprint": "1d8e8bb2b72e5d224a296133e9c90cb00577851ee658ba5677444dd5f82eade1",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::787",
+        "sourceFeatureIndex": 787,
+        "nearestOsmNodeId": 5738227756,
+        "turbineRef": "5",
+        "distanceM": 14.9,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::785",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 9: 11.2 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227760",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "9c8e906292fa48cdbe2639396a76d8443ca60db26fd790466e457dd13720bfdc",
+      "referenceFeatureId": "sidrap-turbine-9",
+      "referenceFingerprint": "68823c6324ad2ea95b5e9b5c4adc879bdd1268b67e6052293747664bd2de85a3",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::785",
+        "sourceFeatureIndex": 785,
+        "nearestOsmNodeId": 5738227760,
+        "turbineRef": "9",
+        "distanceM": 11.2,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::788",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 4: 35.8 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227755",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "a42af9450c8c5ea5a6736c6d578b97a26756a91db8bc2be14a3075619c5d72bf",
+      "referenceFeatureId": "sidrap-turbine-4",
+      "referenceFingerprint": "53b1f7ee3a485d5f2b1760c1be7599b2b9a2483f46a779c163e36cecca37d671",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::788",
+        "sourceFeatureIndex": 788,
+        "nearestOsmNodeId": 5738227755,
+        "turbineRef": "4",
+        "distanceM": 35.8,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::815",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 18: 29.3 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227763",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "945aa9d91123c41941122afc870734a0ac6ee4290b3e9fb62c82aa9dd2b1df15",
+      "referenceFeatureId": "sidrap-turbine-18",
+      "referenceFingerprint": "b5d7cd9c011b9df9c3fb18b5e0cc7a035bf650a600be08f06a097dcb55c377c5",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::815",
+        "sourceFeatureIndex": 815,
+        "nearestOsmNodeId": 5738227763,
+        "turbineRef": "18",
+        "distanceM": 29.3,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::816",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 17: 37.2 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227764",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "141c7ba1b1269b59ac50707e8355fcf904b3bb9dc4b2ec42b14dec5d8e42ccb8",
+      "referenceFeatureId": "sidrap-turbine-17",
+      "referenceFingerprint": "8a386fd6755b1e7208ca08ab264027ea0163d5b2c3c1c5dc7794d1d788e592d8",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::816",
+        "sourceFeatureIndex": 816,
+        "nearestOsmNodeId": 5738227764,
+        "turbineRef": "17",
+        "distanceM": 37.2,
+        "firstSeen": "2024 Q2"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::212",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 10: 21.6 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227750",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "3209ace21c322fa7a9991371df18bdeb18fe4ce2610372ccbdb2dca9550e1882",
+      "referenceFeatureId": "sidrap-turbine-10",
+      "referenceFingerprint": "f8d2e0a733218bdceab03a26a71032844337f3241136962a2aa82251eecf314a",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::212",
+        "sourceFeatureIndex": 212,
+        "nearestOsmNodeId": 5738227750,
+        "turbineRef": "10",
+        "distanceM": 21.6,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::783",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 20: 23.3 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227761",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "6dff7535edcda6cf4266eb957b79742a9d76fb86a6a2292e337922e9e93834d9",
+      "referenceFeatureId": "sidrap-turbine-20",
+      "referenceFingerprint": "2c7c77e9b64cb4c52324e8c1193b341a04efd93b54a60789f08b83ff39957ddb",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::783",
+        "sourceFeatureIndex": 783,
+        "nearestOsmNodeId": 5738227761,
+        "turbineRef": "20",
+        "distanceM": 23.3,
+        "firstSeen": "2019 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::214",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 3: 11.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227754",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "ec361e26d5b8a6795ff82dec4d428fc45e763c9c277d859c112fe4a544b53707",
+      "referenceFeatureId": "sidrap-turbine-3",
+      "referenceFingerprint": "ac85570a9a7450b25b2cb53bf0edafc44f8db8e02710b468d7c7f815320a1766",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::214",
+        "sourceFeatureIndex": 214,
+        "nearestOsmNodeId": 5738227754,
+        "turbineRef": "3",
+        "distanceM": 11.9,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::203",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 21: 16.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227747",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "bcd3c30fab3ddcaa9c59f4ade745538bf8540a60e8e4e67c56573fa04ab34c14",
+      "referenceFeatureId": "sidrap-turbine-21",
+      "referenceFingerprint": "7da0b46d8be719170e056aba700ba07c8962c664584314cc26ebecdb9d005e93",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::203",
+        "sourceFeatureIndex": 203,
+        "nearestOsmNodeId": 5738227747,
+        "turbineRef": "21",
+        "distanceM": 16.9,
+        "firstSeen": "2022 Q2"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::781",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 11: 12.5 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227749",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "a89bdf39fd91d5d14d9e79c86c39899ca0badfc703127f16e3e9a9d8a6426300",
+      "referenceFeatureId": "sidrap-turbine-11",
+      "referenceFingerprint": "3e95f0e9247c75bf09fff9475678a6e0019570c11a4cd5ec88b3fbfb045ba47b",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::781",
+        "sourceFeatureIndex": 781,
+        "nearestOsmNodeId": 5738227749,
+        "turbineRef": "11",
+        "distanceM": 12.5,
+        "firstSeen": "2018 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::780",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 22: 8.0 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227746",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "0df182bfa262e61979b2f12a95ef197f50809f4cb77951a4790cc6708db10aa1",
+      "referenceFeatureId": "sidrap-turbine-22",
+      "referenceFingerprint": "7c7b174cbe9fa2250455ed8f2fa170b97f8a2f8f01daa651983a6bc3d915db2e",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::780",
+        "sourceFeatureIndex": 780,
+        "nearestOsmNodeId": 5738227746,
+        "turbineRef": "22",
+        "distanceM": 8.0,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::817",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 16: 11.7 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227753",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "753908d01824c95c479af30aa24118942b1b9afffdd9f3ad5c242d904eccc3bd",
+      "referenceFeatureId": "sidrap-turbine-16",
+      "referenceFingerprint": "ef4eb96732f69cd699c063c0094e3ccc5e9d3f073d76aea56bb8341e4e3f4921",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::817",
+        "sourceFeatureIndex": 817,
+        "nearestOsmNodeId": 5738227753,
+        "turbineRef": "16",
+        "distanceM": 11.7,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::789",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 2: 37.4 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227737",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "9b5f33d60dcded6f06298f8f382c0e65ce7abcb773fb2635c6c8473c41f5910a",
+      "referenceFeatureId": "sidrap-turbine-2",
+      "referenceFingerprint": "29f92415116aad0a4395ab3f44715fb0790ea081580b31f87100dd82ea1504c3",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::789",
+        "sourceFeatureIndex": 789,
+        "nearestOsmNodeId": 5738227737,
+        "turbineRef": "2",
+        "distanceM": 37.4,
+        "firstSeen": "2020 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::820",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 12: 15.5 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227748",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "a4c550b0461085c84dcbd081e4db4e5144c59ffc73d350c667b244d43309280f",
+      "referenceFeatureId": "sidrap-turbine-12",
+      "referenceFingerprint": "aee6e0cfdf3f68723ca206e6eaeddab6c62f6e90878a0fe483c9874fa9226dc8",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::820",
+        "sourceFeatureIndex": 820,
+        "nearestOsmNodeId": 5738227748,
+        "turbineRef": "12",
+        "distanceM": 15.5,
+        "firstSeen": "2023 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::790",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 1: 30.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227765",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "e1fdccd0446b6ae6feac496c464af802cdf6660121a1ce83ae580558afb1f47f",
+      "referenceFeatureId": "sidrap-turbine-1",
+      "referenceFingerprint": "7c2dea5376be5bdacb8d496d37a3e862d4db117d85940a3e769bf41a22daf91c",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::790",
+        "sourceFeatureIndex": 790,
+        "nearestOsmNodeId": 5738227765,
+        "turbineRef": "1",
+        "distanceM": 30.9,
+        "firstSeen": "2020 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::791",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 15: 37.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227752",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "8ad59797b8e7ea1990998744ba0ae1ea85526a631156691892a5c71d190af0af",
+      "referenceFeatureId": "sidrap-turbine-15",
+      "referenceFingerprint": "e98ab2ecb242fca7aa8798be03291de32417a495f7553decb249940708f15127",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::791",
+        "sourceFeatureIndex": 791,
+        "nearestOsmNodeId": 5738227752,
+        "turbineRef": "15",
+        "distanceM": 37.9,
+        "firstSeen": "2023 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::204",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 14: 16.5 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227751",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "4fd6b7b292eaeec883f37bb0a13eef08cd18d52ec31ad6474dc66acb1d9f5f62",
+      "referenceFeatureId": "sidrap-turbine-14",
+      "referenceFingerprint": "4e0951fe533d6070bc0a6261f15e09baaf27c01df8042cebfaf6e0681d1e6117",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::204",
+        "sourceFeatureIndex": 204,
+        "nearestOsmNodeId": 5738227751,
+        "turbineRef": "14",
+        "distanceM": 16.5,
+        "firstSeen": "2022 Q1"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::792",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 13: 31.4 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227766",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "62b1cd834f01fe5debcb8795b5d6968cd3dfb5183a4b1d6a44d06aa076178be3",
+      "referenceFeatureId": "sidrap-turbine-13",
+      "referenceFingerprint": "27f56961e1a037bf57b147127b1e88e7631f88864de22c4bd53c5a17f5b11b63",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::792",
+        "sourceFeatureIndex": 792,
+        "nearestOsmNodeId": 5738227766,
+        "turbineRef": "13",
+        "distanceM": 31.4,
+        "firstSeen": "2019 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::782",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 23: 9.5 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227744",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "fa9964c37c20292d2e3bb0b308563b25992bfd5b26d2040bb23201ee350ed7b7",
+      "referenceFeatureId": "sidrap-turbine-23",
+      "referenceFingerprint": "7125b8d85526e29dedab829f4346d2336c23cd59ce5888190e24c7a21ce3c4c9",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::782",
+        "sourceFeatureIndex": 782,
+        "nearestOsmNodeId": 5738227744,
+        "turbineRef": "23",
+        "distanceM": 9.5,
+        "firstSeen": "2018 Q3"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::813",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 25: 51.2 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227743",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "66a09a7bbd7e3a6efd1d97e2352c1948ee6193e4d95250f6f07b0662533ffd12",
+      "referenceFeatureId": "sidrap-turbine-25",
+      "referenceFingerprint": "adc59d840b723477f9e6c84e6b2d0abb686fb4772e64a16882a82a4f03c0e765",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::813",
+        "sourceFeatureIndex": 813,
+        "nearestOsmNodeId": 5738227743,
+        "turbineRef": "25",
+        "distanceM": 51.2,
+        "firstSeen": "2019 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::814",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 26: 55.7 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227742",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "62240d28d26e476739f9bdd21723715cdb4d0a07f7b27824f07bc099eed95ac1",
+      "referenceFeatureId": "sidrap-turbine-26",
+      "referenceFingerprint": "c93f7b167e957881d78008f29bceab96fa9258c336eb87b398937955c1082eea",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::814",
+        "sourceFeatureIndex": 814,
+        "nearestOsmNodeId": 5738227742,
+        "turbineRef": "26",
+        "distanceM": 55.7,
+        "firstSeen": "2022 Q2"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::819",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 28: 29.9 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227740",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "9b842ba965f5017d9607500813a2dd620cccea445a2125be90a6f3830979ee2b",
+      "referenceFeatureId": "sidrap-turbine-28",
+      "referenceFingerprint": "38e72dd66b7cc934ba1e1fcba4ba3c5940ae739c17b0cef9fe49ab09d0c09e48",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::819",
+        "sourceFeatureIndex": 819,
+        "nearestOsmNodeId": 5738227740,
+        "turbineRef": "28",
+        "distanceM": 29.9,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::818",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 29: 37.8 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227739",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "d72fbd9012305743fdd6a728a54ab93f801fc205cd2779f1a50d57652ad89499",
+      "referenceFeatureId": "sidrap-turbine-29",
+      "referenceFingerprint": "944be783c77683949e4be86c507d5cba92c086462a8d3ff93ca4b20606c13e70",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::818",
+        "sourceFeatureIndex": 818,
+        "nearestOsmNodeId": 5738227739,
+        "turbineRef": "29",
+        "distanceM": 37.8,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "IDN-W-001",
+      "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::793",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed against numbered OSM turbine 30: 54.1 m offset, unique correspondence in the 30-position ridge layout. UPC and ESDM corroborate the phase-1 identity and 30 turbines. Approve point attribution only; neither capacity nor detection timing establishes completion.",
+      "evidenceUrls": [
+        "https://upcrenewables.com/projects/sidrap",
+        "https://www.openstreetmap.org/node/5738227738",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "73cfc850a123773943bf0053dd35043ad0c7e25605d1a60c77851157865bd7f3",
+      "assetFingerprint": "b9257e36827bea3ba71f4b93a8af7d0e93191bece497186a02c0b272ad7806a2",
+      "referenceFeatureId": "sidrap-turbine-30",
+      "referenceFingerprint": "4b9c09996475cf6058830d2dafc89da4ed6f1bfd13a405363dd88f7dad433585",
+      "spatialCheck": {
+        "projectId": "IDN-W-001",
+        "siteId": "GRW::WIND::IDN::wind_sea_2024q2_v1.geojson::793",
+        "sourceFeatureIndex": 793,
+        "nearestOsmNodeId": 5738227738,
+        "turbineRef": "30",
+        "distanceM": 54.1,
+        "firstSeen": "2017 Q4"
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::5",
+      "status": "rejected",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Exclude: 2018 first detection predates August 2020 construction, and this polygon lies outside the mapped commercial boundary. It must not substitute for the later 60 MWp phase.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "882344098f6de820b324358bf96349380f577dc8a2faaffbf2cb05c5e35c39ac",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::5",
+        "sourceFeatureIndex": 5,
+        "boundaryOverlapFraction": 0.0,
+        "firstSeen": "2018 Q3",
+        "areaHa": 2.9122
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::435",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed commercial phase: 99.00% of this 2021 GRW polygon overlaps the approximate mapped commercial site, consistent with PUB construction and opening chronology. Approve partial physical footprint only.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "ad5500cddf76efc3fa740c5b598b7aafdeaf8236a02932a4c58aae0cccb8a1d0",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::435",
+        "sourceFeatureIndex": 435,
+        "boundaryOverlapFraction": 0.98998,
+        "firstSeen": "2021 Q1",
+        "areaHa": 4.7558
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::434",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed commercial phase: 99.19% of this 2021 GRW polygon overlaps the approximate mapped commercial site, consistent with PUB construction and opening chronology. Approve partial physical footprint only.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "0b58651f1218dc856dee845b0c124d94e36054cdc46603c2d54cb4beda6f458f",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::434",
+        "sourceFeatureIndex": 434,
+        "boundaryOverlapFraction": 0.99187,
+        "firstSeen": "2021 Q1",
+        "areaHa": 3.8518
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::433",
+      "status": "approved",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Reviewed commercial phase: 99.37% of this 2021 GRW polygon overlaps the approximate mapped commercial site, consistent with PUB construction and opening chronology. Approve partial physical footprint only.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "9530115f6649e5c9a0bf2a1e193cfc5540d0f0f04603a0e4321d7864f7deacf8",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::433",
+        "sourceFeatureIndex": 433,
+        "boundaryOverlapFraction": 0.9937,
+        "firstSeen": "2021 Q2",
+        "areaHa": 1.8285
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::436",
+      "status": "rejected",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Exclude: outside the mapped commercial project site. The broad distance screen does not establish this phase identity.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "8e17986b622b98e11da0d9c9abda874f7ea954df7b5ed35fd31d5cee1a2c8f1f",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::436",
+        "sourceFeatureIndex": 436,
+        "boundaryOverlapFraction": 0.0,
+        "firstSeen": "2024 Q2",
+        "areaHa": 8.728
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::65",
+      "status": "rejected",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Exclude: outside the mapped commercial project site. The broad distance screen does not establish this phase identity.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "4773e62aab940e813cff2b7d500c5e4d4ec289527400143e48b5b1e0ac635fe6",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::65",
+        "sourceFeatureIndex": 65,
+        "boundaryOverlapFraction": 0.0,
+        "firstSeen": "2021 Q3",
+        "areaHa": 1.9984
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::9",
+      "status": "rejected",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Exclude: outside the mapped commercial project site. The broad distance screen does not establish this phase identity.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "17a283389559d5d6a2b67cb739f454e0433a8e67707c506cec522cee1595d310",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::9",
+        "sourceFeatureIndex": 9,
+        "boundaryOverlapFraction": 0.0,
+        "firstSeen": "2019 Q2",
+        "areaHa": 3.8244
+      },
+      "observationExtent": "partial"
+    },
+    {
+      "projectId": "SGP-S-001",
+      "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::3",
+      "status": "rejected",
+      "reviewer": "Codex-assisted documentary and geometry review",
+      "reviewedAt": "2026-10-05",
+      "reason": "Exclude: outside the mapped commercial project site. The broad distance screen does not establish this phase identity.",
+      "evidenceUrls": [
+        "https://www.pub.gov.sg/Resources/News-Room/PressReleases/2021/07/SEMBCORP-AND-PUB-OFFICIALLY-OPEN-THE-SEMBCORP-TENGEH-FLOATING-SOLAR-FARM",
+        "https://www.openstreetmap.org/way/979479451",
+        "https://github.com/microsoft/global-renewables-watch"
+      ],
+      "projectFingerprint": "277a3982d67cb2fa41c3bdb6bec2af9fa47c1246061514a77baa36b6c8ac1e1e",
+      "assetFingerprint": "ed6d3b5c98461c5aa6bd7ad22328afe62bac1e1241e46d775822871a04ce685f",
+      "referenceFeatureId": "tengeh-commercial-boundary",
+      "referenceFingerprint": "d046ccd6df00f7159d53e295299975892c10e07362bcb39858d01b827df9d58f",
+      "spatialCheck": {
+        "projectId": "SGP-S-001",
+        "siteId": "GRW::SOLAR::SGP::solar_sea_2024q2_v1.geojson::3",
+        "sourceFeatureIndex": 3,
+        "boundaryOverlapFraction": 0.0,
+        "firstSeen": "2024 Q2",
+        "areaHa": 4.5165
+      },
+      "observationExtent": "partial"
+    }
+  ]
+}

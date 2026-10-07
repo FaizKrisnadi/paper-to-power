@@ -1,0 +1,34 @@
+{
+  "datasetVersion": "2026-10-07-stage-reconciled-v1",
+  "methodVersion": "2.0.0",
+  "observationCutoff": "2024-06-30",
+  "projectCount": 5136,
+  "inputs": {
+    "data/manual/gipt_reconciliation.json": "e981fa00c3687c81b35c99960806d44a3544363df747b004a8a91ce975bfec8a",
+    "data/raw/gem/gipt-sea-map-2026-09.csv": "3ae524364e78e1e20ad997508162a141aeccadd76fe1f07e32ae8fbc91178f4d",
+    "data/raw/gem/gipt-sea-map-2026-09.provenance.json": "bb9358fc44e3dd94923c5be92853e9ef3d6acdefd70cf13be29f4a9fb288fcca",
+    "data/manual/gipt_crosswalk.json": "33d433db580021f800fdab0a5b0f49007dc2a88bb02cbd7a04e2a0ea4702c833",
+    "data/manual/registry_baseline.json": "1e436b9709eef167b1dc87c545eac84d9b8a55cc7e6a3a5f617f8ebc5362f755",
+    "data/raw/grw/solar_sea_2024q2_v1.geojson": "a92774d1b49117740fd8ec15206d3dde75ec696524539cc0d6ed37bc069f84ad",
+    "data/raw/grw/wind_sea_2024q2_v1.geojson": "7e046d074461f16ea89d157f80ffd75f100f18e5fc234736aed275e21152b0ba",
+    "data/processed/project_registry.json": "d8ec25c14e9af305289c851987dbe38b91410c8704987c867e5e941353a4a107",
+    "data/processed/observed_assets.json": "e46a60da4ce3dc56a52acd3dd1172f758d3dece644a6ca538728a0844308652e",
+    "data/processed/project_asset_matches.json": "0cdd78e9fc5aa417872c04289b2e256f608a737a24a973f6e00d09097230dfe2",
+    "data/processed/match_candidates.json": "cc8169b2f91b716772a141340b6498664be6ecceba4b7419b8e2d2fa8a155c5f",
+    "data/manual/registry_reviews.json": "8b87fefa140f1183fe53c1d0cb18209db105a062926d7f61a1ccc1226a682798",
+    "data/manual/match_reviews.json": "34fa64d70c8f7af20b3133453d66009225a772ed5e2d2cb810df65fe878b0eeb",
+    "data/processed/geospatial/site_context_features.json": "25164effeed29e912ba5f22f98993771f4b87cd04f521aeca9cae168742bdee3",
+    "data/manual/pilot_reference_features.geojson": "532fdb7179023a8348d5ce95623dc239c5cb6945ccbf5cca8cba51ad9615d3db",
+    "data/manual/pilot_studies.json": "19fef4bfeda459b8cef2d27581369ec88e278be330a5ca72157a2a9435146d0c"
+  },
+  "outputs": {
+    "data/processed/frontend_dataset.json": "215abb5efea71dfcc70a860842aef59c52ad41e8c4361fd1f8fd51db27a54bd6",
+    "src/data/generated.ts": "9a7ef910291414b09cfc6f8c1c0093023515cfdcae2300561ebea45d29817a2e",
+    "src/data/generated.json": "9b2db2079bd824d79f336a92c9ae002a0433633a0c3bb792455570444fd2262b",
+    "public/downloads/project-evidence.json": "215abb5efea71dfcc70a860842aef59c52ad41e8c4361fd1f8fd51db27a54bd6",
+    "public/downloads/project-evidence.csv": "95dc04b8b745f56093e48113cec11be716cda87f3a9ed1763a8e54e913b18e5b",
+    "public/downloads/pilot-attribution-reviews.json": "f0b6dc8482a9440f87e43081457fc24141309f389c97310a08ea964140c8c972",
+    "public/downloads/pilot-reference-features.geojson": "532fdb7179023a8348d5ce95623dc239c5cb6945ccbf5cca8cba51ad9615d3db",
+    "public/downloads/registry-reconciliation.json": "acb723dfdc3b2a1ed45283a42cc73365923901a5731e98a9eff2e272b802f3ff"
+  }
+}
