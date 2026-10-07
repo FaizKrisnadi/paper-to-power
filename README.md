@@ -12,6 +12,8 @@ The public site may still serve the earlier release. This repair has been built 
 
 ## Local setup
 
+For Cloudflare Pages Git deployments, use production branch `main`, build command `npm run build:web`, output directory `dist`, and repository root `/`. `build:web` compiles the committed, validated frontend data snapshot without fetching sources or requiring the Python research runtime. Data changes must still pass the full local release workflow below before being committed.
+
 Use Node.js 22.12 or later, Python 3.11–3.13 and [uv](https://docs.astral.sh/uv/). Both JavaScript and Python dependency resolutions are committed.
 
 ```bash

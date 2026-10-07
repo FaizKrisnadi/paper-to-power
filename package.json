@@ -23,6 +23,7 @@
     "promote:reviewed-seed": "uv run python3 -m pipeline.promote_reviewed_seed",
     "sync:data": "uv run python3 -m pipeline.sync_data",
     "build": "npm run build:data && tsc -b && vite build",
+    "build:web": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "refresh:registry": "uv run python -m pipeline.refresh_registry",
