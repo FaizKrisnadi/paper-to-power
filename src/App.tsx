@@ -12,14 +12,14 @@ import { AppClosing } from './components/AppClosing';
 import { Footer } from './components/Footer';
 
 function App() {
-  const [filters, setFilters] = useState<ExplorerFilters>({ country: 'all', tech: 'all', status: 'all', stage:'all', query:'' });
+  const [filters, setFilters] = useState<ExplorerFilters>({ country: 'all', tech: 'all', status: 'all', stage:'all', claim:'all', query:'' });
   return (
     <div className="app-container">
       <SiteNav />
       <HeroSection />
       <StorySection />
       <ExplorerSection allProjects={registryMapProjects} filters={filters} setFilters={setFilters} />
-      <CountrySection allProjects={registryMapProjects} onSelectCountry={country => setFilters({ country, tech: 'all', status: 'all', stage:'all', query:'' })} />
+      <CountrySection allProjects={registryMapProjects} onSelectCountry={country => setFilters({ country, tech: 'all', status: 'all', stage:'all', claim:'all', query:'' })} />
       <PilotSection />
       <MethodologySection />
       

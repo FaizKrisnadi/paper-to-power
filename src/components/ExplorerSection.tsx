@@ -4,7 +4,7 @@ import { SectionHeader } from './shared/SectionHeader';
 import { FilterBar } from './FilterBar';
 import { ExplorerMap } from './ExplorerMap';
 import { ProjectDrawer } from './ProjectDrawer';
-import { downloadFilteredCsv } from '../lib/evidence';
+import { downloadFilteredCsv, claimReviewCategory } from '../lib/evidence';
 import { DataTable } from './DataTable';
 
 export interface ExplorerFilters {
@@ -12,6 +12,7 @@ export interface ExplorerFilters {
   tech: Technology | 'all';
   status: PaperToPowerLabel | 'all';
   stage: ProjectStage | 'all';
+  claim: 'all' | 'reviewed' | 'provider' | 'pending';
   query: string;
 }
 interface ExplorerSectionProps {
@@ -32,6 +33,7 @@ export function ExplorerSection({ allProjects, filters, setFilters }: ExplorerSe
       if (filters.tech !== 'all' && p.technology !== filters.tech) return false;
       if (filters.stage !== 'all' && p.projectStage !== filters.stage) return false;
       if (filters.status !== 'all' && p.paperToPowerLabel !== filters.status) return false;
+      if (filters.claim !== 'all' && claimReviewCategory(p) !== filters.claim) return false;
       return true;
     });
   }, [allProjects, filters, query]);
@@ -86,7 +88,7 @@ export function ExplorerSection({ allProjects, filters, setFilters }: ExplorerSe
             <ProjectDrawer
               project={selectedProject}
               onClose={() => setSelectedProjectId(null)}
-              onSelectProject={id=>{setFilters({...filters,stage:'all',status:'all',tech:'all',query:''});setSelectedProjectId(id)}}
+              onSelectProject={id=>{setFilters({...filters,stage:'all',status:'all',tech:'all',claim:'all',query:''});setSelectedProjectId(id)}}
             />
           </div>
         </div>
@@ -95,6 +97,8 @@ export function ExplorerSection({ allProjects, filters, setFilters }: ExplorerSe
       <div className="explorer-table-shell">
         <DataTable
           projects={filteredProjects}
+          filters={filters}
+          setFilters={setFilters}
           selectedId={activeSelectedProjectId}
           onRowClick={(id) => setSelectedProjectId(id)}
         />

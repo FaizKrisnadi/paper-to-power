@@ -13,6 +13,9 @@ export function observationText(p: RegistryMapProject) {
  }
  return OBSERVATION_LABELS[p.observationStatus];
 }
+export function claimReviewCategory(p: RegistryMapProject): 'reviewed' | 'provider' | 'pending' {
+ return p.claimReviewStatus === 'reviewed' ? 'reviewed' : p.registryOrigin === 'gem_map' ? 'provider' : 'pending';
+}
 export function capacityText(p: RegistryMapProject) {
  if (p.claimedCapacityMw === null) return 'Unspecified';
  return `${p.claimedCapacityMw.toLocaleString('en-US', { maximumFractionDigits: 3 })} ${p.capacityBasis === 'unspecified' ? 'MW (basis unresolved)' : p.capacityBasis}`;
