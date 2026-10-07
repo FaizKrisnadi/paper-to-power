@@ -1,6 +1,6 @@
 # Project stage and identity reconciliation
 
-Local release: 7 October 2026. Provider snapshot: GEM September 2026 public map CSV. This update has not been deployed to the public site.
+Local release: 7 October 2026. Provider snapshot: GEM September 2026 public map CSV. Deployed to the public site on 7 October 2026 through the restored Cloudflare Pages Git integration.
 
 ## What changed
 

@@ -8,7 +8,7 @@ The saved Global Renewables Watch extract still ends in **2024 Q2**, covers five
 
 [Public site](https://energy.faizkrisnadi.com) · [Repository](https://github.com/FaizKrisnadi/paper-to-power)
 
-The public site may still serve the earlier release. This repair has been built and checked locally; it has not been deployed.
+The validated regional release is live. Cloudflare Pages automatically builds pushes to `main` using `npm run build:web` and serves `dist`. See [production deployment configuration](docs/cloudflare-deployment.md).
 
 ## Local setup
 
