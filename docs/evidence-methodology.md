@@ -8,7 +8,7 @@ The current GEM source pages were checked as research leads where accessible. Th
 
 ## Observation eligibility and status
 
-The saved regional GRW extract covers Indonesia, Malaysia, the Philippines, Singapore and Vietnam through 30 June 2024. Registry projects in the other five countries receive `coverage_unavailable`; this is a statement about the saved extract rather than the global dataset. Offshore and hybrid projects receive `method_not_applicable`. A reviewed expected date after the observation cutoff receives `not_yet_due_at_cutoff`.
+The saved regional GRW extract covers Indonesia, Malaysia, the Philippines, Singapore and Vietnam through 30 June 2024. Registry projects in the other six countries (Brunei, Cambodia, Laos, Myanmar, Thailand and Timor-Leste) receive `coverage_unavailable`; this is a statement about the saved extract rather than the global dataset. Offshore and hybrid projects receive `method_not_applicable`. A reviewed expected date after the observation cutoff receives `not_yet_due_at_cutoff`.
 
 An eligible non-detection review additionally requires site-accurate coordinates, a reviewed documentary claim, an expected date whose complete precision interval ends before the cutoff, and a completed site observation review. Year, month, quarter and range dates retain their precision. Missing, invalid or ambiguous dates remain unresolved. Remaining cases receive `review_pending`.
 
@@ -34,4 +34,4 @@ The cached OSM extract is used only for nearest mapped infrastructure proximity.
 
 ## Release consistency
 
-The JSON, generated TypeScript, CSV and map layers use the same 50-project population. The manifest hashes the manual inputs, processed evidence inputs and public outputs. Validation rejects unsupported capacities, schedule claims, unreviewed matches, missing reviewed-claim provenance and population mismatches. GeoJSON and Parquet include empty approved-match layers explicitly rather than retaining old matches.
+The JSON, generated TypeScript, CSV and map layers use the same 5,136-record active population: 5,118 provider units/phases plus 18 retained research supplements. The manifest hashes the manual inputs, processed evidence inputs and public outputs. Validation rejects unsupported capacities, schedule claims, unreviewed matches, missing reviewed-claim provenance and population mismatches. GeoJSON and Parquet include empty approved-match layers explicitly rather than retaining old matches.
