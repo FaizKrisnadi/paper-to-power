@@ -105,6 +105,23 @@ def test_duplicate_resolution_preserves_alias_without_inflating_population():
     assert data['records'][0]['aliasProjectIds']==['alias']
 
 
+def test_review_override_asserting_claimed_cod_survives_the_build():
+    rows=[project(projectId='explicit',expectedOperatingDate=None),
+          project(projectId='derived'),
+          project(projectId='legacy',expectedOperatingDate=None,claimedCod='2025-09')]
+    data=build_registry(rows,{'reviewDate':'2026-10-05','projects':{
+        'explicit':{'claimedCod':'2031-06'},
+        'derived':{'expectedOperatingDate':'2028'}}})
+    by_id={r['projectId']:r for r in data['records']}
+    # A documentary review that explicitly asserts claimedCod must not be clobbered.
+    assert by_id['explicit']['claimedCod']=='2031-06'
+    # Otherwise claimedCod stays the backward-compatible mirror of the expected date.
+    assert by_id['derived']['claimedCod']=='2028'
+    # An unreviewed legacy claimedCod is retired from the active field, preserved separately.
+    assert by_id['legacy']['claimedCod'] is None
+    assert by_id['legacy']['legacyClaimedCod']=='2025-09'
+
+
 def test_changed_attribution_reference_invalidates_an_approved_match():
     from pipeline.match_projects import reference_fingerprint
     p=project();a=asset();r=review(p,a)

@@ -28,6 +28,14 @@ def test_csv_protects_formula_like_source_fields():
     assert "'=malicious()" in text
 
 
+def test_in_app_filtered_export_matches_the_public_csv_contract():
+    import re
+    source=(ROOT/'src/lib/evidence.ts').read_text()
+    ts_fields=re.findall(r"'([^']+)'", re.search(
+        r"const fields: \(keyof RegistryMapProject\)\[\] = \[(.*?)\]", source, re.S).group(1))
+    assert ts_fields==csv_text([]).splitlines()[0].split(',')
+
+
 def test_soft_404_is_not_a_verified_claim():
     rows=build_payload()['registryMapProjects']
     assert all(p['claimReviewStatus']!='reviewed' for p in rows if p.get('sourceAccessResult')=='soft_404')

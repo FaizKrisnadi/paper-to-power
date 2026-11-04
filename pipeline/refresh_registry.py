@@ -27,7 +27,9 @@ def build_registry(baseline: list[dict], reviews: dict) -> dict:
         row['installationType'] = 'offshore' if 'offshore' in name else ('hybrid' if row['technology'] == 'mixed' else ('floating' if 'floating' in name or 'fpv' in name else 'onshore'))
         row.update(overrides.get(pid, {}))
         # claimedCod remains a backward-compatible expected date; historical reporting is separate.
-        row['claimedCod'] = row.get('expectedOperatingDate')
+        # An explicit documentary-review claimedCod overrides the mirror.
+        if 'claimedCod' not in overrides.get(pid, {}):
+            row['claimedCod'] = row.get('expectedOperatingDate')
         row['reviewStatus'] = row['claimReviewStatus']
         row['sourceConfidence'] = 'documentary source reviewed' if row['claimReviewStatus']=='reviewed' else None
         row['aliasProjectIds'] = [a for a, info in exclusions.items() if info['canonicalProjectId'] == pid]
