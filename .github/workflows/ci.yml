@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: |
+          npm ci
+          uv sync --locked --all-extras --python 3.11
+
+      - name: Rebuild release data
+        run: npm run build:data
+
+      - name: Committed outputs match the rebuild
+        run: git diff --exit-code
+
+      - name: Tests
+        run: npm test
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build:web
+
+      - name: Release validation
+        run: npm run validate:data
+
+      - name: Download stays under the Cloudflare Pages file limit
+        run: |
+          size=$(wc -c < dist/downloads/project-evidence.json)
+          echo "project-evidence.json: $size bytes"
+          test "$size" -lt 24000000
+
+      - name: Dependency audit
+        run: npm audit --audit-level=high

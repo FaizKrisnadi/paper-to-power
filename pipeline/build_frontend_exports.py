@@ -120,7 +120,8 @@ def main():
     GENERATED_TS.write_text(render_ts_module(payload))
     write_json(ROOT/'src/data/generated.json',compact_frontend(payload))
     downloads=ROOT/'public/downloads';downloads.mkdir(exist_ok=True)
-    write_json(downloads/'project-evidence.json',payload)
+    # Served by Cloudflare Pages, which rejects files over 25 MiB; keep this one unindented.
+    write_json(downloads/'project-evidence.json',payload,compact=True)
     write_json(downloads/'registry-reconciliation.json',read_json(PROCESSED_DIR/'registry_refresh_report.json'))
     (downloads/'project-evidence.csv').write_text(csv_text(payload['registryMapProjects']))
     write_json(downloads/'pilot-attribution-reviews.json',{'reviews':read_json(ROOT/'data/manual/match_reviews.json')['reviews'],'referenceAttribution':'© OpenStreetMap contributors; ODbL 1.0','referenceLicenseUrl':'https://www.openstreetmap.org/copyright'})

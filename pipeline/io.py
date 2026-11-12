@@ -11,10 +11,14 @@ def read_json(path: Path) -> Any:
         return json.load(handle)
 
 
-def write_json(path: Path, payload: Any) -> None:
+def write_json(path: Path, payload: Any, compact: bool = False) -> None:
+    """Write JSON; compact=True drops indentation for large files served to browsers."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, indent=2, ensure_ascii=True)
+        if compact:
+            json.dump(payload, handle, separators=(",", ":"), ensure_ascii=True)
+        else:
+            json.dump(payload, handle, indent=2, ensure_ascii=True)
         handle.write("\n")
 
 
